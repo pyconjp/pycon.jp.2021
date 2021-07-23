@@ -60,7 +60,7 @@ export default {
       Oswald: true,
       'Noto Sans JP': true,
       'Source Sans Pro': true,
-      Montserrat: true,
+      Montserrat: [400, 700, 900],
     },
     display: 'swap',
   },
