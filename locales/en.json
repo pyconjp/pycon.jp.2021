@@ -1,23 +1,34 @@
 {
   "common": {
     "abstract": "Abstract",
-    "abountPyConJP": "",
-    "eventList": "",
-    "timeTable": "",
-    "specialBooth": "",
-    "Tutorial": "",
-    "Sprint": "",
-    "handson": "",
-    "youtubeLiveList": "",
-    "onlineParty": "",
-    "news": "",
-    "sponsroList": "",
-    "sponsorApprication": "",
-    "sponsorAppriccationForm": "",
-    "sponsorPlanning": "",
-    "staffList": "",
-    "access": "",
-    "faq": ""
+    "codeOfConduct": "Code of Conduct",
+    "aboutPyConJP": "About PyConJP",
+    "eventList": "Event list",
+    "timeTable": "Time table",
+    "specialBooth": "Special Booth",
+    "tutorial": "Tutorial",
+    "sprint": "Sprint",
+    "handsOn": "Hands on",
+    "youtubeLiveList": "YouTube Live list",
+    "onlineParty": "Online Party",
+    "news": "News",
+    "sponsor": "Sponsors",
+    "sponsorList": "Sponsors list",
+    "sponsorApplication": "Sponsor application",
+    "sponsorApplicationForm": "Sponsor application form",
+    "sponsorPlanning": "Sponsor planning",
+    "staffList": "Staff list",
+    "access": "Access",
+    "faq": "FAQ"
   },
-  "pages": {}
+  "pages": {
+    "index": {
+      "contactFooterDescription": [
+        "Please check the FAQ in advance.",
+        "It is run by volunteers. It takes about a week to answer.",
+        "Thank you for your patience."
+      ],
+      "pastPyConJPSites": "List of past PyCon JP sites"
+    }
+  }
 }

@@ -1,23 +1,34 @@
 {
   "common": {
-    "abstract": "概要やでー",
-    "abountPyConJP": "",
-    "eventList": "",
-    "timeTable": "",
-    "specialBooth": "",
-    "Tutorial": "",
-    "Sprint": "",
-    "handson": "",
-    "youtubeLiveList": "",
-    "onlineParty": "",
-    "news": "",
-    "sponsroList": "",
-    "sponsorApprication": "",
-    "sponsorAppriccationForm": "",
-    "sponsorPlanning": "",
-    "staffList": "",
-    "access": "",
-    "faq": ""
+    "abstract": "概要",
+    "codeOfConduct": "行動規範",
+    "aboutPyConJP": "PyCon JPとは",
+    "eventList": "イベント一覧",
+    "timeTable": "タイムテーブル",
+    "specialBooth": "スペシャルブース",
+    "tutorial": "チュートリアル",
+    "sprint": "スプリント",
+    "handsOn": "ハンズオン",
+    "youtubeLiveList": "YouTube Live一覧",
+    "onlineParty": "Online Party",
+    "news": "News",
+    "sponsor": "スポンサー",
+    "sponsorList": "スポンサー一覧",
+    "sponsorApplication": "スポンサー募集要項",
+    "sponsorApplicationForm": "スポンサー申し込み",
+    "sponsorPlanning": "スポンサー企画",
+    "staffList": "スタッフ一覧",
+    "access": "会場へのアクセス",
+    "faq": "FAQ"
   },
-  "pages": {}
+  "pages": {
+    "index": {
+      "contactFooterDescription": [
+        "事前にFAQをご確認いただけますようにお願いします。",
+        "ボランティアによる運営ですので、回答には1週間程度を要します。",
+        "何卒お待ちいただけますようにお願いします。"
+      ],
+      "pastPyConJPSites": "過去のPyCon JPのサイト一覧"
+    }
+  }
 }
