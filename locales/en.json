@@ -21,5 +21,14 @@
     "access": "Access",
     "faq": "FAQ"
   },
-  "pages": {}
+  "pages": {
+    "index": {
+      "contactFooterDescription": [
+        "Please check the FAQ in advance.",
+        "It is run by volunteers. It takes about a week to answer.",
+        "Thank you for your patience."
+      ],
+      "pastPyConJPSites": "List of past PyCon JP sites"
+    }
+  }
 }

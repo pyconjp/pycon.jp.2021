@@ -21,5 +21,14 @@
     "access": "会場へのアクセス",
     "faq": "FAQ"
   },
-  "pages": {}
+  "pages": {
+    "index": {
+      "contactFooterDescription": [
+        "事前にFAQをご確認いただけますようにお願いします。",
+        "ボランティアによる運営ですので、回答には1週間程度を要します。",
+        "何卒お待ちいただけますようにお願いします。"
+      ],
+      "pastPyConJPSites": "過去のPyCon JPのサイト一覧"
+    }
+  }
 }
