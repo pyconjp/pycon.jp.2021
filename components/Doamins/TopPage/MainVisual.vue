@@ -1,15 +1,58 @@
 <template>
   <div>
-    <p class="top-background-text">PyCon JP 2021</p>
+    <img
+      src="~/assets/images/background-message.png"
+      alt="PyCon JP 2021"
+      class="background-message"
+    />
+    <div></div>
     <p class="top-text">PyCon JP 2021</p>
-    <div>
-      <p>2021.10.15...</p>
-      <p>Online &amp; Offline Hybrid Conference</p>
-      <p>match Pycon JP(2021)....</p>
-      <p>Twitter</p>
+    <div class="items-center justify-center w-2/3">
+      <div class="flex">
+        <img
+          src="~/assets/images/icon-calendar.png"
+          alt="icon calendar"
+          class="w-5 h-5"
+        />
+        <p>2021.10.15(Sat.)-16(Sun.)</p>
+      </div>
+
+      <div class="flex">
+        <img
+          src="~/assets/images/icon-people.png"
+          alt="icon people"
+          class="w-5 h-5"
+        />
+        <p>Online &amp; Offline Hybrid Conference</p>
+      </div>
+
+      <div class="flex">
+        <img
+          src="~/assets/images/icon-location.png"
+          alt="icon location"
+          class="w-5 h-5"
+        />
+        <div>
+          <p>match PyconJP(2021):</p>
+          <p>case["ONLINE"]: Zoom</p>
+          <p class="relative">
+            case["ONSITE"]:ベルサール神田
+            <img
+              src="~/assets/images/icon-link.png"
+              alt="icon link"
+              class="absolute top-0 w-5 h-5 -right-8"
+            />
+          </p>
+        </div>
+      </div>
+
+      <div class="flex">
+        <img src="~/assets/images/icon-twitter.png" alt="icon twitter" />
+        <p>Twitter</p>
+      </div>
     </div>
     <div>
-      <p>画像入る</p>
+      <img src="~/assets/images/slide-sample.png" alt="icon twitter" />
     </div>
     <div>
       <p>Time Table Coming Soon</p>
@@ -31,31 +74,19 @@ export default { components: { CustomHeader } }
 <style scoped>
 .top-text {
   font-family: Montserrat;
-  font-weight: bold;
+  display: inline;
+  font-weight: 700;
   font-size: 72px;
   background: linear-gradient(237.35deg, #a1e42b 1.58%, #2f9acf 83.64%);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
 }
-.top-background-text {
-  /* font-size: 72px; */
-  /* color: red; */
-  -webkit-text-stroke: 5px red;
-  /* background-clip: text;
-  -webkit-background-clip: text;
-  background: linear-gradient(237.35deg, #a1e42b 1.58%, #2f9acf 83.64%); */
-  /* -webkit-text-stroke: 1px
-    linear-gradient(237.35deg, #a1e42b 1.58%, #2f9acf 83.64%); */
-
-  font-family: Montserrat;
-  font-weight: bold;
-  font-size: 72px;
-  /* background: linear-gradient(237.35deg, #a1e42b 1.58%, #2f9acf 83.64%); */
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
+.background-message {
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  object-fit: cover;
 }
 .sticky-header {
   position: -webkit-sticky;
