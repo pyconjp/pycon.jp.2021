@@ -10,7 +10,11 @@ module.exports = {
   ],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'base-message': '#1097AA',
+      },
+    },
     fontFamily: {
       noto: ["'Noto Sans JP'", ...defaultTheme.fontFamily.sans],
       oswald: 'Oswald',

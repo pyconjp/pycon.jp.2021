@@ -59,7 +59,7 @@ export default {
       Roboto: true,
       Oswald: true,
       'Noto Sans JP': true,
-      'Source Sans Pro': true,
+      'Source Sans Pro': [400, 600, 700, 900],
       Montserrat: [400, 700, 900],
     },
     display: 'swap',
