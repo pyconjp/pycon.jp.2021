@@ -1,0 +1,21 @@
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - nvm install v14.16.0
+        - nvm use v14.16.0
+        - node -v
+        - npm install -g yarn
+        - yarn install
+    build:
+      commands:
+        - yarn run generate
+  artifacts:
+    # IMPORTANT - Please verify your build output directory
+    baseDirectory: dist/
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - node_modules/**/*

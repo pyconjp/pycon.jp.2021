@@ -4,28 +4,42 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'pycon.jp.2021',
+    title: 'PyCon JP 2021',
     htmlAttrs: {
-      lang: 'en'
+      lang: 'en',
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'PyCon JP 2021 Confelence',
+      },
+      { name: 'format-detection', content: 'telephone=no' },
+      { hid: 'og:type', property: 'og:type', content: 'website' },
+      { hid: 'og:url', property: 'og:url', content: 'https://2021.pycon.jp/' },
+      { hid: 'og:title', property: 'og:title', content: 'PyCon JP 2021' },
+      {
+        hid: 'og:description',
+        property: 'og:description',
+        content:
+          'PyCon JPは、Pythonユーザが集まり、PythonやPythonを使ったソフトウェアについて情報交換、交流をするためのカンファレンスです。',
+      },
+      // {
+      //   hid: 'og:image',
+      //   property: 'og:image',
+      //   content: 'https://pycon.jp/2020/logo.png',
+      // },
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-  ],
+  css: ['ress'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-  ],
+  plugins: [{ src: '~/plugins/swiper' }],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -36,6 +50,8 @@ export default {
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/google-fonts',
+    '@aceforth/nuxt-optimized-images',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -44,6 +60,7 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
+    'nuxt-i18n',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -53,6 +70,39 @@ export default {
   content: {},
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {
-  }
+  build: {},
+
+  googleFonts: {
+    families: {
+      Roboto: true,
+      Oswald: true,
+      'Noto Sans JP': true,
+      'Source Sans Pro': [400, 600, 700, 900],
+      Montserrat: [400, 700, 900],
+    },
+    display: 'swap',
+  },
+
+  optimizedImages: {
+    optimizeImages: true,
+    optimizeImagesInDev: true,
+  },
+
+  i18n: {
+    locales: [
+      {
+        code: 'en',
+        iso: 'en',
+        file: 'en.json',
+      },
+      {
+        code: 'ja',
+        iso: 'ja',
+        file: 'ja.json',
+      },
+    ],
+    defaultLocale: 'ja',
+    lazy: true,
+    langDir: 'locales/',
+  },
 }
