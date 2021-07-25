@@ -1,0 +1,41 @@
+name: Deploy Dev
+
+on:
+  deployment:
+  push:
+    branches: [develop]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.8]
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+        with:
+          node-version: 14.x
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-northeast-1
+
+      - name: install library and push
+        run: |
+          pip3 --version
+          pip3 install git-remote-codecommit
+          export PATH=/home/runner/.local/bin/:$PATH
+          git clone https://github.com/pyconjp/pycon.jp.2021.git
+          cd pycon.jp.2021
+          git checkout -b develop origin/develop
+          git remote add aws codecommit::ap-northeast-1://pycon.jp.2021
+          git push aws develop:develop
