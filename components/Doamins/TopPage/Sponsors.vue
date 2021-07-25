@@ -21,9 +21,6 @@
           <p class="p-2 md:w-1/3">
             <img src="~/assets/images/slide-sample.png" alt="sponsor-logo" />
           </p>
-          <p class="p-2 md:w-1/3">
-            <img src="~/assets/images/slide-sample.png" alt="sponsor-logo" />
-          </p>
         </div>
       </div>
       <div>
