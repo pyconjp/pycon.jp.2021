@@ -1,50 +1,167 @@
 <template>
-  <div class="flex flex-wrap py-2">
-    <div class="w-full px-4">
-      <nav class="relative flex flex-wrap items-center justify-between px-2 py-3 bg-white rounded">
-        <div class="container px-4 mx-auto flex flex-wrap items-center justify-between">
-          <div class="w-full relative flex justify-between lg:w-auto px-4 lg:static lg:block lg:justify-start">
-          <a class="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase" href="/">
-            PyCon JP 2021
-          </a>
-          <button class="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none" type="button">
-            <span class="block relative w-6 h-px rounded-sm bg-black"></span>
-            <span class="block relative w-6 h-px rounded-sm bg-black mt-1"></span>
-            <span class="block relative w-6 h-px rounded-sm bg-black mt-1"></span>
-          </button>
-          </div>
-        </div>
-        <div class="flex lg:flex-grow items-center" id="example-navbar-info">
-          <ul class="flex flex-col lg:flex-row list-none ml-auto">
-            <li class="nav-item">
-              <a class="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug hover:opacity-75" href="#pablo">
-                概要
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug hover:opacity-75" href="#pablo">
-                いろいろ一覧
-              </a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </div>
+  <div class="relative">
+    <nav class="relative z-40 flex items-center justify-center pr-4 navbar">
+      <div class="flex items-center justify-center w-1/4">
+        <img src="~/assets/images/header-pyconjp.svg" alt="" />
+      </div>
+      <div class="w-3/4 font-bold font-noto">
+        <ul class="flex items-center justify-around">
+          <li class="relative">
+            <p
+              class="relative cursor-pointer headear-options"
+              @click="selectMenu(0)"
+            >
+              {{ $t('common.abstract') }}
+            </p>
+            <div v-if="showAbstractMenu" class="list-menu">
+              <p>{{ $t('common.codeOfConduct') }}</p>
+            </div>
+          </li>
+          <li class="relative">
+            <p
+              class="relative cursor-pointer  headear-options-disable disable-message"
+            >
+              {{ $t('common.eventList') }}
+            </p>
+          </li>
+          <li class="">
+            <a class="" href=""> News </a>
+          </li>
+          <li class="relative">
+            <p
+              class="relative cursor-pointer headear-options"
+              @click="selectMenu(2)"
+            >
+              {{ $t('common.sponsor') }}
+            </p>
+            <div v-if="showSponsorMenu" class="list-menu">
+              <p>{{ $t('common.sponsorApplication') }}</p>
+              <p>{{ $t('common.sponsorApplicationForm') }}</p>
+            </div>
+          </li>
+          <li class="">
+            <a class="pointer-events-none disable-message" href="">
+              {{ $t('common.staffList') }}
+            </a>
+          </li>
+          <li class="">
+            <a class="pointer-events-none disable-message" href="">
+              {{ $t('common.access') }}
+            </a>
+          </li>
+          <li class="">
+            <a class="pointer-events-none disable-message" href=""> FAQ </a>
+          </li>
+          <li class="">
+            <nuxt-link
+              v-if="$i18n.locale === 'en'"
+              class="language-switch"
+              :to="switchLocalePath('ja')"
+              >EN</nuxt-link
+            >
+            <nuxt-link
+              v-if="$i18n.locale === 'ja'"
+              class="language-switch"
+              :to="switchLocalePath('en')"
+              >JA</nuxt-link
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div
+      v-if="showMenuBackground"
+      class="fixed top-0 left-0 z-30 w-screen h-screen"
+      @click="selectMenu(99)"
+    ></div>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      showMenuBackground: false,
+      showAbstractMenu: false,
+      showEventListMenu: false,
+      showSponsorMenu: false,
+    }
+  },
+  methods: {
+    selectMenu(menuNumber) {
+      // 最初にメニューをリセット
+      this.showMenuBackground = false
+      this.showAbstractMenu = false
+      this.showEventListMenu = false
+      this.showSponsorMenu = false
+
+      if (menuNumber === 0) {
+        this.showAbstractMenu = !this.showAbstractMenu
+        this.showMenuBackground = !this.showMenuBackground
+      } else if (menuNumber === 1) {
+        this.showEventListMenu = !this.showEventListMenu
+        this.showMenuBackground = !this.showMenuBackground
+      } else if (menuNumber === 2) {
+        this.showSponsorMenu = !this.showSponsorMenu
+        this.showMenuBackground = !this.showMenuBackground
+      } else if (menuNumber === 99) {
+        this.showMenuBackground = false
+        this.showAbstractMenu = false
+        this.showEventListMenu = false
+        this.showSponsorMenu = false
+      }
+    },
+    switchLanguage() {
+      this.$i18n.locale = 'en'
+    },
+  },
+}
 </script>
 
 <style>
 .navbar {
   height: 72px;
-  width: 1200px;
-  left: 0px;
-  top: 0px;
   box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.1), 0px 2px 24px rgba(0, 0, 0, 0.08);
   border-radius: 8px;
-  background: #FFFFFF;
+  background: #ffffff;
+}
+.list-menu {
+  position: absolute;
+  top: 2rem;
+  width: 10rem;
+  padding: 0.8rem 1rem;
+  background-color: white;
+  box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.1), 0px 2px 24px rgba(0, 0, 0, 0.08);
+}
+.language-switch {
+  padding: 0.2rem 1.5rem 0.2rem 1.5rem;
+  color: white;
+  background: #1097aa;
+  border-radius: 100px;
+}
+.headear-options::after {
+  content: '';
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 12px;
+  right: -14px;
+  border-style: solid;
+  border-width: 6px 5px 0 5px;
+  border-color: black transparent transparent transparent;
+}
+.headear-options-disable::after {
+  content: '';
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 12px;
+  right: -14px;
+  border-style: solid;
+  border-width: 6px 5px 0 5px;
+  border-color: #cecece transparent transparent transparent;
+}
+.disable-message {
+  color: #cecece;
 }
 </style>
