@@ -2,13 +2,11 @@
   <div class="text-black font-mont">
     <div>
       <p
-        class="font-bold text-center  text-shadow -mb-9 text-7xl md:text-9xl md:-mb-14"
+        class="-mb-8 font-bold text-center  text-shadow text-7xl lg:text-9xl lg:-mb-14"
       >
         Sponsors
       </p>
-      <p class="-m-2 text-4xl font-bold text-center md:text-6xl md:-m-5">
-        Sponsors
-      </p>
+      <p class="text-4xl font-bold text-center lg:text-6xl">Sponsors</p>
     </div>
     <div class="flex flex-col text-2xl font-bold sponsors-background">
       <div class="pt-14">
