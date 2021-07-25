@@ -1,13 +1,14 @@
 <template>
   <div class="relative">
-    <div class="absolute w-screen h-screen overflow-hidden">
+    <div class="absolute h-screen overflow-hidden circle-wraper">
       <div class="circle"></div>
     </div>
     <MainVisual class="relative z-10" />
     <div class="z-20 flex items-center justify-center w-full sticky-header">
       <CustomHeader class="w-11/12" />
+      <div v-if="!isMobile" class="scroll">Scroll</div>
     </div>
-    <div v-if="!isMobile" class="scroll">Scroll</div>
+
     <Sponsors />
   </div>
 </template>
@@ -47,11 +48,14 @@ export default {
   background: linear-gradient(237.35deg, #a1e42b 1.58%, #2f9acf 83.64%);
   opacity: 0.2;
 }
+.circle-wraper {
+  width: 800px;
+}
 
 .scroll {
   display: inline-block;
   position: absolute;
-  right: 30px;
+  right: 20px;
   bottom: 0;
   z-index: 10;
   padding: 10px 10px 260px;
@@ -60,8 +64,6 @@ export default {
   font-size: 16px;
   font-family: 'Noto Sans JP';
   line-height: 1;
-  /* letter-spacing: 0.2em; */
-  /* text-transform: uppercase; */
   text-decoration: none;
   writing-mode: vertical-lr;
 }
@@ -84,7 +86,7 @@ export default {
   background: rgba(255, 255, 255, 0.4);
 }
 .scroll::after {
-  animation: sdl 1.5s cubic-bezier(1, 0, 0, 1) infinite;
+  animation: sdl 2.5s cubic-bezier(1, 0, 0, 1) infinite;
 }
 @keyframes sdl {
   0% {
