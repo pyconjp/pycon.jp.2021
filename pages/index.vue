@@ -1,6 +1,6 @@
 <template>
   <div class="relative">
-    <div class="absolute h-screen overflow-hidden circle-wraper">
+    <div class="absolute w-full h-screen overflow-hidden">
       <div class="circle"></div>
     </div>
     <MainVisual class="relative z-10" />
@@ -47,9 +47,6 @@ export default {
   border-radius: 50%;
   background: linear-gradient(237.35deg, #a1e42b 1.58%, #2f9acf 83.64%);
   opacity: 0.2;
-}
-.circle-wraper {
-  width: 800px;
 }
 
 .scroll {
