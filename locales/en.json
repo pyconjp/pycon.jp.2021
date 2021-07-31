@@ -23,7 +23,7 @@
   },
   "pages": {
     "index": {
-      "overviewDescription": "PyCon is a conference for Python users to gather, exchange information, and interact with each other about Python and Python-based software. Our goal is to make PyConJP a place where Python users can come together to exchange knowledge and information about various fields related to Python, make new friends and community connections, and increase their job and business opportunities.",
+      "overviewDescription": "PyCon is a conference for Python users to gather, exchange information and interact with Python and software using Python. Through PyCon JP, the goal is to gather Python users together, exchange knowledge and information on various fields related to Python, connect with new friends and communities, and increase work and business opportunities.",
       "contactFooterDescription": [
         "Please check the FAQ in advance.",
         "It is run by volunteers. It takes about a week to answer.",
