@@ -6,7 +6,9 @@
       >
         Sponsors
       </p>
-      <p class="text-4xl font-bold text-center lg:text-6xl">Sponsors</p>
+      <p class="text-4xl font-bold text-center lg:text-6xl text-blue-green">
+        Sponsors
+      </p>
     </div>
 
     <div
@@ -22,7 +24,7 @@
             target="_blank"
             rel="noopener noreferrer"
           >
-            <p class="m-2 text-4xl break-all lg:text-3xl">
+            <p class="m-2 text-3xl break-all lg:text-4xl">
               {{ sponsor.nameJp }}
             </p>
           </a>
@@ -56,8 +58,11 @@
             target="_blank"
             rel="noopener noreferrer"
           >
-            <p class="m-2 text-2xl break-all">
+            <p v-if="$i18n.locale === 'ja'" class="m-2 text-2xl break-all">
               {{ sponsor.nameJp }}
+            </p>
+            <p v-else class="m-2 text-2xl break-all">
+              {{ sponsor.nameEn }}
             </p>
           </a>
         </div>
@@ -157,7 +162,7 @@ export default {
           imgURL: '',
         },
         {
-          nameEn: '',
+          nameEn: '株式会社LegalForce',
           nameJp: '株式会社LegalForce',
           link: '#',
           imgURL: '',
@@ -169,7 +174,7 @@ export default {
           imgURL: '',
         },
         {
-          nameEn: '',
+          nameEn: 'OLTA株式会社',
           nameJp: 'OLTA株式会社',
           link: '#',
           imgURL: '',
@@ -193,8 +198,8 @@ export default {
           imgURL: '',
         },
         {
-          nameEn: '',
-          nameJp: 'Classi株式会社	',
+          nameEn: 'Classi株式会社',
+          nameJp: 'Classi株式会社',
           link: '#',
           imgURL: '',
         },
@@ -205,7 +210,7 @@ export default {
           imgURL: '',
         },
         {
-          nameEn: '',
+          nameEn: 'スカラコミュニケーションズ',
           nameJp: 'スカラコミュニケーションズ',
           link: '#',
           imgURL: '',
