@@ -1,5 +1,5 @@
 <template>
-  <div class="sticky-header">
+  <div class="sticky-header overall-color">
     <Nuxt />
     <CustomFooter />
   </div>
@@ -17,5 +17,8 @@ export default {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
+}
+.overall-color {
+  color: #292929;
 }
 </style>
