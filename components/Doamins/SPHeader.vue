@@ -6,8 +6,10 @@
       </div>
       <div class="mb-4 mt-28">
         <Accordion>
-          <div slot="title" class="relative inline headear-options">
-            {{ $t('common.abstract') }}
+          <div slot="title">
+            <p class="relative inline headear-options">
+              {{ $t('common.abstract') }}
+            </p>
           </div>
           <div slot="body" class="js-accordion--body">
             <a
@@ -23,8 +25,10 @@
       </div>
       <div class="mb-4">
         <Accordion :disable="true">
-          <div slot="title" class="relative inline headear-options-disable">
-            {{ $t('common.eventList') }}
+          <div slot="title">
+            <p class="relative inline headear-options-disable">
+              {{ $t('common.eventList') }}
+            </p>
           </div>
           <div slot="body" class="js-accordion--body">
             <p>{{ $t('common.timeTable') }}</p>
