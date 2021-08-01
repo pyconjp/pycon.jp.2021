@@ -10,59 +10,11 @@
 
       <!-- モバイルの全画面メニュー -->
       <transition>
-        <div
+        <SPHeader
           v-if="showMobileMenu"
           class="mobile-menu"
-          :class="{ 'overflow-hidden': showMobileMenu }"
-        >
-          <div
-            v-if="isMobile"
-            :class="[{ active: showMobileMenu }]"
-            class="openbtn"
-            @click="showMobileMenu = !showMobileMenu"
-          >
-            <span></span><span></span><span></span>
-          </div>
-          <div class="flex flex-col items-center w-full mobile-menu-content">
-            <a
-              v-for="item in linkList"
-              :key="item.text"
-              class="mb-5 text-base text-center en-title-font"
-              :class="{
-                'opacity-50': item.disable,
-                'pointer-events-none': item.disable,
-              }"
-              :href="item.link"
-              target="_blank"
-              rel="noopener noreferrer"
-              >{{ item.text }}</a
-            >
-            <!-- <div class="flex items-center justify-center mt-5">
-            <a
-              class=""
-              href="https://www.facebook.com/PyConJP"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src="~/assets/image/facebook.png"
-                alt="Facebook Icon"
-                class="w-5 h-5 ml-auto mr-auto"
-            /></a>
-            <a
-              href="https://twitter.com/pyconjapan"
-              target="_blank"
-              class="ml-4"
-              rel="noopener noreferrer"
-            >
-              <img
-                src="~/assets/image/twitter.png"
-                alt="Twitter Icon"
-                class="w-5 h-5"
-            /></a>
-          </div> -->
-          </div>
-        </div>
+          @close="closeMobileMenu"
+        />
       </transition>
 
       <!-- モバイルヘッダーのボタン -->
@@ -70,7 +22,7 @@
         v-if="isMobile"
         :class="[{ active: showMobileMenu }]"
         class="openbtn"
-        @click="showMobileMenu = !showMobileMenu"
+        @click="openMobileMenu"
       >
         <span></span><span></span><span></span>
       </div>
@@ -86,18 +38,30 @@
               {{ $t('common.abstract') }}
             </p>
             <div v-if="showAbstractMenu" class="list-menu">
-              <p>{{ $t('common.codeOfConduct') }}</p>
+              <a
+                href="https://drive.google.com/file/d/1iNF7VvDCd_gWDsSn2i5U8FB1IQWkWOM9/view"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="hover:text-blue-green focus:text-blue-green"
+              >
+                {{ $t('common.codeOfConduct') }}</a
+              >
             </div>
           </li>
           <li class="relative">
-            <p
-              class="relative cursor-pointer  headear-options-disable disable-message"
-            >
+            <p class="relative headear-options-disable disable-message">
               {{ $t('common.eventList') }}
             </p>
           </li>
           <li class="">
-            <a class="" href=""> News </a>
+            <a
+              class=""
+              href="https://pyconjp.blogspot.com/search/label/pyconjp2021"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              News
+            </a>
           </li>
           <li class="relative">
             <p
@@ -107,8 +71,22 @@
               {{ $t('common.sponsor') }}
             </p>
             <div v-if="showSponsorMenu" class="list-menu">
-              <p>{{ $t('common.sponsorApplication') }}</p>
-              <p>{{ $t('common.sponsorApplicationForm') }}</p>
+              <a
+                href="https://drive.google.com/file/d/11HUcTjrLDiB7DMh5Sg0ol_NCiTN7Pttx/view"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="block hover:text-blue-green focus:text-blue-green"
+              >
+                {{ $t('common.sponsorApplication') }}</a
+              >
+              <a
+                href="https://pyconjp.blogspot.com/2021/06/pycon-jp-2021-2notice-of-start-of.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="block mt-2 hover:text-blue-green focus:text-blue-green"
+              >
+                {{ $t('common.sponsorApplicationForm') }}</a
+              >
             </div>
           </li>
           <li class="">
@@ -150,7 +128,9 @@
 </template>
 
 <script>
+import SPHeader from './SPHeader.vue'
 export default {
+  components: { SPHeader },
   data() {
     return {
       showMenuBackground: false,
@@ -206,19 +186,28 @@ export default {
   },
   methods: {
     selectMenu(menuNumber) {
-      // 最初にメニューをリセット
-      this.showMenuBackground = false
-      this.showAbstractMenu = false
-      this.showEventListMenu = false
-      this.showSponsorMenu = false
-
       if (menuNumber === 0) {
+        // 自分のメニュー以外を閉じる
+        this.showMenuBackground = false
+        this.showEventListMenu = false
+        this.showSponsorMenu = false
+
         this.showAbstractMenu = !this.showAbstractMenu
         this.showMenuBackground = !this.showMenuBackground
       } else if (menuNumber === 1) {
+        // 自分のメニュー以外を閉じる
+        this.showMenuBackground = false
+        this.showAbstractMenu = false
+        this.showSponsorMenu = false
+
         this.showEventListMenu = !this.showEventListMenu
         this.showMenuBackground = !this.showMenuBackground
       } else if (menuNumber === 2) {
+        // 自分のメニュー以外を閉じる
+        this.showMenuBackground = false
+        this.showAbstractMenu = false
+        this.showEventListMenu = false
+
         this.showSponsorMenu = !this.showSponsorMenu
         this.showMenuBackground = !this.showMenuBackground
       } else if (menuNumber === 99) {
@@ -230,6 +219,27 @@ export default {
     },
     switchLanguage() {
       this.$i18n.locale = 'en'
+    },
+    preventDefault(event) {
+      event.preventDefault()
+    },
+    openMobileMenu() {
+      this.showMobileMenu = true
+      document.addEventListener('touchmove', this.preventDefault, {
+        passive: false,
+      })
+      document.addEventListener('mousewheel', this.preventDefault, {
+        passive: false,
+      })
+    },
+    closeMobileMenu() {
+      this.showMobileMenu = false
+      document.removeEventListener('touchmove', this.preventDefault, {
+        passive: false,
+      })
+      document.removeEventListener('mousewheel', this.preventDefault, {
+        passive: false,
+      })
     },
   },
 }
@@ -245,7 +255,7 @@ export default {
 .list-menu {
   position: absolute;
   top: 2rem;
-  width: 10rem;
+  width: 14rem;
   padding: 0.8rem 1rem;
   background-color: white;
   box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.1), 0px 2px 24px rgba(0, 0, 0, 0.08);
@@ -318,22 +328,6 @@ export default {
   top: 31px;
   left: 14px;
   width: 45%;
-}
-/*activeクラスが付与されると線が回転して×になる*/
-.openbtn.active span:nth-of-type(1) {
-  top: 18px;
-  left: 18px;
-  transform: translateY(6px) rotate(-135deg);
-  width: 30%;
-}
-.openbtn.active span:nth-of-type(2) {
-  opacity: 0;
-}
-.openbtn.active span:nth-of-type(3) {
-  top: 30px;
-  left: 18px;
-  transform: translateY(-6px) rotate(135deg);
-  width: 30%;
 }
 
 .mobile-menu {
