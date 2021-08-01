@@ -22,12 +22,12 @@
         </Accordion>
       </div>
       <div class="mb-4">
-        <Accordion>
-          <div slot="title" class="relative inline headear-options">
+        <Accordion :disable="true">
+          <div slot="title" class="relative inline headear-options-disable">
             {{ $t('common.eventList') }}
           </div>
           <div slot="body" class="js-accordion--body">
-            <p>タイムテーブル</p>
+            <p>{{ $t('common.timeTable') }}</p>
           </div>
         </Accordion>
       </div>
@@ -66,15 +66,15 @@
           </div>
         </Accordion>
       </div>
-      <div class="mb-4">
-        <p>スタッフ一覧</p>
+      <div class="mb-4 text-custom-gray">
+        <p>{{ $t('common.staffList') }}</p>
       </div>
-      <div class="mb-4">
-        <p>会場アクセス</p>
-      </div>
-      <div class="mb-4">
+      <!-- <div class="mb-4">
+        <p>会場アクセス {{ $t('common.staffList') }}</p>
+      </div> -->
+      <!-- <div class="mb-4">
         <p>FAQ</p>
-      </div>
+      </div> -->
       <div class="mt-16 header-border"></div>
       <div class="flex flex-col items-center justify-center w-full mt-6">
         <p class="inline">Language</p>
@@ -111,7 +111,6 @@ export default { components: { Accordion } }
 
   border: 1px solid #1097aa;
 }
-
 .dli-close {
   display: inline-block;
   vertical-align: middle;
@@ -124,7 +123,6 @@ export default { components: { Accordion } }
   position: relative;
   transform: rotate(45deg);
 }
-
 .dli-close::before {
   content: '';
   position: absolute;
@@ -146,6 +144,17 @@ export default { components: { Accordion } }
   border-style: solid;
   border-width: 6px 5px 0 5px;
   border-color: black transparent transparent transparent;
+}
+.headear-options-disable::after {
+  content: '';
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 12px;
+  right: -14px;
+  border-style: solid;
+  border-width: 6px 5px 0 5px;
+  border-color: #cecece transparent transparent transparent;
 }
 .language-switch {
   padding: 0.2rem 1.5rem 0.2rem 1.5rem;

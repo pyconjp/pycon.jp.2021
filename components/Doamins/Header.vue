@@ -94,14 +94,14 @@
               {{ $t('common.staffList') }}
             </a>
           </li>
-          <li class="">
+          <!-- <li class="">
             <a class="pointer-events-none disable-message" href="">
               {{ $t('common.access') }}
             </a>
           </li>
           <li class="">
             <a class="pointer-events-none disable-message" href=""> FAQ </a>
-          </li>
+          </li> -->
           <li class="">
             <nuxt-link
               v-if="$i18n.locale === 'en'"
@@ -183,6 +183,9 @@ export default {
     if (mediaQuery.matches) {
       this.isMobile = true
     }
+  },
+  beforeDestroy() {
+    this.closeMobileMenu()
   },
   methods: {
     selectMenu(menuNumber) {

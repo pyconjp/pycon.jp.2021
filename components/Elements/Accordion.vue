@@ -1,9 +1,13 @@
 <template>
   <div v-cloak class="js-accordion">
     <button
-      class="js-accordion--trigger"
+      class="mb-2 js-accordion--trigger"
       type="button"
-      :class="{ '_state-open': isOpened }"
+      :class="{
+        '_state-open': isOpened,
+        'disable-message': disable,
+        'pointer-events-none': disable,
+      }"
       @click="accordionToggle()"
     >
       <slot name="title"></slot>
@@ -18,7 +22,7 @@
     >
       <div
         v-if="isOpened"
-        class="pl-8 mt-2 js-accordion--target"
+        class="pl-8 js-accordion--target"
         :class="{ '_state-open': isOpened }"
       >
         <slot name="body"></slot>
@@ -29,6 +33,12 @@
 
 <script>
 export default {
+  props: {
+    disable: {
+      type: Boolean,
+      default: false,
+    },
+  },
   data() {
     return {
       isOpened: false,
@@ -123,5 +133,8 @@ export default {
   100% {
     opacity: 0;
   }
+}
+.disable-message {
+  color: #cecece;
 }
 </style>
