@@ -9,6 +9,8 @@
       <div v-if="!isMobile" class="scroll">Scroll</div>
     </div>
 
+    <Overview/>
+
     <Sponsors />
   </div>
 </template>
@@ -17,8 +19,9 @@
 import MainVisual from '../components/Doamins/TopPage/MainVisual.vue'
 import Sponsors from '../components/Doamins/TopPage/Sponsors'
 import CustomHeader from '../components/Doamins/Header.vue'
+import Overview from '~/components/Doamins/TopPage/Overview'
 export default {
-  components: { MainVisual, Sponsors, CustomHeader },
+  components: { Overview, MainVisual, Sponsors, CustomHeader },
   data() {
     return { isMobile: false }
   },
