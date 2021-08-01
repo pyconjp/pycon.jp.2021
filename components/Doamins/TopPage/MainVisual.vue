@@ -40,19 +40,39 @@
           <div class="ml-4 text-lg lg:text-2xl">
             <p>match PyconJP(2021):</p>
             <p class="ml-4">case["ONLINE"]: Zoom</p>
-            <p class="relative ml-4">
-              case["ONSITE"]:ベルサール神田
-              <img
-                src="~/assets/images/icon-link.png"
-                alt="icon link"
-                class="absolute w-5 top-1 -right-8"
-              />
-            </p>
+            <a
+              href="https://www.bellesalle.co.jp/shisetsu/tokyo/bs_kanda/access/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <p class="relative ml-4">
+                case["ONSITE"]:ベルサール神田
+                <img
+                  src="~/assets/images/icon-link.png"
+                  alt="icon link"
+                  class="absolute w-5 top-1 -right-8"
+                />
+              </p>
+            </a>
           </div>
         </div>
         <div class="flex">
-          <img src="~/assets/images/icon-twitter.svg" alt="icon twitter" />
-          <p class="ml-4 text-lg lg:text-2xl">#pyconjp</p>
+          <a
+            href="https://twitter.com/hashtag/pyconjp"
+            target="_blank"
+            rel="noopener noreferrer"
+            class=""
+          >
+            <img src="~/assets/images/icon-twitter.svg" alt="icon twitter" />
+          </a>
+          <a
+            href="https://twitter.com/hashtag/pyconjp"
+            target="_blank"
+            rel="noopener noreferrer"
+            class=""
+          >
+            <p class="ml-4 text-lg lg:text-2xl">#pyconjp</p>
+          </a>
         </div>
       </div>
       <div class="w-full lg:w-1/2">
