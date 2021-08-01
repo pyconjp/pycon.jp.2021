@@ -4,7 +4,7 @@
       <div class="absolute w-8 h-8 -right-4 top-8" @click="$emit('close')">
         <span class="dli-close"></span>
       </div>
-      <div class="mb-4 mt-28">
+      <div class="w-full mb-4 mt-28">
         <Accordion>
           <div slot="title">
             <p class="relative inline headear-options">
@@ -23,7 +23,7 @@
           </div>
         </Accordion>
       </div>
-      <div class="mb-4">
+      <div class="w-full mb-4">
         <Accordion :disable="true">
           <div slot="title">
             <p class="relative inline headear-options-disable">
@@ -45,7 +45,7 @@
           News
         </a>
       </div>
-      <div class="mb-4">
+      <div class="w-full mb-4">
         <Accordion>
           <div slot="title" class="relative inline headear-options">
             {{ $t('common.sponsor') }}
