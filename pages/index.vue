@@ -9,7 +9,7 @@
       <div v-if="!isMobile" class="scroll">Scroll</div>
     </div>
 
-    <Overview/>
+    <Overview />
 
     <Sponsors />
   </div>
@@ -51,7 +51,6 @@ export default {
   background: linear-gradient(237.35deg, #a1e42b 1.58%, #2f9acf 83.64%);
   opacity: 0.2;
 }
-
 .scroll {
   display: inline-block;
   position: absolute;

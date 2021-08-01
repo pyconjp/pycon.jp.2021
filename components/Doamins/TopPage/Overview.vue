@@ -1,25 +1,38 @@
 <template>
-  <div class='overview font-noto mt-20 relative'>
-    <div class='rectangle' />
-    <div class='overview-inner'>
-      <div class='font-mont'>
-        <p class='-mb-8 text-right font-bold text-shadow text-7xl lg:text-9xl lg:-mb-14 opacity-40'>Overview</p>
-        <p class='text-4xl font-bold text-right lg:text-6xl color-blue-green'>Overview</p>
-      </div>
-      <div class='flex flex-col lg:flex-row mt-12 lg:mt-20'>
-        <div class='flex-1 mb-6 lg:mb-0'>
-          <div class='flex justify-center lg:h-full lg:justify-end lg:items-end'>
-            <img class='overview-image' src='~/assets/images/overview-sample.png'
-                 alt='sponsor-logo' />
+  <div class="relative mt-20 overview font-noto">
+    <div class="rectangle" />
+    <div class="flex flex-col items-end mr-2 font-mont lg:mr-8">
+      <p
+        class="-mb-8 font-bold text-right  text-shadow text-7xl lg:text-9xl lg:-mb-14 opacity-40"
+      >
+        Overview
+      </p>
+      <p class="text-4xl font-bold text-right lg:text-6xl color-blue-green">
+        Overview
+      </p>
+    </div>
+    <div class="overview-inner">
+      <div class="flex flex-col mt-12 lg:flex-row lg:mt-20">
+        <div class="flex-1 mb-6 lg:mb-0">
+          <div
+            class="flex justify-center lg:h-full lg:justify-end lg:items-end"
+          >
+            <img
+              class="overview-image"
+              src="~/assets/images/overview.jpg"
+              alt="sponsor-logo"
+            />
           </div>
         </div>
-        <div class='flex-1 lg:ml-12 lg:mr-4'>
-          <div class='font-bold text-2xl mb-6 font-mont'>What is PyCon JP?</div>
+        <div class="flex-1 lg:ml-12 lg:mr-4">
+          <div class="mb-6 text-2xl font-bold font-mont">What is PyCon JP?</div>
           <div>{{ $t('pages.index.overviewDescription') }}</div>
-          <div class='flex justify-center lg:justify-start'>
-            <outer-link :label="$t('common.codeOfConduct')"
-                        to='https://drive.google.com/file/d/1iNF7VvDCd_gWDsSn2i5U8FB1IQWkWOM9/view?usp=sh'
-                        class='custom-button-enable mt-6 lg:mt-10' />
+          <div class="flex justify-center lg:justify-start">
+            <outer-link
+              :label="$t('common.codeOfConduct')"
+              to="https://drive.google.com/file/d/1iNF7VvDCd_gWDsSn2i5U8FB1IQWkWOM9/view?usp=sh"
+              class="mt-6 custom-button-enable lg:mt-10"
+            />
           </div>
         </div>
       </div>
@@ -31,7 +44,7 @@
 import OuterLink from '~/components/OuterLink'
 
 export default {
-  components: { OuterLink }
+  components: { OuterLink },
 }
 </script>
 
@@ -94,5 +107,4 @@ export default {
     height: 35rem;
   }
 }
-
 </style>
