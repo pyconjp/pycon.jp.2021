@@ -23,6 +23,7 @@
             :href="sponsor.link"
             target="_blank"
             rel="noopener noreferrer"
+            :class="{ 'pointer-events-none': sponsor.link === '#' }"
           >
             <p class="m-2 text-3xl break-all lg:text-4xl">
               {{ sponsor.nameJp }}
