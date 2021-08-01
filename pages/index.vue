@@ -120,8 +120,8 @@ export default {
     position: absolute;
     top: -200px;
     left: -150px;
-    width: 703px;
-    height: 703px;
+    width: 934px;
+    height: 934px;
   }
 }
 </style>
