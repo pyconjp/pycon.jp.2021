@@ -58,6 +58,7 @@
             :href="sponsor.link"
             target="_blank"
             rel="noopener noreferrer"
+            :class="{ 'pointer-events-none': sponsor.link === '#' }"
           >
             <p v-if="$i18n.locale === 'ja'" class="m-2 text-2xl break-all">
               {{ sponsor.nameJp }}
@@ -199,9 +200,9 @@ export default {
           imgURL: '',
         },
         {
-          nameEn: 'Classi株式会社',
+          nameEn: 'Classi Corp.',
           nameJp: 'Classi株式会社',
-          link: '#',
+          link: 'https://classi.jp/',
           imgURL: '',
         },
         {
