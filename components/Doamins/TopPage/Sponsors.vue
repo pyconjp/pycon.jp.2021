@@ -135,7 +135,7 @@ export default {
           nameEn: 'WED, Inc.',
           nameJp: '',
           link: 'https://wed.company/',
-          imgURL: 'logo-wed.png',
+          imgURL: 'logo-wed.svg',
         },
         {
           nameEn: 'JX Press Corporation',

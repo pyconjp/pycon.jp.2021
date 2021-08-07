@@ -22,7 +22,7 @@
 
         <div class="flex mb-2 lg:mb-4">
           <img
-            src="~/assets/images/icon-people.svg"
+            src="~/assets/images/icon_conference.svg"
             alt="icon people"
             class="w-8"
           />
@@ -38,19 +38,19 @@
             class="w-6 h-10"
           />
           <div class="ml-4 text-lg lg:text-2xl">
-            <p>match PyconJP(2021):</p>
-            <p class="ml-4">case["ONLINE"]: Zoom</p>
+            <p>match PyConJP(2021):</p>
+            <p class="ml-4">case "ONLINE": Zoom</p>
             <a
               href="https://www.bellesalle.co.jp/shisetsu/tokyo/bs_kanda/access/"
               target="_blank"
               rel="noopener noreferrer"
             >
               <p class="relative ml-4">
-                case["ONSITE"]:ベルサール神田
+                case "ONSITE": ベルサール神田
                 <img
-                  src="~/assets/images/icon-link.png"
+                  src="~/assets/images/icon_external-link.svg"
                   alt="icon link"
-                  class="absolute w-5 top-1 -right-8"
+                  class="absolute w-6 top-1 -right-8"
                 />
               </p>
             </a>
