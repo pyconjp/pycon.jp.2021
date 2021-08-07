@@ -117,9 +117,9 @@
               />
             </a>
           </div>
-          <div class="flex-auto lg:ml-2">
-            <p class="mt-2">主催：一般社団法人PyCon JP Association</p>
-            <p class="mt-2">
+          <div class="flex-row justify-center pl-8 pr-8 lg:ml-2 lg:p-0">
+            <p class="lg:mt-2">主催：一般社団法人PyCon JP Association</p>
+            <p class="lg:mt-2">
               PyCon JP 2021 is a production of the PyCon JP Association
             </p>
           </div>
