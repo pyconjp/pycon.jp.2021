@@ -2,7 +2,7 @@
   <div class="text-white font-noto">
     <div class="footer-upper-background">
       <div class="footer-upper">
-        <img src="~/assets/images/2021-logo.png" alt="2021-logo" />
+        <img src="~/assets/images/footer-2021-logo.svg" alt="2021-logo" />
         <div class="flex flex-col footer-menu lg:flex-row">
           <div class="flex-1">
             <p class="mb-5 text-base">{{ $t('common.abstract') }}</p>
