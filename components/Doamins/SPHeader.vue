@@ -86,13 +86,13 @@
           v-if="$i18n.locale === 'en'"
           class="language-switch"
           :to="switchLocalePath('ja')"
-          >EN</nuxt-link
+          >JA</nuxt-link
         >
         <nuxt-link
           v-if="$i18n.locale === 'ja'"
           class="language-switch"
           :to="switchLocalePath('en')"
-          >JA</nuxt-link
+          >EN</nuxt-link
         >
       </div>
     </div>
