@@ -27,7 +27,7 @@
             class="w-8"
           />
           <p class="ml-4 text-lg lg:text-2xl">
-            Online &amp; Offline Hybrid Conference
+            Online &amp; Onsite Hybrid Conference
           </p>
         </div>
 
