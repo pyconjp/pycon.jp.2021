@@ -15,6 +15,7 @@ module.exports = {
         'base-message': '#1097AA',
         'blue-green': '#1097AA',
         'custom-gray': '#cecece',
+        'custom-black': '#292929',
       },
     },
     fontFamily: {

@@ -11,7 +11,7 @@
 
     <Overview />
 
-    <Sponsors />
+    <Sponsors class="mt-24 lg:mt-48" />
   </div>
 </template>
 
