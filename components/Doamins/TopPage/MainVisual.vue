@@ -119,10 +119,17 @@
       class="flex flex-col justify-around w-5/6 mt-16 mb-16  lg:w-3/4 lg:flex-row"
     >
       <div class="flex justify-center lg:mr-4">
-        <button class="mb-4 custom-button-disable lg:mb-0" disabled>
-          Time Table <br />
-          Coming Soon
-        </button>
+        <a
+          href="https://pyconjp.blogspot.com/2021/08/pyconjp-2021-proposal-selection.html"
+          target="_blank"
+          type="button"
+          title="Time Table Coming Soon"
+          rel="noopener noreferrer"
+          class="mb-4 text-center custom-button-enable lg:mb-0"
+        >
+          Adopted <br />
+          Proposals
+        </a>
       </div>
       <div class="flex justify-center lg:ml-4">
         <button class="custom-button-disable" disabled>
