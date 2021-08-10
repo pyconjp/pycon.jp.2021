@@ -17,7 +17,7 @@
             alt="icon calendar"
             class="w-8"
           />
-          <p class="ml-4 text-lg lg:text-2xl">2021.10.15(Sat.)-16(Sun.)</p>
+          <p class="ml-4 text-lg lg:text-2xl">2021.10.15(Fri.)-16(Sat.)</p>
         </div>
 
         <div class="flex mb-2 lg:mb-4">
