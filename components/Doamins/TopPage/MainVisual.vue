@@ -118,7 +118,7 @@
     <div
       class="flex flex-col items-center justify-around w-5/6 mt-16 mb-16  lg:w-3/4 lg:flex-row"
     >
-      <div class="flex justify-center w-5/6 text-center lg:mr-4 lg:w-1/3">
+      <div class="flex justify-center w-5/6 text-center lg:mr-4 lg:w-1/4">
         <a
           href="https://pyconjp.blogspot.com/2021/08/pyconjp-2021-proposal-selection.html"
           target="_blank"
@@ -130,7 +130,7 @@
           Proposals
         </a>
       </div>
-      <div class="flex justify-center w-5/6 text-center lg:ml-4 lg:w-1/3">
+      <div class="flex justify-center w-5/6 text-center lg:ml-4 lg:w-1/4">
         <button class="w-full custom-button-disable" disabled>
           Ticket <br />
           Coming Soon
