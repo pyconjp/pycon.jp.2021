@@ -66,6 +66,7 @@ export default {
 }
 
 .overview-image {
+  align-self: center;
   width: 100%;
   height: auto;
   border-radius: 40px 40px 0 40px;
