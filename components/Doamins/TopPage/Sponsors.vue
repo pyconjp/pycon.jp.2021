@@ -51,7 +51,7 @@
       </div>
       <div>
         <p class="my-10 text-center">Silver</p>
-        <div class="text-items-list" style="color: #1097aa">
+        <div class="text-items-list text-blue-green">
           <a
             v-for="sponsor in silverSponsorsList"
             :key="sponsor.nameJp"
@@ -241,6 +241,6 @@ export default {
   @apply flex flex-wrap justify-center items-center px-9 py-3 mb-3;
 }
 .text-items-list {
-  @apply grid grid-cols-1 gap-4 text-center lg:grid-cols-3;
+  @apply grid grid-cols-1 gap-4 text-center px-5 lg:px-9 lg:grid-cols-3;
 }
 </style>

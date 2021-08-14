@@ -116,23 +116,22 @@
     </div>
 
     <div
-      class="flex flex-col justify-around w-5/6 mt-16 mb-16  lg:w-3/4 lg:flex-row"
+      class="flex flex-col items-center justify-around w-5/6 mt-16 mb-16  lg:w-3/4 lg:flex-row"
     >
-      <div class="flex justify-center lg:mr-4">
+      <div class="flex justify-center w-5/6 text-center lg:mr-4 lg:w-1/4">
         <a
           href="https://pyconjp.blogspot.com/2021/08/pyconjp-2021-proposal-selection.html"
           target="_blank"
-          type="button"
           title="Time Table Coming Soon"
           rel="noopener noreferrer"
-          class="mb-4 text-center custom-button-enable lg:mb-0"
+          class="inline-block w-full mb-4 custom-button-enable lg:mb-0"
         >
           Adopted <br />
           Proposals
         </a>
       </div>
-      <div class="flex justify-center lg:ml-4">
-        <button class="custom-button-disable" disabled>
+      <div class="flex justify-center w-5/6 text-center lg:ml-4 lg:w-1/4">
+        <button class="w-full custom-button-disable" disabled>
           Ticket <br />
           Coming Soon
         </button>
@@ -227,7 +226,7 @@ export default {
   background: linear-gradient(237.35deg, #a1e42b 1.58%, #2f9acf 83.64%);
   box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.1), 0px 2px 24px rgba(0, 0, 0, 0.08);
   border-radius: 100px;
-  padding: 1rem 4rem 1rem 4rem;
+  padding: 0.4rem 4rem 0.4rem 4rem;
 }
 .custom-button-disable {
   font-family: Montserrat;
