@@ -25,9 +25,17 @@
             rel="noopener noreferrer"
             :class="{ 'pointer-events-none': sponsor.link === '#' }"
           >
-            <p class="m-2 text-3xl break-all lg:text-4xl">
+            <p
+              v-if="sponsor.link === '#'"
+              class="m-2 text-3xl break-all lg:text-4xl"
+            >
               {{ sponsor.nameJp }}
             </p>
+            <img
+              v-else
+              :src="require(`@/assets/images/${sponsor.imgURL}`)"
+              :alt="sponsor.nameJp"
+            />
           </a>
         </div>
       </div>
@@ -87,16 +95,16 @@ export default {
     return {
       platinumSponsorsList: [
         {
-          nameEn: '',
+          nameEn: 'HENNGE 株式会社',
           nameJp: 'HENNGE株式会社',
-          link: '#',
-          imgURL: '',
+          link: 'https://hennge.com/jp/',
+          imgURL: 'logo-hennge.jpg',
         },
         {
-          nameEn: '',
+          nameEn: 'ChuraDATA Inc',
           nameJp: 'ちゅらデータ株式会社',
-          link: '#',
-          imgURL: '',
+          link: 'https://churadata.okinawa/',
+          imgURL: 'logo-ChuraDATA.png',
         },
         {
           nameEn: '',
@@ -166,7 +174,7 @@ export default {
         {
           nameEn: '株式会社LegalForce',
           nameJp: '株式会社LegalForce',
-          link: '#',
+          link: 'https://legalforce-cloud.com/',
           imgURL: '',
         },
         {
@@ -212,9 +220,9 @@ export default {
           imgURL: '',
         },
         {
-          nameEn: 'スカラコミュニケーションズ',
-          nameJp: 'スカラコミュニケーションズ',
-          link: '#',
+          nameEn: '株式会社スカラコミュニケーションズ',
+          nameJp: '株式会社スカラコミュニケーションズ',
+          link: 'https://scala-com.jp/',
           imgURL: '',
         },
       ],
@@ -241,6 +249,6 @@ export default {
   @apply flex flex-wrap justify-center items-center px-9 py-3 mb-3;
 }
 .text-items-list {
-  @apply grid grid-cols-1 gap-4 text-center px-5 lg:px-9 lg:grid-cols-3;
+  @apply grid grid-cols-1 gap-4 text-center px-5 lg:px-9 lg:grid-cols-3  place-items-center;
 }
 </style>
