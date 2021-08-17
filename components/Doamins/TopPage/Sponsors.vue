@@ -39,7 +39,7 @@
                   <div style="padding-bottom: 66.6667%"></div>
                   <div
                     class="bg-contain v-image-image"
-                    v-bind:style="{
+                    :style="{
                       backgroundImage:
                         'url(' +
                         require(`@/assets/images/${sponsor.imgURL}`) +
@@ -72,7 +72,7 @@
                   <div style="padding-bottom: 66.6667%"></div>
                   <div
                     class="bg-contain v-image-image"
-                    v-bind:style="{
+                    :style="{
                       backgroundImage:
                         'url(' +
                         require(`@/assets/images/${sponsor.imgURL}`) +
@@ -126,7 +126,7 @@ export default {
           nameEn: 'HENNGE 株式会社',
           nameJp: 'HENNGE株式会社',
           link: 'https://hennge.com/jp/',
-          imgURL: 'logo-hennge.jpg',
+          imgURL: 'logo-hennge.png',
         },
         {
           nameEn: 'ChuraDATA Inc',
