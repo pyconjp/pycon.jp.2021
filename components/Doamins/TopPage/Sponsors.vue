@@ -185,6 +185,12 @@ export default {
           link: 'https://kurusugawa.jp/',
           imgURL: 'logo-kci.png',
         },
+        {
+          nameEn: 'Pizza Hut Japan Ltd.',
+          nameJp: '日本ピザハット・コーポレーション株式会社',
+          link: 'https://www.pizzahut.jp/',
+          imgURL: 'logo-pizza-hut.jpg'
+        },
       ],
       silverSponsorsList: [
         {
