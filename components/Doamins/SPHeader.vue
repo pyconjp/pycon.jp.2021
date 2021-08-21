@@ -12,13 +12,10 @@
             </p>
           </div>
           <div slot="body" class="js-accordion--body">
-            <a
-              href="https://drive.google.com/file/d/1iNF7VvDCd_gWDsSn2i5U8FB1IQWkWOM9/view"
-              target="_blank"
-              rel="noopener noreferrer"
+            <nuxt-link
+              to="/code-of-conduct"
               class="hover:text-blue-green focus:text-blue-green"
-            >
-              {{ $t('common.codeOfConduct') }}</a
+              >{{ $t('common.codeOfConduct') }}</nuxt-link
             >
           </div>
         </Accordion>

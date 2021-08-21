@@ -5,7 +5,9 @@
     >
       <!-- ヘッダーのロゴ(PC、モバイル共通) -->
       <div class="flex items-center justify-center w-1/2 lg:w-1/4">
-        <img src="~/assets/images/header-pyconjp.svg" alt="" />
+        <nuxt-link to="/"
+          ><img src="~/assets/images/header-pyconjp.svg" alt=""
+        /></nuxt-link>
       </div>
 
       <!-- モバイルの全画面メニュー -->
@@ -38,13 +40,10 @@
               {{ $t('common.abstract') }}
             </p>
             <div v-if="showAbstractMenu" class="list-menu">
-              <a
-                href="https://drive.google.com/file/d/1iNF7VvDCd_gWDsSn2i5U8FB1IQWkWOM9/view"
-                target="_blank"
-                rel="noopener noreferrer"
+              <nuxt-link
+                to="/code-of-conduct"
                 class="hover:text-blue-green focus:text-blue-green"
-              >
-                {{ $t('common.codeOfConduct') }}</a
+                >{{ $t('common.codeOfConduct') }}</nuxt-link
               >
             </div>
           </li>
