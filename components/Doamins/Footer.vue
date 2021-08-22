@@ -7,10 +7,9 @@
           <div class="flex-1">
             <p class="mb-5 text-base">{{ $t('common.abstract') }}</p>
             <p class="mb-4 text-sm">
-              <outer-link
-                :label="$t('common.codeOfConduct')"
-                to="https://drive.google.com/file/d/1iNF7VvDCd_gWDsSn2i5U8FB1IQWkWOM9/view?usp=sh"
-              />
+              <nuxt-link to="/code-of-conduct">{{
+                $t('common.codeOfConduct')
+              }}</nuxt-link>
             </p>
             <!--            <p class='mb-8 text-sm opacity-50 lg:mb-0'>{{ $t('common.aboutPyConJP') }}</p>-->
           </div>
