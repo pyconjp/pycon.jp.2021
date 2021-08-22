@@ -7,7 +7,7 @@
           <div class="flex-1">
             <p class="mb-5 text-base">{{ $t('common.abstract') }}</p>
             <p class="mb-4 text-sm">
-              <nuxt-link to="/code-of-conduct">{{
+              <nuxt-link :to="localePath('/code-of-conduct')">{{
                 $t('common.codeOfConduct')
               }}</nuxt-link>
             </p>

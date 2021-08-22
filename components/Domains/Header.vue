@@ -5,7 +5,7 @@
     >
       <!-- ヘッダーのロゴ(PC、モバイル共通) -->
       <div class="flex items-center justify-center w-1/2 lg:w-1/4">
-        <nuxt-link to="/"
+        <nuxt-link :to="localePath('/')"
           ><img src="~/assets/images/header-pyconjp.svg" alt=""
         /></nuxt-link>
       </div>
