@@ -77,8 +77,8 @@ export default {
     families: {
       Roboto: true,
       Oswald: true,
-      'Noto Sans JP': true,
-      'Source Sans Pro': [400, 600, 700, 900],
+      'Noto Sans JP': [400, 500, 600, 700, 900],
+      'Source Sans Pro': [400, 500, 600, 700, 900],
       Montserrat: [400, 700, 900],
     },
     display: 'swap',
@@ -106,5 +106,8 @@ export default {
     defaultLocale: 'ja',
     lazy: true,
     langDir: 'locales/',
+    vueI18n: {
+      silentTranslationWarn: true,
+    },
   },
 }
