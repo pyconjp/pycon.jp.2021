@@ -80,7 +80,7 @@
 </template>
 
 <script>
-import CustomHeader from '../components/Doamins/Header.vue'
+import CustomHeader from '../components/Domains/Header.vue'
 
 export default {
   name: 'CodeOfConduct',
