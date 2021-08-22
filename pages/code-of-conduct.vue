@@ -1,6 +1,11 @@
 <template>
   <div class="flex flex-col items-center">
-    <CustomHeader class="w-11/12 mt-6 lg:w-5/6" />
+    <div
+      class="z-20 flex items-center justify-center w-full mt-6 sticky-header"
+    >
+      <CustomHeader class="w-11/12 lg:w-5/6" />
+    </div>
+
     <div
       class="relative flex flex-col items-center justify-center mt-8 overflow-hidden "
     >
@@ -89,6 +94,11 @@ export default {
 </script>
 
 <style scoped>
+.sticky-header {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
 .coc-content {
   display: flex;
   flex-direction: column;
