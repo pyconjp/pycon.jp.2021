@@ -3,8 +3,8 @@ frontend:
   phases:
     preBuild:
       commands:
-        - nvm install v14.16.0
-        - nvm use v14.16.0
+        - nvm install v14.17.0
+        - nvm use v14.17.0
         - node -v
         - npm install -g yarn
         - yarn install
