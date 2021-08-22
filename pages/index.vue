@@ -1,27 +1,27 @@
 <template>
-  <div class='relative'>
-    <div class='absolute w-full h-screen overflow-hidden'>
-      <div class='circle'></div>
+  <div class="relative">
+    <div class="absolute w-full h-screen overflow-hidden">
+      <div class="circle"></div>
     </div>
-    <MainVisual class='relative z-10' />
-    <div class='z-20 flex items-center justify-center w-full sticky-header'>
-      <CustomHeader class='w-11/12' />
-      <div v-if='!isMobile' class='scroll'>Scroll</div>
+    <MainVisual class="relative z-10" />
+    <div class="z-20 flex items-center justify-center w-full sticky-header">
+      <CustomHeader class="w-11/12" />
+      <div v-if="!isMobile" class="scroll">Scroll</div>
     </div>
-    <News :news='news' />
+    <News :news="news" />
     <Overview />
-    <Sponsors class='mt-24 lg:mt-48' />
+    <Sponsors class="mt-24 lg:mt-48" />
   </div>
 </template>
 
 <script>
 import { parseString } from 'xml2js'
 import axios from 'axios'
-import MainVisual from '../components/Doamins/TopPage/MainVisual.vue'
-import Sponsors from '../components/Doamins/TopPage/Sponsors'
-import CustomHeader from '../components/Doamins/Header.vue'
-import Overview from '~/components/Doamins/TopPage/Overview'
-import News from '~/components/Doamins/TopPage/News'
+import MainVisual from '../components/Domains/TopPage/MainVisual.vue'
+import Sponsors from '../components/Domains/TopPage/Sponsors'
+import CustomHeader from '../components/Domains/Header.vue'
+import Overview from '~/components/Domains/TopPage/Overview'
+import News from '~/components/Domains/TopPage/News'
 
 export default {
   components: { News, Overview, MainVisual, Sponsors, CustomHeader },
@@ -29,17 +29,23 @@ export default {
     if (payload) {
       return { news: payload }
     } else {
-      const news = await axios.get('https://pyconjp.blogspot.com/feeds/posts/default/-/pyconjp2021?alt=rss&max-results=5')
-        .then(res => {
+      const news = await axios
+        .get(
+          'https://pyconjp.blogspot.com/feeds/posts/default/-/pyconjp2021?alt=rss&max-results=5'
+        )
+        .then((res) => {
           let items = []
           parseString(res.data, (err, result) => {
             if (!err) {
               items = result.rss.channel[0].item.map((item) => {
                 const d = new Date(item.pubDate[0])
                 return {
-                  pubDate: `${d.getFullYear()}.${('0' + (d.getMonth() + 1)).slice(-2)}.${('0' + d.getDate()).slice(-2)}`,
+                  pubDate: `${d.getFullYear()}.${(
+                    '0' +
+                    (d.getMonth() + 1)
+                  ).slice(-2)}.${('0' + d.getDate()).slice(-2)}`,
                   title: item.title[0],
-                  link: item.link[0]
+                  link: item.link[0],
                 }
               })
             }
@@ -57,7 +63,7 @@ export default {
     if (mediaQuery.matches) {
       this.isMobile = true
     }
-  }
+  },
 }
 </script>
 
