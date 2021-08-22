@@ -1,16 +1,16 @@
 <template>
-  <div class='relative'>
-    <div class='absolute w-full h-screen overflow-hidden'>
-      <div class='circle'></div>
+  <div class="relative">
+    <div class="absolute w-full h-screen overflow-hidden">
+      <div class="circle"></div>
     </div>
-    <MainVisual class='relative z-10' />
-    <div class='z-20 flex items-center justify-center w-full sticky-header'>
-      <CustomHeader class='w-11/12' />
-      <div v-if='!isMobile' class='scroll'>Scroll</div>
+    <MainVisual class="relative z-10" />
+    <div class="z-20 flex items-center justify-center w-full sticky-header">
+      <CustomHeader class="w-11/12" />
+      <div v-if="!isMobile" class="scroll">Scroll</div>
     </div>
-    <News :news='news' />
+    <News :news="news" />
     <Overview />
-    <Sponsors class='mt-24 lg:mt-48' />
+    <Sponsors class="mt-24 lg:mt-48" />
   </div>
 </template>
 
