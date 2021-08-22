@@ -16,11 +16,11 @@
 
 <script>
 import { parseString } from 'xml2js'
-import MainVisual from '../components/Doamins/TopPage/MainVisual.vue'
-import Sponsors from '../components/Doamins/TopPage/Sponsors'
-import CustomHeader from '../components/Doamins/Header.vue'
-import Overview from '~/components/Doamins/TopPage/Overview'
-import News from '~/components/Doamins/TopPage/News'
+import MainVisual from '../components/Domains/TopPage/MainVisual.vue'
+import Sponsors from '../components/Domains/TopPage/Sponsors'
+import CustomHeader from '../components/Domains/Header.vue'
+import Overview from '~/components/Domains/TopPage/Overview'
+import News from '~/components/Domains/TopPage/News'
 
 export default {
   components: { News, Overview, MainVisual, Sponsors, CustomHeader },
