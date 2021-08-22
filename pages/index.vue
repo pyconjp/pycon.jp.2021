@@ -16,7 +16,6 @@
 
 <script>
 import { parseString } from 'xml2js'
-import axios from 'axios'
 import MainVisual from '../components/Domains/TopPage/MainVisual.vue'
 import Sponsors from '../components/Domains/TopPage/Sponsors'
 import CustomHeader from '../components/Domains/Header.vue'
@@ -25,35 +24,26 @@ import News from '~/components/Domains/TopPage/News'
 
 export default {
   components: { News, Overview, MainVisual, Sponsors, CustomHeader },
-  async asyncData({ params, error, payload }) {
-    if (payload) {
-      return { news: payload }
-    } else {
-      const news = await axios
-        .get(
-          'https://pyconjp.blogspot.com/feeds/posts/default/-/pyconjp2021?alt=rss&max-results=5'
-        )
-        .then((res) => {
-          let items = []
-          parseString(res.data, (err, result) => {
-            if (!err) {
-              items = result.rss.channel[0].item.map((item) => {
-                const d = new Date(item.pubDate[0])
-                return {
-                  pubDate: `${d.getFullYear()}.${(
-                    '0' +
-                    (d.getMonth() + 1)
-                  ).slice(-2)}.${('0' + d.getDate()).slice(-2)}`,
-                  title: item.title[0],
-                  link: item.link[0],
-                }
-              })
-            }
-          })
-          return items
+  async asyncData({ $axios }) {
+    const news = await $axios.$get('https://pyconjp.blogspot.com/feeds/posts/default/-/pyconjp2021?alt=rss&max-results=5')
+      .then(res => {
+        let items = []
+
+        parseString(res, (err, result) => {
+          if (!err) {
+            items = result.rss.channel[0].item.map((item) => {
+              const d = new Date(item.pubDate[0])
+              return {
+                pubDate: `${d.getFullYear()}.${('0' + (d.getMonth() + 1)).slice(-2)}.${('0' + d.getDate()).slice(-2)}`,
+                title: item.title[0],
+                link: item.link[0]
+              }
+            })
+          }
         })
-      return { news }
-    }
+        return items
+      })
+    return { news }
   },
   data() {
     return { isMobile: false, news: [] }
@@ -63,7 +53,7 @@ export default {
     if (mediaQuery.matches) {
       this.isMobile = true
     }
-  },
+  }
 }
 </script>
 
