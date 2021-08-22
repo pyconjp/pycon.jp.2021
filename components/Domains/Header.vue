@@ -41,7 +41,7 @@
             </p>
             <div v-if="showAbstractMenu" class="list-menu">
               <nuxt-link
-                to="/code-of-conduct"
+                :to="localePath('/code-of-conduct')"
                 class="hover:text-blue-green focus:text-blue-green"
                 >{{ $t('common.codeOfConduct') }}</nuxt-link
               >
