@@ -48,11 +48,17 @@
             {{ $t('common.sponsor') }}
           </div>
           <div slot="body" class="js-accordion--body">
+            <nuxt-link
+              class="block hover:text-blue-green focus:text-blue-green"
+              :to="localePath('/sponsors')"
+            >
+              {{ $t('common.sponsorList') }}</nuxt-link
+            >
             <a
               href="https://drive.google.com/file/d/11HUcTjrLDiB7DMh5Sg0ol_NCiTN7Pttx/view"
               target="_blank"
               rel="noopener noreferrer"
-              class="block hover:text-blue-green focus:text-blue-green"
+              class="block mt-2 hover:text-blue-green focus:text-blue-green"
             >
               {{ $t('common.sponsorApplication') }}</a
             >

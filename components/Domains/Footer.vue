@@ -35,7 +35,11 @@
           </div>
           <div class="flex-1">
             <p class="mb-5 text-base">{{ $t('common.sponsor') }}</p>
-            <!--            <p class='mb-4 text-sm opacity-50'>{{ $t('common.sponsorList') }}</p>-->
+            <p class="mb-4 text-sm">
+              <nuxt-link :to="localePath('/sponsors')">
+                {{ $t('common.sponsorList') }}</nuxt-link
+              >
+            </p>
             <p class="mb-4 text-sm">
               <outer-link
                 :label="$t('common.sponsorApplication')"
