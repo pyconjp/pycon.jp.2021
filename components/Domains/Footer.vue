@@ -5,7 +5,7 @@
         <img src="~/assets/images/footer-2021-logo.svg" alt="2021-logo" />
         <div class="flex flex-col footer-menu lg:flex-row">
           <div class="flex-1">
-            <p class="mb-5 text-base">{{ $t('common.abstract') }}</p>
+            <p class="mb-5 text-base">{{ $t('common.about') }}</p>
             <p class="mb-4 text-sm">
               <nuxt-link :to="localePath('/code-of-conduct')">{{
                 $t('common.codeOfConduct')
@@ -15,14 +15,14 @@
           </div>
           <div class="flex-1">
             <p class="mb-5 text-base opacity-50">
-              {{ $t('common.eventList') }}
+              {{ $t('common.events') }}
             </p>
             <!--            <p class='mb-4 text-sm opacity-50'>{{ $t('common.timeTable') }}</p>-->
             <!--            <p class='mb-4 text-sm opacity-50'>{{ $t('common.specialBooth') }}</p>-->
             <!--            <p class='mb-4 text-sm'>{{ $t('common.tutorial') }}</p>-->
             <!--            <p class='mb-4 text-sm'>{{ $t('common.sprint') }}</p>-->
             <!--            <p class='mb-4 text-sm'>{{ $t('common.handsOn') }}</p>-->
-            <!--            <p class='mb-4 text-sm opacity-50'>{{ $t('common.youtubeLiveList') }}</p>-->
+            <!--            <p class='mb-4 text-sm opacity-50'>{{ $t('common.youtubeLive') }}</p>-->
             <!--            <p class='mb-8 text-sm opacity-50 lg:mb-0'>{{ $t('common.onlineParty') }}</p>-->
           </div>
           <div class="flex-1">
@@ -34,7 +34,7 @@
             </p>
           </div>
           <div class="flex-1">
-            <p class="mb-5 text-base">{{ $t('common.sponsor') }}</p>
+            <p class="mb-5 text-base">{{ $t('common.sponsors') }}</p>
             <p class="mb-4 text-sm">
               <nuxt-link :to="localePath('/sponsors')">
                 {{ $t('common.sponsorList') }}</nuxt-link
@@ -42,13 +42,13 @@
             </p>
             <p class="mb-4 text-sm">
               <outer-link
-                :label="$t('common.sponsorApplication')"
+                :label="$t('common.prospectus')"
                 to="https://drive.google.com/file/d/11HUcTjrLDiB7DMh5Sg0ol_NCiTN7Pttx/view?usp=sharing"
               />
             </p>
             <p class="mb-4 text-sm">
               <outer-link
-                :label="$t('common.sponsorApplicationForm')"
+                :label="$t('common.applicationForm')"
                 to="https://pyconjp.blogspot.com/2021/06/pycon-jp-2021-2notice-of-start-of.html"
               />
             </p>
@@ -56,18 +56,18 @@
           </div>
           <div class="flex-1">
             <p class="mb-8 text-base opacity-50 lg:mb-0">
-              {{ $t('common.staffList') }}
+              {{ $t('common.staff') }}
             </p>
           </div>
           <!--          <div class='flex-1'>-->
           <!--            <p class='mb-8 text-base opacity-50 lg:mb-0'>{{ $t('common.access') }}</p>-->
           <!--          </div>-->
           <!--          <div class='flex-1'>-->
-          <!--            <p class='mb-8 text-base opacity-50 lg:mb-0'>{{ $t('common.faq') }}</p>-->
+          <!--            <p class='mb-8 text-base opacity-50 lg:mb-0'>FAQ</p>-->
           <!--          </div>-->
         </div>
         <div class="font-source mb-7">
-          <span class="mr-2">Follow US! twitter</span>
+          <span class="mr-2">Follow US on twitter</span>
           <span>
             <a
               href="https://twitter.com/pyconjapan"
@@ -85,7 +85,7 @@
         <div class="flex flex-col lg:items-end lg:flex-row">
           <div class="flex-1 mb-8 text-sm lg:mb-0">
             <p>
-              お問い合わせ：<a href="mailto:pyconjp@pycon.jp"
+              {{ $t('common.contact') }}：<a href="mailto:pyconjp@pycon.jp"
                 >pyconjp@pycon.jp</a
               >
             </p>

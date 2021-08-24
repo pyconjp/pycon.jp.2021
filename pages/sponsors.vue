@@ -511,11 +511,11 @@ export default {
 }
 
 .sp-name {
-  @apply w-full text-xl font-bold text-blue-green lg:text-2xl;
+  @apply w-full text-xl mt-2 font-bold text-blue-green lg:text-2xl;
 }
 
 .sp-intro {
-  @apply w-full mt-4 text-base leading-7  text-gray-600   font-noto px-1 whitespace-pre-line;
+  @apply w-full text-base leading-7  text-gray-600   font-noto px-1 whitespace-pre-line;
 }
 
 @media screen and (min-width: 1024px) {

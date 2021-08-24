@@ -8,7 +8,7 @@
         <Accordion>
           <div slot="title">
             <p class="relative inline headear-options">
-              {{ $t('common.abstract') }}
+              {{ $t('common.about') }}
             </p>
           </div>
           <div slot="body" class="js-accordion--body">
@@ -24,7 +24,7 @@
         <Accordion :disable="true">
           <div slot="title">
             <p class="relative inline headear-options-disable">
-              {{ $t('common.eventList') }}
+              {{ $t('common.events') }}
             </p>
           </div>
           <div slot="body" class="js-accordion--body">
@@ -45,7 +45,7 @@
       <div class="w-full mb-4">
         <Accordion>
           <div slot="title" class="relative inline headear-options">
-            {{ $t('common.sponsor') }}
+            {{ $t('common.sponsors') }}
           </div>
           <div slot="body" class="js-accordion--body">
             <nuxt-link
@@ -60,7 +60,7 @@
               rel="noopener noreferrer"
               class="block mt-2 hover:text-blue-green focus:text-blue-green"
             >
-              {{ $t('common.sponsorApplication') }}</a
+              {{ $t('common.prospectus') }}</a
             >
             <a
               href="https://pyconjp.blogspot.com/2021/06/pycon-jp-2021-2notice-of-start-of.html"
@@ -68,16 +68,16 @@
               rel="noopener noreferrer"
               class="block mt-2 hover:text-blue-green focus:text-blue-green"
             >
-              {{ $t('common.sponsorApplicationForm') }}</a
+              {{ $t('common.applicationForm') }}</a
             >
           </div>
         </Accordion>
       </div>
       <div class="mb-4 text-custom-gray">
-        <p>{{ $t('common.staffList') }}</p>
+        <p>{{ $t('common.staff') }}</p>
       </div>
       <!-- <div class="mb-4">
-        <p>会場アクセス {{ $t('common.staffList') }}</p>
+        <p>会場アクセス {{ $t('common.staff') }}</p>
       </div> -->
       <!-- <div class="mb-4">
         <p>FAQ</p>
