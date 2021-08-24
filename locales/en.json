@@ -1,25 +1,25 @@
 {
   "common": {
-    "abstract": "Abstract",
+    "about": "About",
     "codeOfConduct": "Code of Conduct",
     "aboutPyConJP": "About PyConJP",
-    "eventList": "Event list",
+    "events": "Events",
     "timeTable": "Time table",
     "specialBooth": "Special Booth",
     "tutorial": "Tutorial",
     "sprint": "Sprint",
     "handsOn": "Hands on",
-    "youtubeLiveList": "YouTube Live list",
+    "youtubeLive": "YouTube Live",
     "onlineParty": "Online Party",
     "news": "News",
-    "sponsor": "Sponsors",
-    "sponsorList": "Sponsors list",
-    "sponsorApplication": "Sponsor application",
-    "sponsorApplicationForm": "Sponsor application form",
+    "sponsors": "Sponsors",
+    "sponsorList": "Our Sponsors",
+    "prospectus": "Prospectus",
+    "applicationForm": "Application Form",
     "sponsorPlanning": "Sponsor planning",
-    "staffList": "Staff list",
+    "staff": "Staff",
     "access": "Access",
-    "faq": "FAQ"
+    "contact": "Contact"
   },
   "pages": {
     "index": {

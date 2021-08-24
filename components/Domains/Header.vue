@@ -37,7 +37,7 @@
               class="relative cursor-pointer headear-options"
               @click="selectMenu(0)"
             >
-              {{ $t('common.abstract') }}
+              {{ $t('common.about') }}
             </p>
             <div v-if="showAbstractMenu" class="list-menu">
               <nuxt-link
@@ -49,7 +49,7 @@
           </li>
           <li class="relative">
             <p class="relative headear-options-disable disable-message">
-              {{ $t('common.eventList') }}
+              {{ $t('common.events') }}
             </p>
           </li>
           <li class="">
@@ -67,7 +67,7 @@
               class="relative cursor-pointer headear-options"
               @click="selectMenu(2)"
             >
-              {{ $t('common.sponsor') }}
+              {{ $t('common.sponsors') }}
             </p>
             <div v-if="showSponsorMenu" class="list-menu">
               <nuxt-link
@@ -82,7 +82,7 @@
                 rel="noopener noreferrer"
                 class="block mt-2 hover:text-blue-green focus:text-blue-green"
               >
-                {{ $t('common.sponsorApplication') }}</a
+                {{ $t('common.prospectus') }}</a
               >
               <a
                 href="https://pyconjp.blogspot.com/2021/06/pycon-jp-2021-2notice-of-start-of.html"
@@ -90,13 +90,13 @@
                 rel="noopener noreferrer"
                 class="block mt-2 hover:text-blue-green focus:text-blue-green"
               >
-                {{ $t('common.sponsorApplicationForm') }}</a
+                {{ $t('common.applicationForm') }}</a
               >
             </div>
           </li>
           <li class="">
             <a class="pointer-events-none disable-message" href="">
-              {{ $t('common.staffList') }}
+              {{ $t('common.staff') }}
             </a>
           </li>
           <!-- <li class="">
