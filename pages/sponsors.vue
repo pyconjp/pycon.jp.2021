@@ -26,6 +26,7 @@
               v-for="sponsor in platinumSponsorsList"
               :key="sponsor.nameJp"
               class="w-full p-2 my-1 lg:w-1/2"
+              :class="{ 'touch-action-none': sponsor.link === '#' }"
             >
               <a
                 :href="sponsor.link"
@@ -85,6 +86,7 @@
               v-for="sponsor in goldSponsorsList"
               :key="sponsor.nameEn"
               class="w-full p-2 my-1 lg:w-1/3"
+              :class="{ 'touch-action-none': sponsor.link === '#' }"
             >
               <a
                 :href="sponsor.link"
@@ -154,6 +156,7 @@
               v-for="sponsor in specialSponsorsList"
               :key="sponsor.nameEn"
               class="w-1/2 p-2 my-1 lg:w-1/4"
+              :class="{ 'touch-action-none': sponsor.link === '#' }"
             >
               <a
                 :href="sponsor.link"
@@ -522,5 +525,11 @@ export default {
   .fixed-height {
     height: 33rem;
   }
+}
+
+/* disable mobile click event */
+.touch-action-none {
+  pointer-events: none;
+  touch-action: none;
 }
 </style>
