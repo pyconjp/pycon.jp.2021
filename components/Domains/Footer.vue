@@ -1,5 +1,16 @@
 <template>
-  <div class="text-white font-noto">
+  <div class="relative text-white font-noto">
+    <a
+      id="page-top"
+      class="absolute inline-block -top-4 lg:-top-5 right-8 lg:right-24"
+      @click="scrollTop"
+    >
+      <img
+        src="~/assets/images/icon-top.svg"
+        alt="icon top"
+        class="w-8 lg:w-10"
+      />
+    </a>
     <div class="footer-upper-background">
       <div class="footer-upper">
         <img src="~/assets/images/footer-2021-logo.svg" alt="2021-logo" />
@@ -137,6 +148,12 @@ import OuterLink from '~/components/OuterLink'
 
 export default {
   components: { OuterLink },
+
+  methods: {
+    scrollTop() {
+      window.scrollTo(0, 0)
+    },
+  },
 }
 </script>
 
@@ -182,5 +199,18 @@ export default {
   &::after {
     content: '→';
   }
+}
+
+#page-top {
+  border-radius: 50%;
+  padding: 1px;
+  box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.1), 0px 2px 24px rgba(0, 0, 0, 0.08);
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #fff;
+  opacity: 8.49;
+}
+#page-top:hover {
+  opacity: 0.85;
 }
 </style>
