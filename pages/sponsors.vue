@@ -3,7 +3,9 @@
     <div class="absolute w-full h-screen overflow-hidden">
       <div class="circle"></div>
     </div>
-    <div class="z-20 flex items-center justify-center w-full sticky-header">
+    <div
+      class="z-20 flex items-center justify-center w-full mt-6 sticky-header"
+    >
       <CustomHeader class="w-11/12" />
     </div>
     <div class="text-black">
@@ -455,9 +457,11 @@ export default {
 </script>
 
 <style scoped>
-/* .background {
-  background: rgba(221, 221, 221, 0.2);
-} */
+.sticky-header {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
 
 .text-shadow {
   -webkit-text-stroke: 1px #2f9acf;
