@@ -131,17 +131,19 @@
         </a>
       </div>
       <div class="flex justify-center w-5/6 text-center lg:ml-4 lg:w-1/4">
-        <button class="w-full custom-button-disable" disabled>
-          Ticket <br />
-          Coming Soon
-        </button>
+        <outer-link
+          label='Ticket'
+          to='https://pyconjp.connpass.com/event/221241/'
+          class='w-full custom-button-enable ticket-button'/>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import OuterLink from '~/components/OuterLink'
 export default {
+  components: { OuterLink },
   data() {
     return {
       swiperOption: {
@@ -263,6 +265,9 @@ export default {
 .swiper-image {
   max-height: 400px;
   object-fit: cover;
+}
+.ticket-button {
+  line-height: 3.375rem;
 }
 
 @media screen and (max-width: 1023px) {
