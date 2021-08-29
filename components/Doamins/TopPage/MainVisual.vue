@@ -120,21 +120,22 @@
     >
       <div class="flex justify-center w-5/6 text-center lg:mr-4 lg:w-1/4">
         <a
-          href="https://pyconjp.blogspot.com/2021/08/pyconjp-2021-proposal-selection.html"
+          href="https://share.streamlit.io/pyconjp/talks.searcher.2021/main/app.py"
           target="_blank"
-          title="Time Table Coming Soon"
+          title="Search Talks"
           rel="noopener noreferrer"
           class="inline-block w-full mb-4 custom-button-enable lg:mb-0"
         >
-          Adopted <br />
-          Proposals
+          Search <br />
+          Talks
         </a>
       </div>
       <div class="flex justify-center w-5/6 text-center lg:ml-4 lg:w-1/4">
         <outer-link
-          label='Ticket'
-          to='https://pyconjp.connpass.com/event/221241/'
-          class='w-full custom-button-enable ticket-button'/>
+          label="Ticket"
+          to="https://pyconjp.connpass.com/event/221241/"
+          class="w-full custom-button-enable ticket-button"
+        />
       </div>
     </div>
   </div>
