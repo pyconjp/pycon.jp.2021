@@ -8,29 +8,52 @@
       <CustomHeader class="w-11/12" />
       <div v-if="!isMobile" class="scroll">Scroll</div>
     </div>
-
+    <News :news="news" />
     <Overview />
-
     <Sponsors class="mt-24 lg:mt-48" />
   </div>
 </template>
 
 <script>
-import MainVisual from '../components/Doamins/TopPage/MainVisual.vue'
-import Sponsors from '../components/Doamins/TopPage/Sponsors'
-import CustomHeader from '../components/Doamins/Header.vue'
-import Overview from '~/components/Doamins/TopPage/Overview'
+import { parseString } from 'xml2js'
+import MainVisual from '../components/Domains/TopPage/MainVisual.vue'
+import Sponsors from '../components/Domains/TopPage/Sponsors'
+import CustomHeader from '../components/Domains/Header.vue'
+import Overview from '~/components/Domains/TopPage/Overview'
+import News from '~/components/Domains/TopPage/News'
+
 export default {
-  components: { Overview, MainVisual, Sponsors, CustomHeader },
+  components: { News, Overview, MainVisual, Sponsors, CustomHeader },
+  async asyncData({ $axios }) {
+    const news = await $axios.$get('https://pyconjp.blogspot.com/feeds/posts/default/-/pyconjp2021?alt=rss&max-results=5')
+      .then(res => {
+        let items = []
+
+        parseString(res, (err, result) => {
+          if (!err) {
+            items = result.rss.channel[0].item.map((item) => {
+              const d = new Date(item.pubDate[0])
+              return {
+                pubDate: `${d.getFullYear()}.${('0' + (d.getMonth() + 1)).slice(-2)}.${('0' + d.getDate()).slice(-2)}`,
+                title: item.title[0],
+                link: item.link[0]
+              }
+            })
+          }
+        })
+        return items
+      })
+    return { news }
+  },
   data() {
-    return { isMobile: false }
+    return { isMobile: false, news: [] }
   },
   mounted() {
     const mediaQuery = window.matchMedia('(max-width: 1023px)')
     if (mediaQuery.matches) {
       this.isMobile = true
     }
-  },
+  }
 }
 </script>
 
@@ -40,6 +63,7 @@ export default {
   position: sticky;
   top: 0;
 }
+
 .circle {
   position: absolute;
   top: -200px;
@@ -51,6 +75,7 @@ export default {
   background: linear-gradient(237.35deg, #a1e42b 1.58%, #2f9acf 83.64%);
   opacity: 0.2;
 }
+
 .scroll {
   display: inline-block;
   position: absolute;
@@ -66,6 +91,7 @@ export default {
   text-decoration: none;
   writing-mode: vertical-lr;
 }
+
 .scroll::after {
   content: '';
   position: absolute;
@@ -75,6 +101,7 @@ export default {
   height: 250px;
   background: #1097aa;
 }
+
 .scroll::before {
   content: '';
   position: absolute;
@@ -84,9 +111,11 @@ export default {
   height: 250px;
   background: rgba(255, 255, 255, 0.4);
 }
+
 .scroll::after {
   animation: sdl 2.5s cubic-bezier(1, 0, 0, 1) infinite;
 }
+
 @keyframes sdl {
   0% {
     transform: scale(1, 0);
