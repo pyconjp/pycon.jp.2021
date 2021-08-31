@@ -104,14 +104,39 @@
           </a>
         </div>
       </div>
-      <!-- <div class="mb-20">
-        <p class="text-center">Special</p>
+      <div class="container mb-20">
+        <p class="my-10 text-center">Special</p>
         <div class="img-items-list">
-          <p class="w-1/2 p-2 lg:w-1/4">
-            <img src="~/assets/images/slide-sample.png" alt="sponsor-logo" />
-          </p>
+          <div
+            v-for="sponsor in specialSponsorsList"
+            :key="sponsor.nameEn"
+            class="w-1/2 p-2 my-1 lg:w-1/4"
+            :class="{ 'touch-action-none': sponsor.link === '#' }"
+          >
+            <a
+              :href="sponsor.link"
+              target="_blank"
+              rel="noopener noreferrer"
+              :class="{ 'pointer-events-none': sponsor.link === '#' }"
+            >
+              <div class="p-3 lg:p-6 v-card v-sheet theme-light">
+                <div class="z-0 v-responsive">
+                  <div style="padding-bottom: 66.6667%"></div>
+                  <div
+                    class="bg-contain v-image-image"
+                    :style="{
+                      backgroundImage:
+                        'url(' +
+                        require(`@/assets/images/${sponsor.imgURL}`) +
+                        ')',
+                      backgroundPosition: 'center center',
+                    }"
+                  ></div>
+                </div></div
+            ></a>
+          </div>
         </div>
-      </div>-->
+      </div>
     </div>
   </div>
 </template>

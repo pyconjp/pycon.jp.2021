@@ -157,7 +157,7 @@
             <div
               v-for="sponsor in specialSponsorsList"
               :key="sponsor.nameEn"
-              class="w-1/2 p-2 my-1 lg:w-1/4"
+              class="w-full p-2 my-1 lg:w-1/3"
               :class="{ 'touch-action-none': sponsor.link === '#' }"
             >
               <a
