@@ -3,7 +3,7 @@
     <div class="rectangle" />
     <div class="flex flex-col items-end mr-2 font-mont lg:mr-8">
       <p
-        class="-mb-8 font-bold text-right  text-shadow text-7xl lg:text-9xl lg:-mb-14 opacity-40"
+        class="-mb-8 font-bold text-right text-shadow text-7xl lg:text-9xl lg:-mb-14 opacity-40"
       >
         Overview
       </p>

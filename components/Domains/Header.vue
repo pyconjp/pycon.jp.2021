@@ -5,7 +5,9 @@
     >
       <!-- ヘッダーのロゴ(PC、モバイル共通) -->
       <div class="flex items-center justify-center w-1/2 lg:w-1/4">
-        <img src="~/assets/images/header-pyconjp.svg" alt="" />
+        <nuxt-link :to="localePath('/')"
+          ><img src="~/assets/images/header-pyconjp.svg" alt=""
+        /></nuxt-link>
       </div>
 
       <!-- モバイルの全画面メニュー -->
@@ -35,22 +37,19 @@
               class="relative cursor-pointer headear-options"
               @click="selectMenu(0)"
             >
-              {{ $t('common.abstract') }}
+              {{ $t('common.about') }}
             </p>
             <div v-if="showAbstractMenu" class="list-menu">
-              <a
-                href="https://drive.google.com/file/d/1iNF7VvDCd_gWDsSn2i5U8FB1IQWkWOM9/view"
-                target="_blank"
-                rel="noopener noreferrer"
+              <nuxt-link
+                :to="localePath('/code-of-conduct')"
                 class="hover:text-blue-green focus:text-blue-green"
-              >
-                {{ $t('common.codeOfConduct') }}</a
+                >{{ $t('common.codeOfConduct') }}</nuxt-link
               >
             </div>
           </li>
           <li class="relative">
             <p class="relative headear-options-disable disable-message">
-              {{ $t('common.eventList') }}
+              {{ $t('common.events') }}
             </p>
           </li>
           <li class="">
@@ -68,16 +67,22 @@
               class="relative cursor-pointer headear-options"
               @click="selectMenu(2)"
             >
-              {{ $t('common.sponsor') }}
+              {{ $t('common.sponsors') }}
             </p>
             <div v-if="showSponsorMenu" class="list-menu">
+              <nuxt-link
+                class="block hover:text-blue-green focus:text-blue-green"
+                :to="localePath('/sponsors')"
+              >
+                {{ $t('common.sponsorList') }}</nuxt-link
+              >
               <a
                 href="https://drive.google.com/file/d/11HUcTjrLDiB7DMh5Sg0ol_NCiTN7Pttx/view"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="block hover:text-blue-green focus:text-blue-green"
+                class="block mt-2 hover:text-blue-green focus:text-blue-green"
               >
-                {{ $t('common.sponsorApplication') }}</a
+                {{ $t('common.prospectus') }}</a
               >
               <a
                 href="https://pyconjp.blogspot.com/2021/06/pycon-jp-2021-2notice-of-start-of.html"
@@ -85,13 +90,13 @@
                 rel="noopener noreferrer"
                 class="block mt-2 hover:text-blue-green focus:text-blue-green"
               >
-                {{ $t('common.sponsorApplicationForm') }}</a
+                {{ $t('common.applicationForm') }}</a
               >
             </div>
           </li>
           <li class="">
             <a class="pointer-events-none disable-message" href="">
-              {{ $t('common.staffList') }}
+              {{ $t('common.staff') }}
             </a>
           </li>
           <!-- <li class="">
