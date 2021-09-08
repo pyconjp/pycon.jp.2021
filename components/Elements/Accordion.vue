@@ -4,11 +4,11 @@
       class="mb-2 js-accordion--trigger"
       type="button"
       :class="{
-        '_state-open': isOpened,
+        '_state-open': menuName === opened,
         'disable-message': disable,
         'pointer-events-none': disable,
       }"
-      @click="accordionToggle()"
+      @click="toggleMenu(menuName)"
     >
       <slot name="title"></slot>
     </button>
@@ -21,9 +21,9 @@
       @leave="leave"
     >
       <div
-        v-if="isOpened"
+        v-if='menuName === opened'
         class="pl-8 js-accordion--target"
-        :class="{ '_state-open': isOpened }"
+        :class="{ '_state-open': menuName === opened }"
       >
         <slot name="body"></slot>
       </div>
@@ -38,16 +38,21 @@ export default {
       type: Boolean,
       default: false,
     },
-  },
-  data() {
-    return {
-      isOpened: false,
+    menuName: {
+      type: String,
+      default: null
+    },
+    opened: {
+      type: String,
+      default: null
+    },
+    toggleMenu: {
+      type: Function,
+      default: () => {
+      }
     }
   },
   methods: {
-    accordionToggle() {
-      this.isOpened = !this.isOpened
-    },
     beforeEnter(el) {
       el.style.height = '0'
     },
