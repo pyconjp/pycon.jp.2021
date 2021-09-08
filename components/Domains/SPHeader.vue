@@ -5,7 +5,10 @@
         <span class="dli-close"></span>
       </div>
       <div class="w-full mb-4 mt-28">
-        <Accordion>
+        <Accordion
+          :menu-name='"about"'
+          :toggle-menu="toggleMenu"
+          :opened="opened">
           <div slot="title">
             <p class="relative inline headear-options">
               {{ $t('common.about') }}
@@ -21,7 +24,11 @@
         </Accordion>
       </div>
       <div class="w-full mb-4">
-        <Accordion :disable="true">
+        <Accordion
+          :menu-name='"events"'
+          :toggle-menu='toggleMenu'
+          :opened='opened'
+          :disable="true">
           <div slot="title">
             <p class="relative inline headear-options-disable">
               {{ $t('common.events') }}
@@ -43,7 +50,10 @@
         </a>
       </div>
       <div class="w-full mb-4">
-        <Accordion>
+        <Accordion
+          :menu-name='"sponsors"'
+          :toggle-menu='toggleMenu'
+          :opened='opened'>
           <div slot="title" class="relative inline headear-options">
             {{ $t('common.sponsors') }}
           </div>
@@ -104,7 +114,24 @@
 
 <script>
 import Accordion from '../Elements/Accordion.vue'
-export default { components: { Accordion } }
+
+export default {
+  components: { Accordion },
+  data() {
+    return {
+      opened: null
+    }
+  },
+  methods: {
+    toggleMenu(menuName) {
+      if (this.opened !== menuName) {
+        this.opened = menuName;
+      } else {
+        this.opened = null
+      }
+    }
+  }
+}
 </script>
 
 <style scoped>
