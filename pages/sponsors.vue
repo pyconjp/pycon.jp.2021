@@ -126,9 +126,14 @@
                   </div>
                 </a>
                 <p class="sp-intro">
-                  {{
+                  <span
+                    v-if="$i18n.locale === 'ja'"
+                    v-html="sponsor.introJP"
+                  ></span>
+                  <span v-else v-html="sponsor.introEn"></span>
+                  <!-- {{
                     $i18n.locale === 'ja' ? sponsor.introJP : sponsor.introEn
-                  }}
+                  }} -->
                 </p>
               </div>
             </div>
