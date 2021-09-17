@@ -8,17 +8,14 @@
         <Accordion>
           <div slot="title">
             <p class="relative inline headear-options">
-              {{ $t('common.abstract') }}
+              {{ $t('common.about') }}
             </p>
           </div>
           <div slot="body" class="js-accordion--body">
-            <a
-              href="https://drive.google.com/file/d/1iNF7VvDCd_gWDsSn2i5U8FB1IQWkWOM9/view"
-              target="_blank"
-              rel="noopener noreferrer"
+            <nuxt-link
+              :to="localePath('/code-of-conduct')"
               class="hover:text-blue-green focus:text-blue-green"
-            >
-              {{ $t('common.codeOfConduct') }}</a
+              >{{ $t('common.codeOfConduct') }}</nuxt-link
             >
           </div>
         </Accordion>
@@ -27,7 +24,7 @@
         <Accordion :disable="true">
           <div slot="title">
             <p class="relative inline headear-options-disable">
-              {{ $t('common.eventList') }}
+              {{ $t('common.events') }}
             </p>
           </div>
           <div slot="body" class="js-accordion--body">
@@ -48,16 +45,22 @@
       <div class="w-full mb-4">
         <Accordion>
           <div slot="title" class="relative inline headear-options">
-            {{ $t('common.sponsor') }}
+            {{ $t('common.sponsors') }}
           </div>
           <div slot="body" class="js-accordion--body">
+            <nuxt-link
+              class="block hover:text-blue-green focus:text-blue-green"
+              :to="localePath('/sponsors')"
+            >
+              {{ $t('common.sponsorList') }}</nuxt-link
+            >
             <a
               href="https://drive.google.com/file/d/11HUcTjrLDiB7DMh5Sg0ol_NCiTN7Pttx/view"
               target="_blank"
               rel="noopener noreferrer"
-              class="block hover:text-blue-green focus:text-blue-green"
+              class="block mt-2 hover:text-blue-green focus:text-blue-green"
             >
-              {{ $t('common.sponsorApplication') }}</a
+              {{ $t('common.prospectus') }}</a
             >
             <a
               href="https://pyconjp.blogspot.com/2021/06/pycon-jp-2021-2notice-of-start-of.html"
@@ -65,16 +68,16 @@
               rel="noopener noreferrer"
               class="block mt-2 hover:text-blue-green focus:text-blue-green"
             >
-              {{ $t('common.sponsorApplicationForm') }}</a
+              {{ $t('common.applicationForm') }}</a
             >
           </div>
         </Accordion>
       </div>
       <div class="mb-4 text-custom-gray">
-        <p>{{ $t('common.staffList') }}</p>
+        <p>{{ $t('common.staff') }}</p>
       </div>
       <!-- <div class="mb-4">
-        <p>会場アクセス {{ $t('common.staffList') }}</p>
+        <p>会場アクセス {{ $t('common.staff') }}</p>
       </div> -->
       <!-- <div class="mb-4">
         <p>FAQ</p>

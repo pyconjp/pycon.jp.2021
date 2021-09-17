@@ -120,28 +120,31 @@
     >
       <div class="flex justify-center w-5/6 text-center lg:mr-4 lg:w-1/4">
         <a
-          href="https://pyconjp.blogspot.com/2021/08/pyconjp-2021-proposal-selection.html"
+          href="https://share.streamlit.io/pyconjp/talks.searcher.2021/main/app.py"
           target="_blank"
-          title="Time Table Coming Soon"
+          title="Search Talks"
           rel="noopener noreferrer"
           class="inline-block w-full mb-4 custom-button-enable lg:mb-0"
         >
-          Adopted <br />
-          Proposals
+          Search <br />
+          Talks
         </a>
       </div>
       <div class="flex justify-center w-5/6 text-center lg:ml-4 lg:w-1/4">
-        <button class="w-full custom-button-disable" disabled>
-          Ticket <br />
-          Coming Soon
-        </button>
+        <outer-link
+          label="Ticket"
+          to="https://pyconjp.connpass.com/event/221241/"
+          class="w-full custom-button-enable ticket-button"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import OuterLink from '~/components/OuterLink'
 export default {
+  components: { OuterLink },
   data() {
     return {
       swiperOption: {
@@ -263,6 +266,9 @@ export default {
 .swiper-image {
   max-height: 400px;
   object-fit: cover;
+}
+.ticket-button {
+  line-height: 3.375rem;
 }
 
 @media screen and (max-width: 1023px) {
