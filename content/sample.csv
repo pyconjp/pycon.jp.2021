@@ -1,0 +1,11 @@
+﻿id,title,room,day,no,elevator_pitch,prerequisite_knowledge,audience_takeaway,audience_python_level,track,lang_of_talk,lang_of_slide,description,name,profile
+000000,タイトル00,#pyconjp_1,10/15,1,elevator_pitch,prerequisite_knowledge,audience_takeaway,Advanced,マシンラーニング,JA,lang_of_slide,description,テスト登壇者,プロフィール
+111111,タイトル01,#pyconjp_2,10/15,1,elevator_pitch,prerequisite_knowledge,audience_takeaway,Advanced,マシンラーニング,JA,lang_of_slide,description,テスト登壇者,プロフィール
+222222,タイトル02,#pyconjp_3,10/15,1,elevator_pitch,prerequisite_knowledge,audience_takeaway,Advanced,マシンラーニング,JA,lang_of_slide,description,テスト登壇者,プロフィール
+333333,タイトル03,#pyconjp_4,10/15,1,elevator_pitch,prerequisite_knowledge,audience_takeaway,Advanced,マシンラーニング,JA,lang_of_slide,description,テスト登壇者,プロフィール
+444444,タイトル04,#pyconjp_5,10/15,1,elevator_pitch,prerequisite_knowledge,audience_takeaway,Advanced,マシンラーニング,JA,lang_of_slide,description,テスト登壇者,プロフィール
+555555,タイトル05,#pyconjp_1,10/16,1,elevator_pitch,prerequisite_knowledge,audience_takeaway,Advanced,マシンラーニング,JA,lang_of_slide,description,テスト登壇者,プロフィール
+666666,タイトル06,#pyconjp_2,10/16,1,elevator_pitch,prerequisite_knowledge,audience_takeaway,Advanced,マシンラーニング,JA,lang_of_slide,description,テスト登壇者,プロフィール
+777777,タイトル07,#pyconjp_3,10/16,1,elevator_pitch,prerequisite_knowledge,audience_takeaway,Advanced,マシンラーニング,JA,lang_of_slide,description,テスト登壇者,プロフィール
+888888,タイトル08,#pyconjp_4,10/16,1,elevator_pitch,prerequisite_knowledge,audience_takeaway,Advanced,マシンラーニング,JA,lang_of_slide,description,テスト登壇者,プロフィール
+999999,タイトル09,#pyconjp_5,10/16,1,elevator_pitch,prerequisite_knowledge,audience_takeaway,Advanced,マシンラーニング,JA,lang_of_slide,description,テスト登壇者,プロフィール
