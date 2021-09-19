@@ -120,14 +120,14 @@
     >
       <div class="flex justify-center w-5/6 text-center lg:mr-4 lg:w-1/4">
         <a
-          href="https://share.streamlit.io/pyconjp/talks.searcher.2021/main/app.py"
+          href="https://sessionize.com/view/eu4z8c9d/GridSmart?format=Embed_Styled_Html&isDark=False"
           target="_blank"
           title="Search Talks"
           rel="noopener noreferrer"
           class="inline-block w-full mb-4 custom-button-enable lg:mb-0"
         >
-          Search <br />
-          Talks
+          Timetable <br />
+          (beta)
         </a>
       </div>
       <div class="flex justify-center w-5/6 text-center lg:ml-4 lg:w-1/4">
