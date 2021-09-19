@@ -26,4 +26,6 @@ $ pip install git+https://github.com/pyconjp/talks.domain.2021@0.0.1
 $ ENDPOINT_ID=<endpoint id> python -m pyconjp_domains timetable output.csv
 ```
 
+output.csv ファイルが作成されるので、/content 以下に移動させてください
+
 For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
