@@ -144,43 +144,6 @@ export default {
       showSponsorMenu: false,
       isMobile: false,
       showMobileMenu: false,
-      linkList: [
-        {
-          text: 'NEWS',
-          link: 'https://pyconjp.blogspot.com/search/label/pyconjp2021',
-          disable: false,
-        },
-        {
-          text: 'STAFF',
-          link: 'https://pyconjp.blogspot.com/2021/01/2021-staff-application-start.html',
-          disable: false,
-        },
-        {
-          text: 'PROPOSAL',
-          link: 'https://pyconjp.blogspot.com/2021/05/start-proposal.html',
-          disable: false,
-        },
-        {
-          text: 'SPONSOR',
-          link: 'https://pyconjp.blogspot.com/2021/05/pycon-jp-2021_01988973482.html',
-          disable: false,
-        },
-        {
-          text: 'TICKET',
-          link: '#',
-          disable: true,
-        },
-        {
-          text: 'REVIEWER',
-          link: '#',
-          disable: true,
-        },
-        {
-          text: 'CODE OF CONDUCT',
-          link: 'https://drive.google.com/file/d/1iNF7VvDCd_gWDsSn2i5U8FB1IQWkWOM9/view',
-          disable: false,
-        },
-      ],
     }
   },
   mounted() {
@@ -256,7 +219,7 @@ export default {
 <style>
 .navbar {
   height: 72px;
-  box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.1), 0px 2px 24px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1), 0 2px 24px rgba(0, 0, 0, 0.08);
   border-radius: 8px;
   background: #ffffff;
 }
@@ -266,7 +229,7 @@ export default {
   width: 14rem;
   padding: 0.8rem 1rem;
   background-color: white;
-  box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.1), 0px 2px 24px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1), 0 2px 24px rgba(0, 0, 0, 0.08);
 }
 .language-switch {
   padding: 0.2rem 1.5rem 0.2rem 1.5rem;
