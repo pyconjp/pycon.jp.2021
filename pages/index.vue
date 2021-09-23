@@ -28,7 +28,6 @@ export default {
     const news = await $axios.$get('https://pyconjp.blogspot.com/feeds/posts/default/-/pyconjp2021?alt=rss&max-results=5')
       .then(res => {
         let items = []
-
         parseString(res, (err, result) => {
           if (!err) {
             items = result.rss.channel[0].item.map((item) => {
@@ -43,6 +42,17 @@ export default {
         })
         return items
       })
+    .catch(() => {
+      const d = new Date();
+
+      return [
+        {
+          pubDate: `${d.getFullYear()}.${('0' + (d.getMonth() + 1)).slice(-2)}.${('0' + d.getDate()).slice(-2)}`,
+          title: 'PyCon JPのブログはこちらです。 | Our blog is here.',
+          link: 'https://pyconjp.blogspot.com/search/label/pyconjp2021',
+        }
+      ];
+    })
     return { news }
   },
   data() {
