@@ -45,7 +45,7 @@
           <div class='w-14 relative'>
             <span class='absolute -bottom-3 left-0'>13:00</span>
           </div>
-          <div v-for='(_, i) in ROOMS' :key='`open_${i}`'
+          <div v-for='(i) in Object.keys(ROOMS)' :key='`open_${i}`'
                class='time-table-cell flex justify-center items-center h-full flex-1'>
           </div>
           <div class='absolute z-10 all-room h-full'>
@@ -61,7 +61,7 @@
           <div class='w-14 relative'>
             <span class='absolute -bottom-3 left-0'>13:30</span>
           </div>
-          <div v-for='(_, i) in ROOMS' :key='`opening_${i}`'
+          <div v-for='(i) in Object.keys(ROOMS)' :key='`opening_${i}`'
                class='time-table-cell flex justify-center items-center h-full flex-1'>
           </div>
           <div class='absolute z-10 all-room h-full'>
@@ -77,7 +77,7 @@
           <div class='w-14 relative'>
             <span class='absolute -bottom-3 left-0'>15:00</span>
           </div>
-          <div v-for='(_, i) in ROOMS' :key='`keynote1_${i}`'
+          <div v-for='(i) in Object.keys(ROOMS)' :key='`keynote1_${i}`'
                class='time-table-cell flex justify-center items-center h-full flex-1'>
           </div>
           <div class='absolute z-10 all-room h-full'>
@@ -93,7 +93,7 @@
           <div class='w-14 relative'>
             <span class='absolute -bottom-3 left-0'>16:00</span>
           </div>
-          <div v-for='(_, i) in ROOMS' :key='`talk_1_${i}`'
+          <div v-for='(i) in Object.keys(ROOMS)' :key='`talk_1_${i}`'
                class='time-table-cell flex justify-center items-center flex-1'>
             <talk-session :session-data='DUMMY[i]'></talk-session>
           </div>
@@ -105,7 +105,7 @@
           <div class='w-14 relative'>
             <span class='absolute -bottom-3 left-0'>17:00</span>
           </div>
-          <div v-for='(_, i) in ROOMS' :key='`talk_2_${i}`'
+          <div v-for='(i) in Object.keys(ROOMS)' :key='`talk_2_${i}`'
                class='time-table-cell flex justify-center items-center flex-1'>
             <talk-session :session-data='DUMMY[i]'></talk-session>
           </div>
@@ -117,7 +117,7 @@
           <div class='w-14 relative'>
             <span class='absolute -bottom-3 left-0'>18:15</span>
           </div>
-          <div v-for='(_, i) in ROOMS' :key='`talk_3_${i}`'
+          <div v-for='(i) in Object.keys(ROOMS)' :key='`talk_3_${i}`'
                class='time-table-cell flex justify-center items-center flex-1'>
             <talk-session :session-data='DUMMY[i]'></talk-session>
           </div>
@@ -129,7 +129,7 @@
           <div class='w-14 relative'>
             <span class='absolute -bottom-3 left-0'>18:45</span>
           </div>
-          <div v-for='(_, i) in ROOMS' :key='`lt_${i}`'
+          <div v-for='(i) in Object.keys(ROOMS)' :key='`lt_${i}`'
                class='time-table-cell flex justify-center items-center h-full flex-1'>
           </div>
           <div class='absolute z-10 all-room h-full'>
@@ -145,7 +145,7 @@
           <div class='w-14 relative'>
             <span class='absolute -bottom-3 left-0'>19:00</span>
           </div>
-          <div v-for='(_, i) in ROOMS' :key='`closing_${i}`'
+          <div v-for='(i) in Object.keys(ROOMS)' :key='`closing_${i}`'
                class='time-table-cell flex justify-center items-center h-full flex-1'>
           </div>
           <div class='absolute z-10 all-room h-full'>
