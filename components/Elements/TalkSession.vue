@@ -1,5 +1,5 @@
 <template>
-  <div v-cloak class="session-talk">
+  <div v-cloak class="session-talk h-full w-full">
     <div class="flex items-center w-full">
       <div v-show="isMobile" class="session-room">{{ sessionData.room }}</div>
       <div class="session-lang">
