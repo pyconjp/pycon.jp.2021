@@ -10,7 +10,8 @@
     </div>
     <News :news="news" />
     <Overview />
-    <Sponsors class="mt-24 lg:mt-48" />
+    <keynote />
+    <Sponsors class="mt-12 lg:mt-24" />
   </div>
 </template>
 
@@ -21,38 +22,46 @@ import Sponsors from '../components/Domains/TopPage/Sponsors'
 import CustomHeader from '../components/Domains/Header.vue'
 import Overview from '~/components/Domains/TopPage/Overview'
 import News from '~/components/Domains/TopPage/News'
+import Keynote from '~/components/Domains/TopPage/Keynote.vue'
 
 export default {
-  components: { News, Overview, MainVisual, Sponsors, CustomHeader },
+  components: { News, Overview, MainVisual, Sponsors, CustomHeader, Keynote },
   async asyncData({ $axios }) {
-    const news = await $axios.$get('https://pyconjp.blogspot.com/feeds/posts/default/-/pyconjp2021?alt=rss&max-results=5')
-      .then(res => {
+    const news = await $axios
+      .$get(
+        'https://pyconjp.blogspot.com/feeds/posts/default/-/pyconjp2021?alt=rss&max-results=5'
+      )
+      .then((res) => {
         let items = []
         parseString(res, (err, result) => {
           if (!err) {
             items = result.rss.channel[0].item.map((item) => {
               const d = new Date(item.pubDate[0])
               return {
-                pubDate: `${d.getFullYear()}.${('0' + (d.getMonth() + 1)).slice(-2)}.${('0' + d.getDate()).slice(-2)}`,
+                pubDate: `${d.getFullYear()}.${('0' + (d.getMonth() + 1)).slice(
+                  -2
+                )}.${('0' + d.getDate()).slice(-2)}`,
                 title: item.title[0],
-                link: item.link[0]
+                link: item.link[0],
               }
             })
           }
         })
         return items
       })
-    .catch(() => {
-      const d = new Date();
+      .catch(() => {
+        const d = new Date()
 
-      return [
-        {
-          pubDate: `${d.getFullYear()}.${('0' + (d.getMonth() + 1)).slice(-2)}.${('0' + d.getDate()).slice(-2)}`,
-          title: 'PyCon JPのブログはこちらです。 | Our blog is here.',
-          link: 'https://pyconjp.blogspot.com/search/label/pyconjp2021',
-        }
-      ];
-    })
+        return [
+          {
+            pubDate: `${d.getFullYear()}.${('0' + (d.getMonth() + 1)).slice(
+              -2
+            )}.${('0' + d.getDate()).slice(-2)}`,
+            title: 'PyCon JPのブログはこちらです。 | Our blog is here.',
+            link: 'https://pyconjp.blogspot.com/search/label/pyconjp2021',
+          },
+        ]
+      })
     return { news }
   },
   data() {
@@ -63,7 +72,7 @@ export default {
     if (mediaQuery.matches) {
       this.isMobile = true
     }
-  }
+  },
 }
 </script>
 
