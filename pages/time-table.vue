@@ -26,8 +26,14 @@
 
     <div class='main-area'>
       <div class='flex select-button'>
-        <button class='flex-1 h-20 w-full text-center active'>DAY1 - 10.15(Fri.)</button>
-        <button class='flex-1 h-20 w-full text-center'>DAY2 - 10.16(Sat.)</button>
+        <button class='flex-1 h-20 w-full text-center' :class='{active: selectedDay === "10/15"}'
+                @click='selectDay("10/15")'>
+          DAY1 - 10.15(Fri.)
+        </button>
+        <button class='flex-1 h-20 w-full text-center' :class='{active: selectedDay === "10/16"}'
+                @click='selectDay("10/16")'>
+          DAY2 - 10.16(Sat.)
+        </button>
       </div>
 
       <div v-cloak class='mt-8'>
@@ -44,56 +50,30 @@
         </div>
 
         <div v-for='no in SESSION_NO[selectedDay]' :key='`session_${selectedDay}_${no}`'>
-          <div v-if='no === "1"'>
-            <div class='flex time-table-grid relative h-16'>
-              <div class='w-14 relative'>
-                <span class='absolute -bottom-3 left-0'>
+          <div class='flex time-table-grid relative'
+               :class='{"h-16": no === "1", "h-24": no !== "1" && talks[selectedDay][no]["#pyconjp"] !== undefined}'>
+            <div class='w-14 relative'>
+                <span class='absolute -bottom-3 left-0 text-center'>
                   {{ END_TIMES[selectedDay][no] }}
                 </span>
-              </div>
-              <div v-for='(i) in Object.keys(ROOMS)' :key='`${selectedDay}_${no}_${i}`'
-                   class='time-table-cell flex justify-center items-center h-full flex-1'>
-              </div>
-              <div class='absolute z-10 all-room h-full'>
-                <div class='bg-blue-green bg-opacity-20 flex justify-center items-center w-full h-full'>
-                  {{ talks[selectedDay][no]['#pyconjp'].title }}
-                </div>
-              </div>
             </div>
-          </div>
-          <div v-else-if='talks[selectedDay][no]["#pyconjp"] !== undefined'>
-            <div class='flex time-table-grid relative h-24'>
-              <div class='w-14 relative'>
-                <span class='absolute -bottom-3 left-0'>
-                  {{ END_TIMES[selectedDay][no] }}
-                </span>
-              </div>
-              <div v-for='room in ROOMS' :key='`${selectedDay}_${no}_${room}`'
-                   class='time-table-cell flex justify-center items-center h-full flex-1'>
-              </div>
-              <div class='absolute z-10 all-room h-full'>
-                <button class='bg-white text-blue-green flex justify-center items-center w-full h-full'>
-                  {{ talks[selectedDay][no]['#pyconjp'].title }}
-                </button>
-              </div>
+            <div v-for='room in ROOMS' :key='`${selectedDay}_${no}_${room}`'
+                 class='time-table-cell flex justify-center items-center flex-1'>
+              <talk-session v-if='talks[selectedDay][no]["#pyconjp"] === undefined'
+                            :session-data='talks[selectedDay][no][room]'></talk-session>
             </div>
-          </div>
-          <div v-else>
-            <div class='flex time-table-grid'>
-              <div class='w-14 relative'>
-                <span class='absolute -bottom-3 left-0'>
-                  {{ END_TIMES[selectedDay][no] }}
-                </span>
+            <div v-if='talks[selectedDay][no]["#pyconjp"] !== undefined' class='absolute z-10 all-room h-full'>
+              <div v-if='no === "1"'
+                   class='bg-blue-green bg-opacity-20 flex justify-center items-center w-full h-full'>
+                {{ talks[selectedDay][no]['#pyconjp'].title }}
               </div>
-              <div v-for='room in ROOMS' :key='`${selectedDay}_${no}_${room}`'
-                   class='time-table-cell flex justify-center items-center flex-1'>
-                <talk-session :session-data='talks[selectedDay][no][room]'></talk-session>
-              </div>
+              <button v-else class='bg-white text-blue-green flex justify-center items-center w-full h-full'>
+                {{ talks[selectedDay][no]['#pyconjp'].title }}
+              </button>
             </div>
           </div>
 
           <hr class='separator' />
-
         </div>
       </div>
     </div>
@@ -175,6 +155,13 @@ export default {
   },
   data() {
     return { ROOMS, SESSION_NO, END_TIMES, talks: {}, selectedDay: '10/15' }
+  },
+  methods: {
+    selectDay(day) {
+      if (this.selectedDay !== day) {
+        this.selectedDay = day
+      }
+    }
   }
 }
 </script>
