@@ -38,7 +38,7 @@
             class="w-6 h-10"
           />
           <div class="ml-4 text-lg lg:text-2xl">
-            <p>match PyConJP(2021):</p>
+            <p>match PyCon JP(2021):</p>
             <p class="ml-4">case "ONLINE": Zoom</p>
             <a
               href="https://www.bellesalle.co.jp/shisetsu/tokyo/bs_kanda/access/"
