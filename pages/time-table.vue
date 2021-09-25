@@ -18,7 +18,8 @@
       </div>
     </div>
 
-    <div class='sponsor-area flex justify-between'>
+    <div
+      class='sponsor-area flex justify-center lg:justify-between items-center gap-y-5 lg:gap-y-0 flex-col lg:flex-row'>
       <div class='sponsor-image bg-gray-300' />
       <div class='sponsor-image bg-gray-300' />
       <div class='sponsor-image bg-gray-300' />
@@ -37,37 +38,43 @@
       </div>
 
       <div v-cloak class='mt-8'>
-        <div class='flex time-table-grid'>
-          <div class='w-14 relative'>
-            <span class='absolute -bottom-3 left-0'>
-              {{ END_TIMES[selectedDay]['0'] }}
-            </span>
+        <div class='flex time-table-grid flex-col-reverse lg:flex-row'>
+          <div class='flex-1 lg:flex-none lg:w-14 relative text-center end-time py-2 lg:py-0'>
+                <span class='lg:absolute lg:-bottom-3 lg:left-0'>
+                  {{ END_TIMES[selectedDay]['0'] }}
+                </span>
           </div>
           <div v-for='room in ROOMS' :key='`header_${room}`'
-               class='time-table-cell flex justify-center items-center header flex-1'>
+               class='hidden lg:flex time-table-cell justify-center items-center header flex-1'>
             {{ room }}
           </div>
         </div>
 
+        <hr class='separator lg:hidden' />
+
         <div v-for='no in SESSION_NO[selectedDay]' :key='`session_${selectedDay}_${no}`'>
-          <div class='flex time-table-grid relative'
-               :class='{"h-16": no === "1", "h-24": no !== "1" && talks[selectedDay][no]["#pyconjp"] !== undefined}'>
-            <div class='w-14 relative'>
-                <span class='absolute -bottom-3 left-0 text-center'>
+          <div class='flex time-table-grid relative flex-col-reverse lg:flex-row'
+               :class='{"lg:h-16": no === "1", "lg:h-24": no !== "1" && talks[selectedDay][no]["#pyconjp"] !== undefined}'>
+            <div class='flex-1 lg:flex-none lg:w-14 relative text-center end-time py-2 lg:py-0'>
+                <span class='lg:absolute lg:-bottom-3 lg:left-0'>
                   {{ END_TIMES[selectedDay][no] }}
                 </span>
             </div>
             <div v-for='room in ROOMS' :key='`${selectedDay}_${no}_${room}`'
-                 class='time-table-cell flex justify-center items-center flex-1'>
+                 class='time-table-cell flex justify-center items-center flex-1'
+                 :class='{"hidden lg:flex": talks[selectedDay][no]["#pyconjp"] !== undefined}'>
               <talk-session v-if='talks[selectedDay][no]["#pyconjp"] === undefined'
                             :session-data='talks[selectedDay][no][room]'></talk-session>
             </div>
-            <div v-if='talks[selectedDay][no]["#pyconjp"] !== undefined' class='absolute z-10 all-room h-full'>
+            <div v-if='talks[selectedDay][no]["#pyconjp"] !== undefined'
+                 class='lg:absolute lg:z-10 all-room lg:h-full'
+                 :class='{"h-14": no === "1", "h-20": no !== "1" && talks[selectedDay][no]["#pyconjp"] !== undefined}'>
               <div v-if='no === "1"'
-                   class='bg-blue-green bg-opacity-20 flex justify-center items-center w-full h-full'>
+                   class='all-room-content bg-blue-green bg-opacity-20 flex justify-center items-center'>
                 {{ talks[selectedDay][no]['#pyconjp'].title }}
               </div>
-              <button v-else class='bg-white text-blue-green flex justify-center items-center w-full h-full'>
+              <button v-else
+                      class='all-room-content all-room-session bg-white text-blue-green flex justify-center items-center'>
                 {{ talks[selectedDay][no]['#pyconjp'].title }}
               </button>
             </div>
@@ -141,12 +148,12 @@ export default {
 
     for (const index in body) {
       const talk = body[index]
-      const room = talk.room === '#pyconjp_1 (15th: onsite)' ? '#pyconjp_1' : talk.room
+      talk.room = talk.room === '#pyconjp_1 (15th: onsite)' ? '#pyconjp_1' : talk.room
 
       initObject(talks, talk.day)
       initObject(talks[talk.day], talk.no)
-      initObject(talks[talk.day][talk.no], room)
-      talks[talk.day][talk.no][room] = talk
+      initObject(talks[talk.day][talk.no], talk.room)
+      talks[talk.day][talk.no][talk.room] = talk
     }
 
     return {
@@ -168,20 +175,33 @@ export default {
 
 <style scoped>
 .title-area {
-  margin: 3rem 7.5rem auto;
+  margin: 1.5rem 1.5rem auto;
+  @media (min-width: 1024px) {
+    margin: 3rem 7.5rem auto;
+  }
 }
 
 .sponsor-area {
-  margin: 7rem 7.5rem auto;
-}
-
-.sponsor-image {
-  width: 373px;
-  height: 210px;
+  margin: 3.875rem 1.5rem auto;
+  @media (min-width: 1024px) {
+    margin: 7rem 7.5rem auto;
+  }
 }
 
 .main-area {
-  margin: 7rem 7.5rem 10rem;
+  margin: 3.625rem 1.5rem 4.5rem;
+  @media (min-width: 1024px) {
+    margin: 7rem 7.5rem 10rem;
+  }
+}
+
+.sponsor-image {
+  width: 328px;
+  height: 184px;
+  @media (min-width: 1024px) {
+    width: 373px;
+    height: 210px;
+  }
 }
 
 .select-button {
@@ -209,10 +229,34 @@ export default {
   column-gap: 5px;
 
   & > .all-room {
-    left: calc(10px + 3.5rem);
-    top: 5px;
-    width: calc(100% - 15px - 3.5rem);
-    height: calc(100% - 10px);
+    background-color: #F4F4F4;
+
+    @media (min-width: 1024px) {
+      background-color: transparent;
+
+      left: calc(10px + 3.5rem);
+      top: 5px;
+      width: calc(100% - 15px - 3.5rem);
+      height: calc(100% - 10px);
+    }
+
+    & > .all-room-content {
+      margin: 5px;
+      width: calc(100% - 10px);
+      height: calc(100% - 10px);
+      @media (min-width: 1024px) {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      &.all-room-session {
+        border: 1px solid #dddddd;
+        box-sizing: border-box;
+        box-shadow: 0 1px 8px rgba(0, 0, 0, 0.08);
+        border-radius: 4px;
+      }
+    }
   }
 }
 
@@ -227,8 +271,17 @@ export default {
 }
 
 .separator {
-  margin-left: calc(3.5rem + 5px);
   border: 1px solid #DDDDDD;
+  @media (min-width: 1024px) {
+    margin-left: calc(3.5rem + 5px);
+  }
+}
+
+.end-time {
+  background-color: #F4F4F4;
+  @media (min-width: 1024px) {
+    background-color: inherit;
+  }
 }
 
 </style>
