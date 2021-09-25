@@ -30,133 +30,71 @@
         <button class='flex-1 h-20 w-full text-center'>DAY2 - 10.16(Sat.)</button>
       </div>
 
-      <div class='mt-8'>
+      <div v-cloak class='mt-8'>
         <div class='flex time-table-grid'>
           <div class='w-14 relative'>
-            <span class='absolute -bottom-3 left-0'>12:00</span>
+            <span class='absolute -bottom-3 left-0'>
+              {{ END_TIMES[selectedDay]['0'] }}
+            </span>
           </div>
-          <div v-for='(room, i) in ROOMS' :key='`header_${i}`'
+          <div v-for='room in ROOMS' :key='`header_${room}`'
                class='time-table-cell flex justify-center items-center header flex-1'>
             {{ room }}
           </div>
         </div>
 
-        <div class='flex time-table-grid relative h-16'>
-          <div class='w-14 relative'>
-            <span class='absolute -bottom-3 left-0'>13:00</span>
-          </div>
-          <div v-for='(i) in Object.keys(ROOMS)' :key='`open_${i}`'
-               class='time-table-cell flex justify-center items-center h-full flex-1'>
-          </div>
-          <div class='absolute z-10 all-room h-full'>
-            <div class='bg-blue-green bg-opacity-20 flex justify-center items-center w-full h-full'>
-              開場
+        <div v-for='no in SESSION_NO[selectedDay]' :key='`session_${selectedDay}_${no}`'>
+          <div v-if='no === "1"'>
+            <div class='flex time-table-grid relative h-16'>
+              <div class='w-14 relative'>
+                <span class='absolute -bottom-3 left-0'>
+                  {{ END_TIMES[selectedDay][no] }}
+                </span>
+              </div>
+              <div v-for='(i) in Object.keys(ROOMS)' :key='`${selectedDay}_${no}_${i}`'
+                   class='time-table-cell flex justify-center items-center h-full flex-1'>
+              </div>
+              <div class='absolute z-10 all-room h-full'>
+                <div class='bg-blue-green bg-opacity-20 flex justify-center items-center w-full h-full'>
+                  {{ talks[selectedDay][no]['#pyconjp'].title }}
+                </div>
+              </div>
             </div>
           </div>
+          <div v-else-if='talks[selectedDay][no]["#pyconjp"] !== undefined'>
+            <div class='flex time-table-grid relative h-24'>
+              <div class='w-14 relative'>
+                <span class='absolute -bottom-3 left-0'>
+                  {{ END_TIMES[selectedDay][no] }}
+                </span>
+              </div>
+              <div v-for='room in ROOMS' :key='`${selectedDay}_${no}_${room}`'
+                   class='time-table-cell flex justify-center items-center h-full flex-1'>
+              </div>
+              <div class='absolute z-10 all-room h-full'>
+                <button class='bg-white text-blue-green flex justify-center items-center w-full h-full'>
+                  {{ talks[selectedDay][no]['#pyconjp'].title }}
+                </button>
+              </div>
+            </div>
+          </div>
+          <div v-else>
+            <div class='flex time-table-grid'>
+              <div class='w-14 relative'>
+                <span class='absolute -bottom-3 left-0'>
+                  {{ END_TIMES[selectedDay][no] }}
+                </span>
+              </div>
+              <div v-for='room in ROOMS' :key='`${selectedDay}_${no}_${room}`'
+                   class='time-table-cell flex justify-center items-center flex-1'>
+                <talk-session :session-data='talks[selectedDay][no][room]'></talk-session>
+              </div>
+            </div>
+          </div>
+
+          <hr class='separator' />
+
         </div>
-
-        <hr class='separator' />
-
-        <div class='flex time-table-grid relative h-24'>
-          <div class='w-14 relative'>
-            <span class='absolute -bottom-3 left-0'>13:30</span>
-          </div>
-          <div v-for='(i) in Object.keys(ROOMS)' :key='`opening_${i}`'
-               class='time-table-cell flex justify-center items-center h-full flex-1'>
-          </div>
-          <div class='absolute z-10 all-room h-full'>
-            <button class='bg-white text-blue-green flex justify-center items-center w-full h-full'>
-              Opening (Day 1)
-            </button>
-          </div>
-        </div>
-
-        <hr class='separator' />
-
-        <div class='flex time-table-grid relative h-24'>
-          <div class='w-14 relative'>
-            <span class='absolute -bottom-3 left-0'>15:00</span>
-          </div>
-          <div v-for='(i) in Object.keys(ROOMS)' :key='`keynote1_${i}`'
-               class='time-table-cell flex justify-center items-center h-full flex-1'>
-          </div>
-          <div class='absolute z-10 all-room h-full'>
-            <button class='bg-white text-blue-green flex justify-center items-center w-full h-full'>
-              {{ 'Keynote Speech (Day 1  Speaker)：芝世弐氏' }}
-            </button>
-          </div>
-        </div>
-
-        <hr class='separator' />
-
-        <div class='flex time-table-grid'>
-          <div class='w-14 relative'>
-            <span class='absolute -bottom-3 left-0'>16:00</span>
-          </div>
-          <div v-for='(i) in Object.keys(ROOMS)' :key='`talk_1_${i}`'
-               class='time-table-cell flex justify-center items-center flex-1'>
-            <talk-session :session-data='DUMMY[i]'></talk-session>
-          </div>
-        </div>
-
-        <hr class='separator' />
-
-        <div class='flex time-table-grid'>
-          <div class='w-14 relative'>
-            <span class='absolute -bottom-3 left-0'>17:00</span>
-          </div>
-          <div v-for='(i) in Object.keys(ROOMS)' :key='`talk_2_${i}`'
-               class='time-table-cell flex justify-center items-center flex-1'>
-            <talk-session :session-data='DUMMY[i]'></talk-session>
-          </div>
-        </div>
-
-        <hr class='separator' />
-
-        <div class='flex time-table-grid'>
-          <div class='w-14 relative'>
-            <span class='absolute -bottom-3 left-0'>18:15</span>
-          </div>
-          <div v-for='(i) in Object.keys(ROOMS)' :key='`talk_3_${i}`'
-               class='time-table-cell flex justify-center items-center flex-1'>
-            <talk-session :session-data='DUMMY[i]'></talk-session>
-          </div>
-        </div>
-
-        <hr class='separator' />
-
-        <div class='flex time-table-grid relative h-24'>
-          <div class='w-14 relative'>
-            <span class='absolute -bottom-3 left-0'>18:45</span>
-          </div>
-          <div v-for='(i) in Object.keys(ROOMS)' :key='`lt_${i}`'
-               class='time-table-cell flex justify-center items-center h-full flex-1'>
-          </div>
-          <div class='absolute z-10 all-room h-full'>
-            <button class='bg-white text-blue-green flex justify-center items-center w-full h-full'>
-              LT
-            </button>
-          </div>
-        </div>
-
-        <hr class='separator' />
-
-        <div class='flex time-table-grid relative h-24'>
-          <div class='w-14 relative'>
-            <span class='absolute -bottom-3 left-0'>19:00</span>
-          </div>
-          <div v-for='(i) in Object.keys(ROOMS)' :key='`closing_${i}`'
-               class='time-table-cell flex justify-center items-center h-full flex-1'>
-          </div>
-          <div class='absolute z-10 all-room h-full'>
-            <button class='bg-white text-blue-green flex justify-center items-center w-full h-full'>
-              Closing (Day 1)
-            </button>
-          </div>
-        </div>
-
-        <hr class='separator' />
-
       </div>
     </div>
   </div>
@@ -176,59 +114,67 @@ const ROOMS = [
   '#pyconjp_5'
 ]
 
-const DUMMY = [
-  {
-    audience_python_level: 'Beginner',
-    id: '123456',
-    lang_of_talk: 'Japanese',
-    name: '登壇者氏名',
-    room: '#pyconjp_1',
-    title: 'サンプルタイトル1サンプルタイトル1サンプルタイトル1サンプルタイトル1サンプルタイトル1',
-    track: 'Web programming'
+const SESSION_NO = {
+  '10/15': ['1', '2', '3', '4', '5', '6', '7', '8'],
+  '10/16': ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11']
+}
+
+const END_TIMES = {
+  '10/15': {
+    '0': '12:30',
+    '1': '13:00',
+    '2': '13:30',
+    '3': '15:00',
+    '4': '16:00',
+    '5': '17:00',
+    '6': '18:15',
+    '7': '18:45',
+    '8': '19:00'
   },
-  {
-    audience_python_level: 'Intermediate',
-    id: '234567',
-    lang_of_talk: 'Japanese',
-    name: '登壇者氏名',
-    room: '#pyconjp_2',
-    title: 'サンプルタイトル2サンプルタイトル2サンプルタイトル2サンプルタイトル2サンプルタイトル2',
-    track: 'Machine learning'
-  },
-  {
-    audience_python_level: 'Advanced',
-    id: '345678',
-    lang_of_talk: 'Japanese',
-    name: '登壇者氏名',
-    room: '#pyconjp_3',
-    title: 'サンプルタイトル3サンプルタイトル3サンプルタイトル3サンプルタイトル3サンプルタイトル3',
-    track: 'Python core and around'
-  },
-  {
-    audience_python_level: 'Beginner',
-    id: '456789',
-    lang_of_talk: 'Japanese',
-    name: '登壇者氏名',
-    room: '#pyconjp_4',
-    title: 'サンプルタイトル4サンプルタイトル4サンプルタイトル4サンプルタイトル4サンプルタイトル4',
-    track: 'Approaching to social problem'
-  },
-  {
-    audience_python_level: 'Intermediate',
-    id: '567890',
-    lang_of_talk: 'English',
-    name: '登壇者氏名',
-    room: '#pyconjp_5',
-    title: 'サンプルタイトル5サンプルタイトル5サンプルタイトル5サンプルタイトル5サンプルタイトル5',
-    track: 'Visual / Game / Music'
+  '10/16': {
+    '0': '09:30',
+    '1': '10:00',
+    '2': '10:30',
+    '3': '11:40',
+    '4': '12:40',
+    '5': '13:50',
+    '6': '14:50',
+    '7': '16:20',
+    '8': '17:20',
+    '9': '17:50',
+    '10': '18:50',
+    '11': '19:00'
   }
-]
+}
 
 export default {
   name: 'Timetable',
   components: { TalkSession, CustomHeader },
+  async asyncData({ $content }) {
+    const originTalks = await $content('talk/session').only(['body']).fetch()
+    const body = originTalks.body
+    const talks = {}
+
+    const initObject = (obj, key) => {
+      obj[key] = obj[key] ?? {}
+    }
+
+    for (const index in body) {
+      const talk = body[index]
+      const room = talk.room === '#pyconjp_1 (15th: onsite)' ? '#pyconjp_1' : talk.room
+
+      initObject(talks, talk.day)
+      initObject(talks[talk.day], talk.no)
+      initObject(talks[talk.day][talk.no], room)
+      talks[talk.day][talk.no][room] = talk
+    }
+
+    return {
+      talks
+    }
+  },
   data() {
-    return { ROOMS, DUMMY }
+    return { ROOMS, SESSION_NO, END_TIMES, talks: {}, selectedDay: '10/15' }
   }
 }
 </script>
