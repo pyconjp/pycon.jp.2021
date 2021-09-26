@@ -1,28 +1,32 @@
 <template>
-  <div v-cloak class="session-talk h-full w-full">
-    <div class="flex items-center w-full">
-      <div v-show="isMobile" class="session-room">{{ sessionData.room }}</div>
-      <div class="session-lang">
-        <p>{{ lang }}</p>
-      </div>
+  <div v-cloak class="session-talk h-full w-full flex flex-col justify-between">
+    <div>
+      <div class="flex items-center w-full">
+        <div v-show="isMobile" class="session-room">{{ sessionData.room }}</div>
+        <div class="session-lang">
+          <p>{{ lang }}</p>
+        </div>
 
-      <div
-        class="ml-1 session-level"
-        :style="getLevelColor(sessionData.audience_python_level)"
-      >
-        <p>{{ sessionData.audience_python_level }}</p>
+        <div
+          class="ml-1 session-level"
+          :style="getLevelColor(sessionData.audience_python_level)"
+        >
+          <p>{{ sessionData.audience_python_level !== '' ? sessionData.audience_python_level : 'Other' }}</p>
+        </div>
+      </div>
+      <div>
+        <p class="mt-2 text-sm font-medium text-base-message">
+          {{ sessionData.title }}
+        </p>
+      </div>
+      <div class="mt-1">
+        <p class="text-xs text-custom-black font-noto">{{ sessionData.name }}</p>
       </div>
     </div>
     <div>
-      <p class="mt-2 text-sm font-medium text-base-message">
-        {{ sessionData.title }}
-      </p>
+      <div class="border"></div>
+      <div class="text-xs text-sub-message">{{ sessionData.track !== '' ? sessionData.track : 'Other'}}</div>
     </div>
-    <div class="mt-1">
-      <p class="text-xs text-custom-black font-noto">{{ sessionData.name }}</p>
-    </div>
-    <div class="border"></div>
-    <div class="text-xs text-sub-message">{{ sessionData.track }}</div>
   </div>
 </template>
 
@@ -49,7 +53,7 @@ export default {
   },
   computed: {
     lang() {
-      return this.sessionData.lang_of_talk === 'Japanese' ? 'JA' : 'EN'
+      return this.sessionData.lang_of_talk === 'English' ? 'EN' : 'JA'
     },
   },
   mounted() {
@@ -62,7 +66,7 @@ export default {
     getLevelColor(level) {
       if (level === 'Beginner') {
         return { color: '#FFFFFF', 'background-color': '#6BC524' }
-      } else if (level === 'Intermidiate') {
+      } else if (level === 'Intermediate') {
         return { color: '#FFFFFF', 'background-color': '#E77D00' }
       } else if (level === 'Advanced') {
         return { color: '#FFFFFF', 'background-color': '#E64B4B' }
