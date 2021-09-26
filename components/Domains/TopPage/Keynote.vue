@@ -63,7 +63,7 @@ export default {
       keynoteJp: [
         {
           name: '谷合 廣紀',
-          title: 'Python × 将棋',
+          title: '',
           image: 'keynote1.jpg',
           date: '2021.10.15 13:30 -',
           desc: `2016 年に Python と出会いデータ分析に目覚める。<br/>
@@ -85,7 +85,7 @@ export default {
       keynoteEn: [
         {
           name: 'HIROKI TANIAI',
-          title: 'Python x Shogi',
+          title: '',
           image: 'keynote1.jpg',
           date: '2021.10.15 13:30 -',
           desc: `In 2016, he encountered Python and was awakened to data analysis.<br>
