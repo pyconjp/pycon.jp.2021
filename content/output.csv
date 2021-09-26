@@ -1,0 +1,1035 @@
+id,title,room,day,start_time,no,elevator_pitch,prerequisite_knowledge,audience_takeaway,audience_python_level,track,lang_of_talk,lang_of_slide,description,name,profile
+a241676c-8a1d-45f9-8d88-c61ba4ec5fe3,Venue open / 開場,#pyconjp,10/15,12:30,1,,,,,,,,,,
+0b9f27cc-9da4-4010-9c8e-9d24d31956d5,Opening (Day 1),#pyconjp,10/15,13:00,2,,,,,,,,,,
+f473c163-5dbc-452e-a0d5-5d37245ff7f0,基調講演: 谷合 廣紀氏,#pyconjp,10/15,13:30,3,,,,,,,,,,
+273758,実践！Django + GraphQL実装 〜素敵なGraphQL Tipsを添えて〜,#pyconjp_1 (15th: onsite),10/15,15:00,4,「GraphQLに少し興味がある」「業務で実際に使う前に気をつける点や実装の詳細を把握したい」という方を対象としています。主にGraphQLそのものや、実践的なGraphene-Django(Graphene-Python)の話になりますが、フロントサイドとの連携や型データの活用方法など効率・品質を上げるためのTipsもいくつか盛り込んだトークになります。,"* MUST
+  * Django, Django Formの基礎知識。
+* NICE TO HAVE
+  * REST, WebSocket, ASGIを少し知っている
+  * ウェブアプリケーションを何かしら作った事がある","* RESTとGraphQLを比較検討して、技術選定ができるようになる
+* Graphene-Python, Graphene-Djangoを使ったGraphQL Query, Mutation, Subscriptionの実践的な実装方法
+* 副次的にクライアントサイドに関してTypescriptでのGraphQL型の再利用方法・GraphQLモックサーバの用意方法・Apollo Clientの大まかな利用用途を理解する
+* 業務で失敗した点から学ぶGraphQL APIを実装する上での注意点",Intermediate,Web programming,Japanese,Japanese only,"話す内容の大まかな流れは以下になります。
+
+* GraphQLとは何か
+  * GraphQLの特徴
+  * RESTと比較しつつ、GraphQLを利用する価値があるケース
+* GraphQLの型を学ぶ
+  * GraphQLの型の書き方
+  * Graphene-DjagnoでDjangoのモデルを使った型の実装方法
+* Graphene-Django(Graphene-Python)の実装例
+  * Queryの実装を通じて、入出力の定義、リゾルバーの実装を知る
+  * Mutationの実装をDjango Formを利用して行う
+  * 独自の型を用意してGraphQL APIでのエラー処理を行う
+  * 動作確認方法やPytestでのテストの書き方
+* Graphene-Subscriptionsを使ったSubscription実装例
+  * 前提知識としてWebSocket, RxPy, ASGIについて少し説明
+  * Subscriptionの実装例
+  * 動作確認方法やPytestでのテストの書き方
+* GraphQLを使って業務を行う時の注意点
+  * N+1問題の予防
+  * DeprecatedとなったAPIの扱い
+  * モデル実装時の外部キーの設定
+  * 返却したくないカラムの扱い
+* 周辺知識の共有
+  * (副次的な部分にはなりますが、クライアントサイドも語らないと勿体ないので少し時間を使ってこの章の話をします)
+  * 5minでクライアント用のモックサーバを用意する
+  * GraphQLの型をTypeScriptで利用して実装の安定性を高める
+  * Apollo Clientの利用例
+    * クエリ・ミューテーションの書き方
+    * クエリの設定例",Mitsuhiko Kai,株式会社ビープラウドでWeb Developerをしています。猫と犬が好きです。
+271963,scikit-learnの新機能を紹介します,#pyconjp_2,10/15,15:00,4,"このトークでは、誰もが使ったことのあるscikit-learnに再入門し、近年追加された新機能を紹介します。
+前処理では、DataFrameを一発で特徴量変換できるColumnTransformerを紹介します。学習では、カテゴリ値を扱えるHistGradientBoostingClassifierと、グリッドサーチよりも高速なHalvingGridSearchCV、最後にPipelineとその可視化方法を解説します。
+トークを聞けば、scikit-learnをより便利・快適に使えるようになります。","必須とする前提知識はありません。
+scikit-learn、pandas、numpyのパッケージを使って機械学習を実装した経験があると、トークをより理解しやすいです。
+","・scikit-learnの基礎知識
+・DataFrameのまま、各列を並列で前処理する方法
+・LightGBMのようにカテゴリ値を使用したクラス分類や回帰モデルの構築手法
+・処理全体をパイプラインで一元管理し、処理フローを可視化する方法",Intermediate,Machine learning,Japanese,Japanese only,"Pythonで機械学習を実装したことがある人のほとんどは、scikit-learnを使ったことがあるでしょう。TensorFlowやPyTorchによるディープラーニングが盛んな近年においても、scikit-learnは特徴量変換（各種Transfer）、データ分割（train_test_split）、処理フローの統合（Pipeline）、性能評価（metrics）など様々な場面で活用されており、今でもアップデートが盛んなパッケージの一つです。
+
+しかし、「近年にscikit-learnで実装された新機能」に詳しい方は、そう多くはないのではないでしょうか？例えば、最新バージョン（0.24）ではHalvingGridSearchCVという新しいパラメータサーチが公開されましたが、現時点で日本語の解説記事は無いようです。古参のパッケージであるが故に、書籍やサイトで紹介されている記事の中には古い情報も数多くあります。特に機械学習の入門者はscikit-learnを最初に学ぶことが多いからこそ、新しい機能を優先的に学ぶ必要があると感じています。
+
+このトークでは、近年に公開されたscikit-learnの新機能からいくつかを厳選し、従来手法との違いや利点について解説します。すでにscikit-learnを知っている人もそうでない人も、新たな発見に出会えるでしょう。
+
+構成とタイムラインは以下の通りです。
+- 導入（5min）
+　- 自己紹介
+　- scikit-learnの概要と基本コンセプト
+　- scikit-learnの歴史
+- DataFrameの前処理（ColumnTransformer）（5min）
+　- 従来はカラム単位にTransferを実装していた
+　- ColumnTransformerはDataFrameの各列を特徴量に直接変換できる
+　- 従来手法と比べ、並列化や保守性に優れている
+　- 実装事例の紹介
+- カテゴリ値の学習（HistGradientBoosting ）（5min）
+　- これまで、scikit-learnではカテゴリ値をそのまま扱える予測器は無かった
+　- HistGradientBoostingを使うことで、カテゴリ値を用いた分類や予測が可能
+　- 従来のワンホットエンコードと比べ、メモリ効率や学習速度が向上
+　- 実装事例の紹介
+- 効果的なパラメータ探索（HalvingGridSearchCV）（5min）
+　- 従来までのGridSearchやRandomSearchは計算コストが高かった
+　- HalvingGridSearchCVは、最新のSuccessiveHalving手法を使用したサーチ手法
+　- 従来手法と比べ、パラメータ探索を大幅に高速化
+　- 実装事例の紹介
+- パイプラインの可視化（Pipeline）（4miin）
+　- パイプラインによる処理フローの統合
+　- パイプラインがグラフ構造で可視化できるようになった
+　- 実装事例の紹介
+- まとめ（1min）",Shigenobu Fujine,"2012年　旧みずほ情報総研株式会社（2021/4/1よりみずほリサーチ＆テクノロジーズ株式会社に統合）に入社。勘定系システム開発に従事。
+2018年　同社の先端研究部門に異動。AIやクラウドを活用したシステム開発や技術研究を担当。"
+273766,ASGIアプリケーション入門 - こわくないasyncio基礎と非同期IO - FastAPIを例に,#pyconjp_3,10/15,15:00,4,"PythonでWebアプリケーションを作る際にWSGI FWではなくASGI FWで、と検討されている方も多いのではないでしょうか。
+ASGIとはUvicornなどのWebサーバーとFastAPIなどのWebフレームワークを繋ぐ、asyncio対応です。
+そう、asyncio。
+Pythonを使っていてasyncioを怖いと思う方ももしかしたらいらっしゃるかもしれません。（私もそうです）
+
+本トークでは、「今までasyncioってよくわからなかったけど、基礎はわかったかも。」「Python Webで非同期IOってこう役に立つんだ」そして「asyncio対応のモジュールでPython Webを構築したいな」と思ってもらえるような内容をFastAPIとAsyncpgでの具体例とともにお届けしたいと思っています。",Pythonを使ってWebアプリケーションを実装し、環境を構築したことがある経験。,"・アプリケーションエンジニアとして必要なasyncioの基礎
+・Python Webでasyncioを利用する利点
+・FastAPIとAsyncpgを組み合わせた場合の使い方",Intermediate,Web programming,Japanese,Japanese only,"近年、FastAPIの盛り上がりにより利用されている方も多いのではないでしょうか。ですが、asyncio Webの利点を理解して使われている方は少ないように感じています。
+
+アプリケーションエンジニアに必要なasyncioの使い方・考え方の基礎から、実際のASGI Webアプリケーションを例にDBアクセスまでasyncioの強みを生かした非同期IOによる。FastAPIとAsyncpgを利用したアプリケーションで解説します。
+
+- 導入
+    - 自己紹介
+
+- asyncioの基礎について (15min)
+  - 逐次処理・並行処理・並列処理の違い
+  - コルーチン・タスク・イベントループの概要
+  - asyncioの書き方、使うべき・覚える必要のある機能の解説
+
+- ASGIアプリケーション解説(15min)
+  - FastAPI と Asyncpg によるアプリケーション解説
+  - asyncio Web による利点
+  - WSGIアプリケーションとの速度比較
+",Junya Fukuda,Pythonエンジニア
+272565,Python 3.9からの新定番zoneinfoを使いこなそう,#pyconjp_4,10/15,15:00,4,"Python 3.9から追加されたタイムゾーンを扱うzoneinfoモジュールが追加されました。
+本セッションでは、「なぜzoneinfoが登場したのか」を解説し、すぐ実践できる使い方についてお伝えします。
+また、zoneinfoを使う上でのちょっとした嵌りポイントとその回避方法についてもお伝えします。",Pythonチュートリアル（https://docs.python.org/ja/3/tutorial/）またはそれに準ずる入門書を読んで自分でPythonコードを書いたことがある。,"- zoneinfoの基本的な使い方
+- zoneinfoを使う上で注意すべきエラーとその回避方法",Beginner,Python core and around,Japanese,Japanese only,"【zoneinfo誕生の経緯と基本的な使い方】
+zoneinfoはPython 3.9から登場しましたが、元々Pythonでタイムゾーンを扱う際はpytzを使うのが定番でした。
+なぜ、pytzではなくzoneinfoが必要になったのでしょうか？
+zoneinfoは、Python 3.6でdatetimeモジュールに加わったfoldという属性と関連があります。ここではfold属性の役割と、zoneinfoがそれとどう関わってくるのかについてお話します。
+また、zoneinfoの使い方についても要点を押さえてお伝えします。
+
+【zoneinfoのよくあるエラー】
+zoneinfoは内部にタイムゾーンデータベースを持っていません。OSに標準搭載されているタイムゾーンデータベースを参照するようになっています。
+ところが、WIndowsではある理由でOSのタイムゾーンデータベースを参照することができません。
+ここでは、その理由と対応方法についてお話します。
+
+【zoneinfoの周辺知識】
+以下についてお伝えします。
+- Djangoでのzoneinfo対応状況
+- zoneinfo以外でfold属性に対応しているサードパーティモジュールの紹介",Ryuji Tsutsui,"普段はフィンテック系企業でDjangoを使ってウェブサービスを作っています。
+Python Boot Campコアスタッフ、Shonan.pyスタッフなど、Pythonコミュニティにも携わっています。
+Twitter: @ryu22e
+Blog: https://ryu22e.org/"
+268400,Multilingual Natural Language Processing using Python,#pyconjp_5,10/15,15:00,4,"Natural Language Processing(NLP) is an interesting and challenging field. It becomes even more interesting and challenging when we take into consideration more than one human language. In this talk, we will discuss the techniques for processing information in more than one human language.",Basic understanding of Python and Natural Language Processing,The Attendees will learn strategies to perform natural language processing on a text written in two or more human languages,Intermediate,Machine learning,English,English only,"Natural Language Processing(NLP) is an interesting and challenging field. It becomes even more interesting and challenging when we take into consideration more than one human language. when we perform an NLP on a single language there is a possibility that the interesting insights from another human language might be missed out. The interesting and valuable information may be available in other human languages such as Spanish, Chinese, French, Hindi, and other major languages of the world. Also, the information may be available in various formats such as text, images, audio, and video.
+
+In this talk, I will discuss techniques and methods that will help perform NLP tasks on multi-source and multilingual information. The talk begins with an introduction to natural language processing and its concepts. Then it addresses the challenges with respect to multilingual and multi-source NLP. Next, I will discuss various techniques and tools to extract information from audio, video, images, and other types of files using PyScreenshot, SpeechRecognition, Beautiful Soup, and PIL packages. Also, extracting the information from web pages and source code using pytessaract. Next, I will discuss concepts such as translation and transliteration that help to bring the information into a common language format. Once the language is in a common language format it becomes easy to perform NLP tasks. Next, I will explain with the help of a code walkthrough generating a summary from multi-source and multi-lingual information into a specific language using spacy and stanza packages.
+
+Outline
+1. Introduction to NLP and concepts (05 Minutes)
+2. Challenges in Multi source multilingual NLP (02 Minutes)
+3. Tools for extracting information from various file formats (04 Minutes)
+4. Extract information from web pages and source code (04 Minutes) 
+5. Methods to convert information into common language format (05 Minutes)
+6. code walkthrough for multi-source and multilingual summary generation (10 Minutes)",gcdeshpande,"Mr. Gajendra Deshpande holds a masters degree in Computer Science and Engineering and working as Assistant Professor at the Department of Computer Science and Engineering, KLS Gogte Institute of Technology, Belagavi, Karnataka, India.Under his mentor-ship teams have won Smart India Hackathon 2018 and Smart India Hackathon 2019 . He is Technical Director for Sestoauto Networks Pvt. Ltd. and Founder of Thingsvalley. His areas of Interest include Programming, Web Designing, Cyber Security, Artificial Intelligence, Machine Learning, Brain Computer Interface, Internet of Things and Virtual Reality. He has presented papers at NIT Goa, Scipy India 2017 IIT Bombay, JuliaCon 2018 London, Scipy India 2018 IIT Bombay, Scipy 2019 USA and PyCon FR 2019, Bordeaux, France."
+273820,PyPIデビュー手前の人のための地下活動手法 - pypicloudを使ったプライベートレジストリの構築,#pyconjp_1 (15th: onsite),10/15,16:00,5,"Pythonでライブラリを作ったら、PyPIに登録したくなりますよね？でもちょっと怖かったりしますよね？
+
+というわけで、Pythonのライブラリを「PyPIに公開」でもなく「GitHub上でそのまま公開」でもない中庸の道として、自分用のパッケージレジストリを運用してみませんか？","- Pythonで自作モジュールを作れる程度の基礎知識
+- (あれば)GCP/AWSの基礎知識
+","- pypicloudの構築方法・利用方法
+- それに付随するインフラ層の概論
+- 個人or組織内におけるプライベートレジストリの運用例",Intermediate,Python core and around,Japanese,Japanese only,"Pythonのライブラリを開発した際に、広く一般利用を求めたい場合はPyPIに公開することがほとんどです。
+しかし、そうではないパッケージも存在します。
+
+- 社内のために開発しており、公開自体が基本的に望ましくないライブラリ
+- 実際に作ってはみたが、PyPIに掲載していいかの自信が持てない
+
+こういった理由でPyPIに公開が難しいときに、どうすればいいでしょうか。
+
+非公開だったらパッケージのアーカイブなどを直接配布するようなアプローチも取れます。
+ただただPyPIへの公開をためらってるだけなら、GitHubなどに晒すということもできます。
+
+このセッションでは、もうちょっと突っ込んだアプローチとして、
+「自分のパッケージ専用でアップロード・公開ができる環境」を用意する手法を紹介します。
+
+- 自己紹介
+- 今回の主題
+  - プライベートなパッケージの共有方法
+  - パッケージレジストリサーバーの紹介
+- pypicloudその0
+  - どんなものか
+  - どんな使い方ができるのか(1) LAN内キャッシュ編
+- pypicloudその1
+  - pypicloudのオプションを読み解いていく
+  - どんな使い方ができるのか(2) 個人用PyPI編
+- pypicloudその2
+  - pypicloudのオプションを読み解いていく(2)
+  - どんな使い方ができるのか(3) 組織用プライベートレジストリ編
+- Extra-1: インフラコストの話
+- Extra-2: GCPではなくAWSがいい人向けの話
+- まとめ",Kazuya Takei,ニジボックス所属のインフラ寄りバックエンド系スタックフルエンジニア。 興味にリソースを振りがちで、最近はSphinxとFastAPI系と戯れてる機会が多め
+271930,位置データもPythonで！！！,#pyconjp_2,10/15,16:00,5,デジタルデバイスが広く行き渡り、デバイスからは多くのデータが取得できます。コロナ禍の今、モバイルの位置データを活用してニュースでは人流を報じています。位置データは身近となる一方、生データが公開されていないため、その扱い方が語られることが少なく感じられます。本トークでは、位置データもPythonを使うと簡単に扱えることを示したあと、実際の人の動きのデータや気象データを扱う事例を取り上げます。,何もなくても楽しめます,"pythonで位置データを扱う際のエコシステム（位置データを扱うためのパッケージ: shapely/ geopandas 、位置データ可視方のためのパッケージ: folium / pydeck / plotly、気象データを扱うためのパッケージ xarray）
+位置データを扱う面白さ
+",Beginner,Approaching to social problem,Japanese,Both,"コロナ禍の今、モバイルからの位置データの集計結果がニュースで毎日のように取り上げられるなど、位置データは身近なものとなりました。しかし、位置データ自体のプログラミングにおける取り扱いに関してはあまり語られることはありません。本トークではPythonを用いて容易に位置データを扱えることを示します。
+
+まずは、コンピュータで位置データを扱うには、住所を直接渡しても使えないことを示します。住所は経度緯度などの数値データに変換して扱います。オープンデータなどでも住所のみ記されているのをみると、位置データは数値で必要なことは、案外共有されていない事実かも知れません。
+
+Pythonでは位置データはshapelyを用いて扱います。そのさまざまなクラスや属性に関しても触れ、位置データの扱い方を解説します。
+
+次に、geopandasを用いてまとまった位置データの扱い方をとりあげます。geopandasを使ってできることに加え、位置データを扱う代表的なファイル形式（shp形式、geojson形式）もとりあげます。
+
+最後に、実際のデータを用いた事例を示します。1つは過去のリアルタイムな複数人の位置データを扱います。もう一つは、位置データと気象データを用いて、どのように情報が扱えるかを示します。
+
+タイムテーブル
+自己紹介(1min)
+トーク概要（1min）
+PCにとって住所は位置データではない（8分）
+コンピュータに「住所」を「位置データ」として渡してはいけない
+住所を経度緯度に変換して渡す
+経度緯度も色々ある
+Pythonでは位置データをshapelyを使って扱う
+まとまった位置データを扱う（8分）
+Pythonではgeopandasを使ってまとまった位置データを操作する
+pandasと違うところ
+位置データを扱うファイル形式
+Pythonにおける位置データの可視化ツール（geopandas, folium, pydeck, plotly）
+実際の活用方法（5分）
+複数人の行動の可視化事例（ヒートマップ、リアルタイムに動かす）
+気象データと位置データを組み合わせた事例（位置データと気象データをxrrayとplotlyを使って可視化する）
+まとめ(1分)
+
+",Hideyuki Ogawa,あとから書く
+273795,Pythonで始めるドキュメント・インテリジェンス入門,#pyconjp_3,10/15,16:00,5,ビジネス文書をデータ化し構造や内容を理解するアプリケーションはドキュメント・インテリジェンスと呼ばれ、画像処理や自然言語処理といった複数の要素技術を組み合わせて開発する必要があります。何が必要でどう実現すれば良いのかといった第一歩を、Pythonでの具体的な構築事例とともに紹介します。,"- 基礎的なPythonの知識
+- 画像処理や自然言語処理についての深い知識は求めません","- ドキュメント・インテリジェンスの概要
+- アプリケーションを構築する上で必要とされる技術と、それを実現する上での具体的なPythonのパッケージとの対応関係の理解
+- 参加者自身の課題に適用するときに必要となる基礎知識、難易度を判断するための具体事例",Intermediate,Machine learning,Japanese,Japanese only,"近年の機械学習技術の飛躍的発展により、計算機が画像や文書をより深いレベルで解析できるようになりました。これにより可能となったのが「ドキュメント・インテリジェンス」で、近年では機械学習の研究対象としても企業における実応用としても盛り上がりを見せている分野です。
+
+ドキュメント・インテリジェンスとは、人間が記述したビジネス文書を機械的に解析する技術の総称です。契約書や発注書、領収書、事業レポートなどのビジネスで利用される書類は、テーブル構造や箇条書きといった人間が読みやすくするための工夫が凝らされ、言葉のみならず図表や記号を活用した多様なフォーマットで記述されます。書類という空間上で自由に表現される文字情報は、ただ画像から文字起こしをするだけでは意味がなく、散らばった文字を有機的につなぎ合わせて言葉を構成し、レイアウトや配置から対応関係を汲み取り、そして解釈する必要があります。このためには画像処理や自然言語処理といった機械学習技術を組み合わせ、一つのアプリケーションして構築することで実現します。
+
+ドキュメント・インテリジェンスのアプリケーションを作る上では、Pythonがもっとも適したプログラミング言語と言えるでしょう。機械学習の文脈で広く用いられるPythonですが、それ以外にも画像処理や文字列処理、ウェブアプリケーション上でのインタラクティブな可視化など、Pythonで利用できる豊富なパッケージにより開発を強力にサポートすることができます。
+
+そこで本発表では、ドキュメント・インテリジェンスの分野を俯瞰しつつ、どのドメイン領域においても共通して必要となる画像処理や自然言語処理の技術を対象に、Pythonで実現するための方法をご紹介します。
+
+- 導入（2 min）
+	- 自己紹介
+- ドキュメント・インテリジェンスとは（10 min）
+	- ビジネス文書の性質
+	- ドキュメント・インテリジェンスの具体事例
+	- 現時点で何ができて何ができないか、人間の認知能力との比較
+	- アプリケーションを構成する各要素技術の紹介
+- Pythonを使った構築事例の紹介 (15 min)
+	- 物理的な紙からの画像への変換
+	- 画像の読み込みとOCRによる文字起こし
+	- テーブルやレイアウト判定、項目の対応関係推定
+	- 文書からの情報抽出
+	- 開発をサポートするインタラクティブなウェブアプリケーションの構築
+- まとめ (3 min)
+	- ドキュメント・インテリジェンスの今後の展望",yag_ays,"2020年7月よりUbie株式会社 機械学習エンジニア。医療ドメインの自然言語処理を中心に、機械学習エンジニアとしてプロダクト開発を行っている。趣味は愛犬のコーギーと遊ぶこと。
+
+https://yag.xyz/"
+267483,組み込み関数powの知られざる進化,#pyconjp_4,10/15,16:00,5,組み込み関数powとは数の冪乗を返す関数です。Python 3.8でpow関数に新たな機能が追加され、整数mを法とする剰余類における逆元が計算できるようになりました。本発表では通常の整数における冪乗との違い、背後で使われているアルゴリズム、活用例について紹介します。,"Pythonに関する予備知識は不要、組み込み関数powやべき乗(a **b）を知っていればOK。
+数学に関する知識は「冪乗」や「剰余（あまり）」の概念を知っていればOK。","- powのような古くからある関数でもアップデートが行われるという知見
+- 何気なく使う関数の背後にあるアルゴリズム（今回は拡張Euclidの互除法）の理解
+- 数学的に興味深い問題（整数論）の紹介",Beginner,Python core and around,Japanese,Japanese only,"Pythonの組み込み関数powは遅くても[バージョン1.4](https://docs.python.org/release/1.4/lib/node26.html#SECTION00330000000000000000)から存在する関数で、数の冪乗を計算する関数です。
+Python 3.8でpow関数に新たなる機能が追加されました。
+それは整数mを法とした剰余類（合同算術）における逆元計算です。
+本発表では計算の具体例や背後にある理論、アルゴリズムの紹介を行います。
+
+- 組み込み関数powについて
+    - 従来（3.7まで）の使い方
+        - pow(2, 3) 2の3乗
+        - pow(2, 100, 3)  2の100乗を3で割った余り
+- 3.8の新機能：剰余類における逆元
+    - pow(38, -1, 97) 38の97を法とした剰余類における逆元
+    - (23 * 38) % 97 = 1
+- 整数mを法とした剰余類とは
+- 拡張Euclidの互除法
+- 逆元が計算可能であるための必要十分条件
+- 計算の効率性
+- まとめ",Hayao Suzuki,"電気通信大学大学院 情報理工学研究科 総合情報学専攻 博士前期課程修了、修士（工学）。
+"
+267640,Visualize 3D scientific data in a Pythonic way like matplotlib,#pyconjp_5,10/15,16:00,5,"Do you want to visualize 3D scientific data in a Pythonic way like matplotlib?  If you want, this talk is for you.
+As you know, matplotlib is a excellent library to plot 2D data in pythonic  but not for 3D scientific data. This is why PyVista is developed.
+It is
+- ""VTK for humans"": a high-level API to the Visualization Toolkit (VTK)
+- 3D plotting made simple and built for large/complex data geometries
+- mesh data structures and filtering methods for spatial datasets
+You will know the way of  visualize 3D scientific data in a Pythonic way like matplotlib.
+I will talk about
+- Hello World! of PyVista
+- Load and plot from a files
+- Extracting and Contourin
+- How to use camera object
+- Plot data over circular arc
+Enjoy pythonic plotting of 3D scientific data!",knowledges about matplotlib,"know-how of  visualize 3D scientific data in a Pythonic way like matplotlib.
+- Hello World! of PyVista
+- Load and plot from a files
+- Extracting and Contourin
+- How to use camera object
+- Plot data over circular arc",Intermediate,Visual / Game / Music,English,English only,"Do you want to visualize 3D scientific data in a Pythonic way like matplotlib? If you want, this talk is for you.
+This talk is the introduction of PyVista. It is
+- ""VTK for humans"": a high-level API to the Visualization Toolkit (VTK)
+- 3D plotting made simple and built for large/complex data geometries
+- mesh data structures and filtering methods for spatial datasets",Tetsuo Koyama,"ARK Information Systems, INC. - Software Engineer (2012-)"
+0246a636-eeda-4c35-b070-b7d16d907d2a,PyCon JP Association公開mtg,#pyconjp_1 (15th: onsite),10/15,17:00,6,,,,,,,,Association公開mtg,,
+273538,コミュニティサービスにおけるレコメンデーションの変遷とAWS SageMakerを用いた機械学習パイプラインについて,#pyconjp_2,10/15,17:00,6,"私の所属するコネヒト株式会社が運営するQAサービス「ママリ」では月間投稿数が約130万件ほどありますが、そのほとんどがルールベースでユーザーに届けられていました.  
+そこで2020年後半から本格的にレコメンデーション機能の実装に取り組み始め、約半年間で様々なアップデートを行い実験してきました. 
+このトークでは、レコメンデーション機能を実装する際に得た知見や勘所を中心に、レコメンデーションアルゴリズムや機械学習基盤構築Tipsをご紹介します.  ","- pythonを用いたデータ分析経験
+- 機械学習ワークフローの基本的な流れ（実務経験はなくとも、知識があれば大丈夫です）
+- （ある良い※任意）レコメンデーションエンジンの開発経験
+- （ある良い※任意）AWS SageMaker/StepFunctionsを使ったことのある経験","- Pythonを用いたレコメンデーションアルゴリズムの実装例
+- 実サービスへ機械学習を導入する際の勘所
+- AWS SageMakerとコンテナを用いたデータ分析（python）環境構築Tips
+- SageMakerとStepFunctionsを用いた機械学習パイプライン構築Tips",Intermediate,Machine learning,Japanese,Japanese only,"# 概要
+現代において我々が使用している様々なサービスは、パーソナライズやレコメンデーションといった機能が当たり前の時代になっています.  
+それと同時に、良いレコメンデーションはサービスの競争力を高めるために非常に重要な役割を担っていると考えられます. 
+私の所属するコネヒト株式会社が運営するQAサービス「ママリ」では、数年前のCM放映をきっかけにユーザー基盤が拡大し、ユーザーの多様性が高くなりました.  
+それに伴い投稿される質問の数やその種類も増えた結果、ひとりひとりのユーザーが抱える悩みを解決できるようなQAを探すのが難しくなってきていました.このような課題感からレコメンデーション機能の導入に踏み切りました.  
+またそれと同時に、日々蓄積される行動ログデータを用いて、安定かつ継続的にモデル学習（Continuous Training）を行う機械学習基盤も必要となってきました.  
+本トークでは、QAサービス「ママリ」において、Pythonを用いたレコメンデーション機能を導入した変遷やそのアルゴリズムをご紹介しつつ、サービス実装時のポイントや、AWSを用いた機械学習パイプラインの構築方法についてご紹介します.  
+
+# Outline
+- 導入（5min）    
+    - 自己紹介  
+    - 一般的なレコメンデーションの説明  
+- ママリにおけるレコメンデーションの変遷とそのアルゴリズム （10min）  
+    - TensorFlowを用いた行列分解によるレコメンデーション（2020.12〜）  
+    - トピックモデリングを活用したレコメンデーション（2021.03〜）  
+    - ニューラルネットワークを活用したレコメンデーション（2021.06〜）  
+- AWS SageMakerを用いた機械学習パイプラインの構築（10min）  
+    - SageMakerを使用する以前に感じていた課題感  
+    - SageMakerを活用するメリット・デメリット  
+    - StepFunctions×SageMakerを用いた機械学習パイプラインの構築方法  
+- まとめと今後の展望について（3min）  
+",takapy,"コネヒト株式会社で機械学習エンジニアとして、機械学習基盤や機械学習モデル・APIの開発に従事。
+
+趣味でデータ分析コンペに出場したり、nlplotという自然言語可視化ライブラリの開発をしています。機械学習をプロダクトに導入し、どうビジネスインパクトを出すかに興味があります。"
+273396,Webアプリを並行開発する際のマイグレーション戦略,#pyconjp_3,10/15,17:00,6,Webアプリの開発中に起こる、マイグレーションの競合を避けるにはどうすればよいでしょうか？複数のブランチで同じテーブルのカラムを追加して使いたい場合や、DBスキーマの変更が競合する場合は、ブランチのマージ時に競合してしまい、解決に苦労することがあります。このトークでは、実際の開発現場で発生したいくつかの事例を元に、トラブルを避けるためのブランチ運用とリリース戦略について紹介します。,"データベースマイグレーション, デプロイ, ブランチマージ
+","DBスキーマ変更を先行リリースし、マイグレーションの競合を避け、安全に並行開発を進める方法
+",Intermediate,Web programming,Japanese,Japanese only,"Webアプリ開発とデータベースマイグレーションには密接な関係があり、Pythonでよく採用されるDjangoやSQLAlchemyには、DBのスキーマを変更するマイグレーション機能があります。一般的に、プログラムを実装するときはリポジトリでブランチを作りそれぞれのブランチで実装作業を進めます。Webアプリの開発でも同様ですが、各ブランチでDBスキーマを変更する場合には注意が必要です。例えば、複数のブランチで同じテーブルのカラムを追加して使いたい場合や、DBスキーマの変更が競合する場合は、ブランチのマージ時に競合してしまいます。多くの機能を並行開発したり、マージするまでの期間が長い場合には、このような競合が増えてしまいます。
+
+このトークでは、Djangoを例に、データベースマイグレーションの仕組みから、実際の開発現場で発生したトラブルとその解決方法について紹介します。
+
+アジェンダ
+
+* データベースマイグレーション機能の紹介
+* DBスキーマ変更が競合するシンプルな例
+* 実際の開発現場で発生したトラブル事例
+* DBスキーマ変更の先行リリース
+* 新旧DBスキーマの並行運用
+",shimizukawa,"株式会社ビープラウド所属。一般社団法人PyCon JP Association会計理事。2003年にZope2をきっかけにPythonを使い始め、その頃からオープンソース等のコミュニティー活動を始めた。Python mini Hack-a-thonやSphinx-users.jpなどPython関連イベント運営のかたわら、カンファレンスや書籍、OSS開発を通じてPython技術情報を発信している。
+
+著書／訳書：『エキスパートPythonプログラミング 改訂3版（2021 アスキードワンゴ刊）』『自走プログラマー（2020年 技術評論社刊）』『Pythonプロフェッショナルプログラミング第3版（2018 秀和システム刊）』『独学プログラマー（2018 日経BP社刊）』『Sphinxをはじめよう第2版（2017 オライリー・ジャパン刊）』"
+273842,Bokeh & Dash Cytoscape 〜 Pythonによるインタラクティブなネットワーク可視化ライブラリの比較,#pyconjp_4,10/15,17:00,6,SNSの友達関係や論文の引用関係など、世の中には何かと何かの「つながり」の構造がたくさん存在します。本発表では、このようなネットワーク構造のデータの可視化を行う上でのポイントと、Pythonでインタラクティブなネットワーク可視化が行えるライブラリとして、BokehおよびDash Cytoscapeの特徴を比較して紹介します。,"- Pythonの基本文法を知っていること
+- pandas、Numpy、 Jupyter Notebookを触ったことがあること。または、どのようなことができるライブラリ・ツールか知っていること","- ネットワーク構造のデータを可視化する上でのポイント
+- Pythonでインタラクティブなネットワーク可視化を行う上でのライブラリの選択肢
+- BokehおよびDash Cytoscapeの特徴と、両ライブラリの基本的な使い方",Beginner,Visual / Game / Music,Japanese,Japanese only,"SNSの友達関係や論文の引用関係など、世の中には何かと何かの「つながり」の構造がたくさん存在します。このようなグラフ構造（ネットワーク構造）を可視化するライブラリやツールは各種ありますが、普段Python を使っている立場からすると、データ取得・前処理から可視化・公開まで、全ての工程をPythonで一気通貫できると嬉しいものです。
+
+Pythonでグラフ構造のインタラクティブな可視化を実現する手段のひとつとして、これまでネットワーク解析のライブラリである「NetworkX」と可視化ライブラリ「Bokeh」を組み合わせる方法がありました。また、新たな選択肢として、複雑ネットワークのツールであるCytoscapeの機能がPythonで使える「Dash Cytoscape」が、2018年末にリリースされました。本発表では、グラフ構造のインタラクティブな可視化ツールの選定基準と、BokehおよびDash Cytoscapeの特徴の比較を紹介します。
+
+▼ 内容（以下は、現時点で予定しているアウトラインです）
+1. 導入 
+2. ネットワーク可視化とは
+3. ネットワーク可視化の基本
+    - ネットワーク構造
+    - スタイル
+    - ノードの位置
+4. Pythonによるネットワーク可視化の選択肢
+5. Bokeh
+6. Dash Cytoscape
+7. Bokeh & Dash Cytoscapeの特徴比較 概要
+8. Bokeh & Dash Cytosacpeの特徴比較 詳細
+    - ネットワーク構造
+    - スタイル
+    - ノードの位置
+    - その他
+9. まとめ",Tomoko Furuki (@komo_fr),大学では知能情報メディアを専攻し、就職後はメーカーにてソフトウエア開発とPythonによるデータ活用のPoCや機械学習の取り組みを経験。科学技術計算分野へのPythonの活用に関心があり、現在は民間の会社でPythonを使ったデータ解析を、大学では研究のためのソフトウエア開発に従事。
+272415,Python x DDD!! - Python で学ぶ実践的なドメイン駆動開発とレイヤード・アーキテクチャ,#pyconjp_5,10/15,17:00,6,ドメイン駆動開発（DDD）やクリーンアーキテクチャといった話題は定期的に盛り上がりを見せますが、Pythonにおける実践的な解説はいまだ多くありません。このセッションでは、分かりやすく具体的なコード例を織り交ぜながら、これらについて解説を行います。聴衆は、他の言語の仕様や実例と比較したうえで、フラットな目線で Python で DDD に取り組むことの良い点と課題点を見つけることができるでしょう。,"・Python のクラスに関する知識
+・オブジェクト指向の知識
+・なんらかのレイヤードアーキテクチャの初歩的な知識（名前を聞いたことがある、程度）
+・サーバーサイドWebアプリケーションの開発基礎知識","オーディエンスは、次のナレッジを持ち帰ることができます。
+
+・Pythonでレイヤード・アーキテクチャ（オニオン・アーキテクチャ）を採用して開発を進めるうえでの前提となる知識
+・ドメイン駆動開発およびレイヤードアーキテクチャに取り組むうえでの、Python と他言語（Go や Dart）の比較や留意事項など
+・Python でレイヤードアーキテクチャを実践するためのプラクティス
+・SQLAlchemy などの O/R Mapper ライブラリとリポジトリパターンを組み合わせるメリット
+・Python で Unit of Work パターンを実践するためのアイデア
+・ユニットテストからみたレイヤード・アーキテクチャ",Advanced,Python core and around,Japanese,Both,"このセッションでは、Pythonで実装するWebアプリケーションを題材に、ドメイン駆動開発やレイヤード・アーキテクチャのプラクティスに触れながら、Pythonでこれらに取り組むことのメリットやデメリットについて解説します。
+
+【トーク構成】
+1. OOPとしてのPythonひとめぐり - ポリモーフィズムとPython
+2. ドメイン駆動開発の構成要素とPythonにおける実装例
+3. ユースケース駆動開発
+4. オニオン・アーキテクチャの構成要素とPythonにおける実装例
+5. リポジトリパターン 〜 SQLAlchemyとの共存
+6. RESTFul APIにおけるCQRS, UoW パターンの実践
+7. 他の言語との比較、Pythonで取り組む意味
+",iktakahiro,"ITベンチャー数社を経て、2015年に東証マザーズへのIPOを経験後、起業。紆余曲折を経て 2019年に株式会社Hakali へ取締役CTOとして参画。「心の健康を支えるデジタル・メンタル・プラットフォームを実現する」をミッションに、「Awarefy」事業の立ち上げに従事。Python、Go、Dart、TypeScript が好き。
+
+著書に、『改訂版 Pythonユーザのための Jupyter[実践]入門 (2020年, 技術評論社)』、『これからはじめる SQL 入門 (2018年, 技術評論社)』などがある。"
+07387464-9c0b-4de1-8905-03d4f09196d6,Lightning talks,#pyconjp,10/15,18:15,7,,,,,,,,,,
+493be128-8d63-4437-8aa5-3ec2223f6d30,Closing (Day 1),#pyconjp,10/15,18:45,8,,,,,,,,,,
+21175b25-cd82-4ca8-8180-156b60188ca5,Venue open / 開場,#pyconjp,10/16,09:30,1,,,,,,,,,,
+9df66830-f7c7-4a48-b7eb-57d6377d4e8c,Opening (Day 2),#pyconjp,10/16,10:00,2,,,,,,,,,,
+58cd1fc5-7292-4e5e-b313-b868625692d0,Keynote: Mr. Brandt Bucher,#pyconjp,10/16,10:30,3,,,,,,,,,,
+269506,Pythonによるアクセスログ解析入門,#pyconjp_1 (15th: onsite),10/16,11:40,4,"本講演では、Webサービスのアクセスログを題材に、Pythonを用いた実装も含めたデータ解析の技法や数々の応用事例を紹介します。具体的には、講師が所属する日本経済新聞社の事例を題材に、記事の閲覧数の集計や推薦を扱います。他社事例として、講師が上位に入った国際的な機械学習コンペティションの話題も取り上げ、国内外でのアクセスログ解析の一端を紹介します。
+","参加者には、Pythonの基礎的な文法を理解している程度の知識を要求します。pandasや機械学習など個別の話題については、概要やライブラリの使い方を具体的に解説する予定です。
+","- アクセスログ解析の概要
+- pandasの概要・便利な機能
+- 日本の事業会社における活用事例
+- 国際的な活用事例
+",Intermediate,Machine learning,Japanese,Japanese only,"Internet of things（IoT）・デジタルトランスフォーメーション（DX）などの流行語と共に、さまざまな業界でデータの蓄積・利活用が進んでいます。身近なところでは、日々利用するさまざまなアプリケーションで利用履歴がアクセスログとして記録され、個人の嗜好に合わせたコンテンツの表示など、ユーザ体験の向上に繋がっています。
+
+本講演では、このようなアクセスログを題材に、Pythonを用いた解析・推薦の技術を紹介します。本講演の講師は10年近くにわたり報道機関に所属し、ここ数年はニュース記事を用いたアクセスログ解析の業務に携わってきました。本講演では、アクセスログ解析の技法や考え方について、業務の中で頻繁に利用するPythonのライブラリによる具体的な実装と合わせて解説します。
+
+構成とタイムラインは以下のとおりです。導入では、アクセスログ解析の概要を解説します。その後、講師が所属する日本経済新聞社の事例として記事閲覧数や記事推薦の話題を取り上げます。ここでは、著名なPythonのライブラリであるpandasの概要や便利な機能を紹介しつつ、具体的な機械学習のプロジェクトも紹介します。最後に他社の事例として、講師が参加して上位に入った国際的な機械学習コンペティションでの事例を取り上げます。講演全体を通じて、アクセスログ解析の基礎やさまざまな応用例に触れていただく機会になります。
+
+- 発表の概要・目次
+- 自己紹介
+- 新聞社でのアクセスログ解析
+- 日本経済新聞社での活用事例1：記事閲覧数の集計
+- 日本経済新聞社での活用事例2：記事推薦
+- 機械学習コンペティション
+- まとめ
+",石原 祥太郎,日本経済新聞社の研究開発部署「日経イノベーション・ラボ」で、上級研究員としてデータ分析・サービス開発に従事。社外活動として国内外の機械学習コンテストで入賞経験を持つ。入門書『PythonではじめるKaggleスタートブック』（講談社、石原祥太郎／村田秀樹・著）の執筆や、勉強会の主催・登壇など、積極的な情報発信にも努めている。2020年、国際ニュースメディア協会より「30 Under 30 Awards and Grand Prize」を受賞。
+270686,実践Streamlit & Flask - AIプロジェクトのプロトタイピングから本番運用までをいい感じにするPythonicなやりかた,#pyconjp_2,10/16,11:40,4,"AIプロジェクトにおいて, Webアプリケーションを開発し, 本サービスとして構築・運用するために何が必要で何が大切か?
+
+というテーマでお話します。
+
+・Streamlitによるプロトタイプ開発とPoC検証
+・Flask/FastAPIを使ったWebアプリケーション開発
+・GCPを使ったホスティングと高トラフィック対策
+
+こちらを「AIワクチン接種予測」という実際のサービス事例および, サンプルのアプリケーションを元に紹介します。","【必須】
+・Pythonを使ったWebアプリケーション開発の経験（Frameworkは問わず）
+・Webアプリケーションをクラウド上で構築・運用をしたことがある（AWS, GCP, Azure等, なんでも結構です）
+
+【あると望ましい】
+・AWS Lambda, Google Cloud Functionsなど, 関数ベースのサーバレスなサービスでWebアプリ開発経験がある
+・FastAPI, FlaskでのWebアプリケーション開発
+・フロントエンドアプリ開発（React, Vue.js, Angular何でもOK）","・機械学習プロジェクトなど, データサイエンティストが作ったプロトタイプを本番サービスとしてローンチするためのノウハウ・勘所
+・Webサイトの高トラフィック対策. 特にクラウド上でWebサービスを運用する際にやったほうがいい・気をつけるべきこと
+・FlaskやFastAPIといった軽量Frameworkを使うときのパッケージ構成の考え方
+・Webアプリケーション開発するエンジニアと, 機械学習エンジニアおよびプロダクトオーナーが円滑にコミュニケーションを進める方法",Intermediate,Web programming,Japanese,Japanese only,"クラウドサービスの発展・発達ですぐにでもWebサービス立ち上げができたり, ちょっとした機械学習もクラウドサービスでいい感じに出来るようになった昨今。
+スタートアップのサービス立ち上げ, 大企業の新規事業やDXなプロジェクトといった「AI・データサイエンスでいい感じなプロダクトが欲しい」という機会が増えた気がします。
+
+例えばJX通信社では, 2021年2月に「AIワクチン接種予測」というプロダクトをリリースしました。
+こちらのプロジェクトは限られた期間で「AI・データサイエンスでいい感じにしてくれ」といった比較的難易度が高いオーダーではじまったのですが,
+
+・データサイエンティスト向けのWeb Framework「Streamlit」で概念実証（PoC）
+・Flask, FastAPIといった軽量Frameworkを活用し本プロダクト開発・運用
+・Google App Engine（GAE）, Cloud Runを全力で活用したサーバレスな運用
+
+といった技術スタック・思想でこの難関なプロジェクトを乗り切りました。
+
+このトークでは,
+
+・データサイエンティストがStreamlitでプロトタイプを作りながらPoCを上手く回す方法
+・PoCから本サービス開発の移行でFlask/FastAPIを使ったサービス開発の勘所
+・GAEやCloud Runといったサーバレス（自分でサーバーの面倒を見ない）なサービスを活用した運用のノウハウ
+
+というストーリーを元に,
+
+・データサイエンティストがやるべきWebアプリケーション開発
+・パッケージ構成やテスト, CIを如何にいい感じにやるか?
+・クラウドサービスを駆使してTV出演（TV砲）などで突然の高トラフィック対策を求められる際にいい感じにやる方法
+
+といった, 「クラウド・AI全盛期の今どきなWebアプリケーション・サービス開発」をPython使いの視点でご紹介します。
+
+【Outline（予定）】
+
+・自己紹介
+・Streamlitを使った爆速プロトタイピング
+　- プロトタイプすなわち動くアプリケーション
+　- ひとまずStreamlitで作る&共有する
+　- 本プロダクト開発を意識したアプリケーション構成とテスト
+・Flaskでバックエンドを作る
+　- FastAPIとFlaskの使い分け?
+　- Streamlitプロトタイプからの移植
+・Google App EngineとCloud Runでの本番運用
+　- TV砲に耐えるための技術
+・小ネタ - 動的なアイキャッチ画像生成をFastAPIで実現する
+・まとめ - クラウド&サーバレス時代のアプリケーションの作り方",shinyorke,"サーバーサイドおよびデータサイエンス, DX関係の色々なエンジニアリングとマネジメントを生業とするシニアエンジニア.
+個人としては「野生の野球データサイエンティスト」として野球データの分析や考察をブログ・登壇で発表しており, Python使いな人たちから「野球の人」と呼ばれている."
+271453,他人が書いたコードのリファレンスをSphinxで作る方法,#pyconjp_3,10/16,11:40,4,"他人が書いたコードを保守する羽目になったら、あなたはどうしますか？コードにはところどころコメントは入っていますがdocstringはついていません。そのうえ書いた本人は退職してしまい、引き継ぎで受け取った設計書には大したことは書いてありません。
+このトークでは、実体験をベースにして、データ分析スクリプト群のリファレンスをSphinxで手軽に作り、更新していく流れを共有します。",Pythonのモジュール、クラス、関数という概念をうっすらでもよいので知っていること。他人が書いたコードを読むのに苦労したことがあれば、より理解しやすいと思います。,コードを書くのにいちいちドキュメントを作るのが面倒くさいと思っている人に、docstringを書いておくだけで十分使えるリファレンスが簡単に作れること、その後のコード修正の際も簡単にリファレンスが更新できることを実感いただけます。,Intermediate,Python core and around,Japanese,Japanese only,"データ分析系のコードは、試行錯誤を重ねるのが普通ということもあり、あまりドキュメントが整備されていないことが多い。コードを書いた本人が自分向けにコメントをつけていればまだよいほうで、ときにはコメントすらもほとんどないコードもよく見かける。
+
+ところが試行錯誤の結果「これいいね」となると、そのコードがそのまま通常業務に組み込まれてしまい、コードを書いた本人以外のメンバーも利用する状態になることがある。そうするとそのコードは使い捨てのものから保守対象に変化する。
+
+本人が在籍しているうちは本人に保守させればよいのだが、別の組織に異動してしまったり、場合によっては退職してしまうと、ドキュメントのない不思議なコードだけが保守対象として残ってしまう。
+
+せめてクラスや関数のリファレンスがあれば何とか保守を引き継げそうなものだが、当然それもない。
+「簡単な設計書つけておきました〜」などと引き継ぎのときに言われても信じてはいけない。往々にしてそれは本当に簡単なもので、役に立たないからだ。
+
+本発表では、そういう状況で残されたドキュメントのないコード（複数モジュール）を読みこなして適切にdocstringを追記し、Sphinxを活用してクラスと関数のリファレンスを作成した実体験に基づき、いかにパワーをかけずに必要最低限のドキュメントを作成・維持していくかについて共有する。
+
+紹介するのはデータ分析スクリプトだが、他の目的で作成されたスクリプトであっても同様の状況は起こりうる。このような苦労を招かないよう、普段からdocstringを記述することを啓蒙したい。
+
+構成とタイムラインは下記を想定している。
+
+1. 自己紹介、課題意識の共有（3分）
+2. 元となるコードの概要紹介（3分）
+3. docstringをつけていく（7分）
+4. Sphinxの設定とリファレンスの作成（7分）
+5. 陳腐化させない工夫（5分）
+6. まとめ・提言（3分）
+
+バッファ2分
+
+
+",Takeshi Sugiyama,Using Python since 2014
+273834,ＭＶＣアーキテクチャを Dash で理解する,#pyconjp_4,10/16,11:40,4,"ＭＶＣアーキテクチャ は、インタラクティブなWebアプリケーションを実装する際のフレームワークの一種です。
+
+このトークでは、インタラクティブなWebアプリを作成できるWebフレームワーク Dash を例に ＭＶＣアーキテクチャ を理解していただくと同時に、Dash や Streamlit などの仕組みも理解できます。
+
+みなさん、自分のアイデアをWebアプリにしてみませんか。",特になし,"・ＭＶＣアーキテクチャを理解できる。
+・DashでインタラクティブなWebアプリの仕組みを理解できる。
+・Streamlitの特異な仕組みも理解できる。
+・今回紹介するWebアプリで、DashでWebアプリを容易に作成できる。",Beginner,Web programming,Japanese,Japanese only,"ＭＶＣアーキテクチャは、インタラクティブなWebアプリケーションを実装する際のフレームワークの一種です。
+一方、Dash は、インタラクティブなWebアプリが作成できるPython の Webフレームワークです。
+このトークでは、Webフレームワーク Dash のコードや具体的な動きを見て、ＭＶＣアーキテクチャを解説します。
+
+ＭＶＣアーキテクチャというメタ知識を理解することは、Dash をはじめ、他のインタラクティブなWebフレームワークを習得する一助になると私は考えます。
+その一例として、最近話題の Streamlit についてもＭＶＣアーキテクチャの観点から、その独特な仕組みについて解説します。
+
+最後に、Dash を習得する際に初心者が手間取りそうな問題点を説明し、その問題点の克服するWebアプリをDashで作成しましたので紹介します。
+
+構成とタイムラインは以下のとおりです。
+
+- 導入（5min）
+　- 自己紹介
+　- ＭＶＣアーキテクチャとは
+　- Dashの紹介
+- MVCアーキテクチャをDashで理解する（10min）
+　- View
+　- Model
+　- Controller
+- Streamlit について（3min）
+　- ＭＶＣアーキテクチャで理解する
+- 自作アプリの紹介（7min）
+　- 初心者が感じる問題点
+　- デモンストレーション
+- まとめ（1min）",malo21st,今年７月末にサラリーマン生活を早期リタイアして、Pythonアルバイターやってます。（お仕事ください）
+272378,Better Python Testing With Nimoy,#pyconjp_5,10/16,11:40,4,"I've created Nimoy - a Python DSL which makes testing fun again. In this session I will show how Nimoy combines the power of DSLs and Domain Driven Testing, to help you test better",Audience should be familiar with current Python testing techniques,"The audience will learn about the power of DSLs and Domain Driven Testing, through examples of how to test with Nimoy",Intermediate,Python core and around,English,English only,"Python has a super rich and active ecosystem, and py.test is great, but I believe we can do even better.
+This is why I've developed a new testing framework and DSL named ""Nimoy"".
+Heavily inspired by the Spock testing framework, the framework introduces a DSL that improves Python testing and challenges Pythonic idioms.
+Using Nimoy, I set out to make Python testing beautiful, expressive, pragmatic and fun.",Noam Tenne,"A hacker-hearted software engineer and DevOps Cowboy. Has been working on both cloud based and on-premise platforms, gaining much experience in building scalable, mission critical web applications and microservices. Now wreaking havoc at Healthy.io
+"
+58138112-6984-4510-845a-d4b244eb481a,ランチタイムセッション,#pyconjp,10/16,12:40,5,,,,,,,,Day2ランチタイムにスポンサーによるスペシャルなセッションを開催します。ここでしか聞けないような話題が盛りだくさんです。ランチを食べながら是非お聞きください。,,
+273602,Pythonのバリデーション定義からフロントエンドTypeScriptのコード生成,#pyconjp_1 (15th: onsite),10/16,13:50,6,バリデーションライブラリ Marshmallow の Python のクラス定義を解析し、 TypeScript のコードを動的生成するツールを開発した。これにより、型定義とバリデーション実装の共通化を可能とした。,"基本的なWeb開発の知識
+コード解析、TypeScriptについての知識があると尚可","- フロントエンドとバックエンドの統合の手法
+- 簡単な動的解析のやり方や、コードの動的生成とその運用のプロセス",Intermediate,Outside of Python language,Japanese,Japanese only,"自社開発のデータ分析・活用プロダクトを新規開発する際、バックエンドに Flask、フロントエンドに TypeScript を採用しました。ですが、 JSON API の リクエスト/レスポンスの型定義の管理が人力で行なわれており、抜け漏れやタイプミス、undefined エラーが多発してしまうことが問題でした。
+
+そこで、プロダクトで利用していたバリデーションライブラリ Marshmallow のクラス定義を動的解析し、JSON API の TypeScriptの型定義生成、およびフォームのバリデーション関数の実装生成を行うツールを開発しました。これにより、APIのスキーマにTypeScriptの型が追従するようになり、またフロントエンドのフォームのバリデーションとバックエンドによるバリデーションの共通化ができるようになりました。
+
+発表では、Pythonの動的解析やTypeScriptコード生成の具体的な方法のほか、実際の開発プロセス中でこのツールがどのように運用されているかもデモを交えながらご紹介します。
+
+発表のアウトライン（時間は目安です）
+
+・はじめに、自己紹介(2分)
+
+・背景説明(TypeScriptの基礎やMarshmallowの説明) (5分)
+
+・具体的な実装方法とCIへの組み込み (15分)
+
+・コード生成のデモ(3分)
+
+・まとめと展望(4分)
+
+",一宏 柴内,株式会社ブレインパッドのソフトウェアエンジニア。データ活用プロダクトの基盤開発に従事。
+273843,絵を読む技術 Pythonによるイラスト解析,#pyconjp_2,10/16,13:50,6,"このトークは、イラストの鑑賞や制作をより楽しむための知識とスクリプトを紹介します。
+前半では、イラストの構成要素から、それらを効果的に組み合わせる構図まで、できるかぎり体系的に解説します。
+後半では、前半で解説した内容を踏襲して、実際のイラスト鑑賞・制作に応用するためのPythonスクリプトをいくつか紹介します。",絵画やイラストへの興味があれば、他に必須の知識はありません。,"・絵画やイラストの見方
+・イラストの構成や構図の知識
+・イラストのラフや下地のパターンを手軽に手に入れる方法
+・Pythonでイラストを楽しむTips",Intermediate,Only for fun or try new technique,Japanese,Japanese only,"絵画やイラストは、多くの人々の目を引きつけます。
+しかし、多くの人はなぜ自分がその絵画やイラストに惹かれるのか、論理的な説明ができません。
+この問題は、駆け出しの絵師やイラストレーターが戦略的に絵を描くことができないことにも共通します。
+このトークでは、イラストが目を引く論理を解説し、Pythonでイラストを分析・制作するいくつかの方法を紹介します。
+
+前半は、イラストを構成する要素と、それらを組み合わせるパターンの解説です。
+イラストを線、色、明度、シェイプなどの構成要素に分解し、それらを効果的に配置するための技法を解説します。
+構成要素について理解を深めたら、それらを組み合わせた構図について学び、実際の絵画やイラストを見ながらパターンを探ります。
+
+後半は、イラストの分析や下地の生成に使えるPythonスクリプトをいくつか紹介します。
+紹介するのは、画像を単純な要素に変換するスクリプトと、絵画やイラストから学習したパターンをランダムに生成するスクリプトです。
+他にも、当日用意できる限りのスクリプトを紹介します。
+
+構成とタイムラインは次の通りです。
+
+- 導入（3min）
+　- 自己紹介
+　- 共感
+　- プレゼンの目的
+- 前半：イラストの構成や構図を紐解く（10min）
+　- イラストの構成要素
+　- 構成要素のタイプや配置による効果
+　- 感情を動かす構成要素別の要因
+　- 色やライティングで変化するストーリー性
+　- キャラクターをメインとした構図パターン
+　- 背景をメインとした構図パターン
+- 後半：イラスト鑑賞・制作のためのPythonスクリプト（10min）
+　- 画像を単純な要素に変換するスクリプトの解説と活用方法
+　- 頻出パターンをランダム生成するスクリプトの解説と活用方法
+　- その他スクリプトの解説と活用方法
+- おすすめの学習リソース (1min)
+- まとめ (1min)
+
+なお発表当日は、著作権に十分配慮した絵画やイラストを例として使用します。",Hirosaji,Web Enginner / Illustrator
+272259,Loggingモジュールではじめるログ出力入門,#pyconjp_3,10/16,13:50,6,"ログを出力したいとき、皆さんはどうしていますか？
+このトークでは、Pythonに標準搭載されているLoggingモジュールをご紹介します。
+モジュールの利用シーンや仕様、実装例を確認しつつ、AWSとGCPの一部サービスにおける出力例をお見せします。
+このトークがLoggingモジュールを知るうえでの見取り図になれば嬉しいです。","- Python でのコーディング経験
+- 標準出力や標準エラー出力に関する基礎知識","- Logging モジュールを利用するか否かの判断基準
+- Logging モジュールの構成部品に対する理解
+- Logging モジュールの利用方法と実装例",Intermediate,Python core and around,Japanese,Japanese only,"Python に標準搭載されている Logging モジュールの仕様を確認しつつ、具体的な利用方法について紹介することで、ログをより便利に楽しく出力する方法をお伝えします。トークは以下に述べる4部構成です。
+
+第1部では、自己紹介と、このトークのゴールである「Logging モジュールを知るうえでの見取り図を届ける」について述べます。
+第2部では、Logging モジュールの仕様と実装例を紹介します。モジュールの存在理由と利用シーンを紹介しつつ、Logger や Handler、 LogRecord などの構成要素がどのような順番で作用してログが生成されるのか、その出力に至るフローを辿り、実装例をお見せします。
+第3部では、AWS・GCP が提供するサービスにおける、Python ログ出力について紹介します。サービス特有の仕様により、ログ出力が想定した形でなされないケースがあります。第2部で紹介した内容をベースに実装例を紹介します。
+第4部では、セッション内容を総括するとともに、どのようなログを出力するとよいのか？に関する私見を述べます。
+
+1. はじめに(3 min)
+    - 自己紹介
+    - 当セッションのゴールと持ち帰れるもの
+2. Logging モジュール探訪(15 min)
+    - モジュールの目的
+    - 利用シーンと判断基準
+    - 構成要素
+    - 出力フロー
+    - logging.warning と logger.warning の違い
+    - バージョン間の差異
+    - 時刻に関するTips
+    - Python 3.9 での実装例
+3. パブリッククラウドサービスにおけるPythonログ出力(10 min)
+    - The Twelve-Factor App
+    - Amazon Web Services
+        - Amazon CloudWatch Logs
+        - AWS Lambda(Zip)
+        - AWS Lambda(Container)
+        - AWS Glue(Python Script)
+    - Google Cloud Platform
+        - Google Cloud Logging
+        - Google Cloud Functions
+        - Google Cloud Run
+4. おわりに(2 min)
+    - セッション内容のまとめ
+    - 理想的なログとは？に関する私見",Toshifumi Tsutsumi,"データエンジニア。SIer、製造業を経て2020年12月より現職。AWSやGCPでわいわいするのが好きです。
+Twitter: @tosh2230"
+273529,PythonとUnityで手軽に強化学習をやってみよう！,#pyconjp_4,10/16,13:50,6,"UnityとPython（TensorFlow）を連携させることで、シミュレータを利用した強化学習をおこなうことができます。
+Unity社が公式に提供している「Unity ML-Agents Toolkit」を利用することで手軽に環境構築が可能です。
+この発表を聞くことで強化学習やUnityに対する理解が深まるとともに、「Unity ML-Agents Toolkit」の仕組みや使い方を知ることができます。","以下の前提知識があれば理解の助けになりますが、発表中に説明を含めますし難しい内容は話さないのでなくても問題ありません。
+- 強化学習
+- TensorFlow
+- Unity","- 強化学習についての簡単な理解
+- Unityについての簡単な理解
+- 「Unity ML-Agents Toolkit」を利用した強化学習のやり方や仕組み",Beginner,Machine learning,Japanese,Japanese only,"UnityはUnity社が提供しているゲーム開発エンジンです。
+Unityでは3Dモデルの物理演算やシミュレーションを手軽に実施することができます。
+Unity社から提供されている「Unity ML-Agents Toolkit」を使用することでPython（TensorFlow）とUnityを連携させて強化学習をおこなうことができます。
+
+本発表では「Unity ML-Agents Toolkit」を使用した強化学習について発表します。
+まず強化学習やUnity、TensorFlowについて簡単に説明します。
+その後「Unity ML-Agents Toolkit」の仕組みや使い方を解説します。
+最後に「Unity ML-Agents Toolkit」を使用した事例を紹介します。
+
+- 導入（2分）
+  - 自己紹介
+- 強化学習についての説明（7分）
+  - 強化学習とは
+    - シミュレータ内でエージェントに行動させ、獲得報酬が最大化するような推論モデルを生成する手法
+  - 強化学習をおこなうために必要な要素
+  　- シミュレータと学習・推論する仕組みが必要
+-「Unity ML-Agents Toolkit」についての説明（8分）
+  - Unityとは
+   - UnityはUnity社が提供しているゲーム開発エンジン
+   - 3Dモデルの物理演算やシミュレーションを手軽に実施できる
+  - 「Unity ML-Agents Toolkit」とは
+   - Unity社から提供されている(公式ツール) 
+   − UnityとTensorFlowを利用して強化学習を行うためのツール
+  - TensorFlowとは
+   - Googleが中心となって開発しているオープンソースの機械学習ライブラリ
+  - 「Unity ML-Agents Toolkit」の仕組み
+   - Unityがシミュレータとなり、学習・推論はTensorFlowが行う
+   - Unity内での行動結果をTensorFlowに入力し、学習・推論する
+   - 推論結果をもとにUnity内で行動をおこなう
+-「Unity ML-Agents Toolkit」の使い方（7分）
+  - Unityと「Unity ML-Agents Toolkit」のインストール
+  - エージェントや報酬の設計
+  - 学習状況の確認
+-「Unity ML-Agents Toolkit」の応用例（5分）
+　− ゲーム開発での利用例（Unity社の事例紹介より引用）
+- まとめ（1分）",YAMADA Shuhei,"Unity, Machine Learning and Scrum"
+273275,Flask 2.0 vs Fast API in REST API developments,#pyconjp_5,10/16,13:50,6,"This talk compares the features of Flask 2.0 with that of Fast API for REST API development by using the four comparison indicators. By explaining the variety, performance, flexibility, learning cost of both frameworks, it could help python engineers to choose one in their daily developments.","Experiences to use REST API, Architecture, Python, Data Science, ML","- Features of Flask and Fast API
+- Strength and Week of Flask and Fast API
+- The way to use Flask and Fast API
+- How to choose the appropriate python framework ",Advanced,Web programming,English,English only,"Target Audience:
+Python engineer working in data oriented projects, Machine Learning Engineer, Data Scientist, Data Engineer, Product owner/Project manager of data oriented products. 
+
+【Introduction(3m)】
+Background(1m):
+One of the artifacts generated in Data and ML oriented projects can be REST API. When choosing the python framework, there seem to be many python engineers who wonder which frameworks is more appropriate, Flask or Fast API. Recently, Fast API seems to be getting more attention than before. On the other hand, Flask has major version up in May 2021 and the reputation as a most popular python framework according to the survey from Jet Brain which is ""Python Developers Survey 2020 Results"". 
+
+In order to help python engineers to decide which python framework should be used in their project, this talk summarizes the features of Flask 2.0 and Fast API through comparison and demonstration.
+
+Main updates of Flask 2.0(2m):
+- Nested Blueprint
+- Async/Await
+- Type Hinting
+- Others
+   -- 15x speed up of multipart/form-body
+   -- Routing shortcut
+   -- ...
+
+【Main Talk(25m)】
+Features of Flask 2.0 and Fast API(3m):
+- Overview of Flask 2.0 and Fast API
+- What libraries are installed after pip install each framework?
+
+Four Comparison Metrics between Flask 2.0 and Fast API(2m):
+- Variety of Functions / Extension / Tools
+- Performance(Speed and Stability) of sync and async
+- Flexibility of REST API Architecture
+- Learning Cost
+
+1. Variety of Functions / Extension / Tools(5m):
+- Flask
+  -- Flask Extensions
+     --- Introduce what each flask extension look like
+   -- Blueprint
+     --- code without blueprint
+     --- code with blueprint
+     --- code with nested blueprint
+
+ - Fast API
+   -- Pydantic
+   -- Open API
+
+2. Performance(Speed and Stability) of sync and async(5m):
+- Introduce vegeta as a loading test tool
+- Flask2.0
+   -- Share the code which has sync and async implementation
+   -- Reports of each result of loading test 
+     --- Speed and Stability
+
+- Fast API
+   -- Share the code which has sync and async implementation
+   -- Reports of each result of loading test
+     --- Speed and Stability
+
+3. Flexibility of REST API Architecture(5m):
+- Directory Design of API
+- Flask 2.0
+   -- Small API
+   -- Bigger API
+
+- Fast API
+   -- Small API
+   -- Bigger API
+
+4. Learning Cost(5m):
+- Complexity of Coding Styles
+   -- Compare the grammars of Flask 2.0 and Fast API
+- Resource Volumes as Learning Materials
+  -- Movies: the Numbers of Pycon Talks
+  -- Papers: the Numbers of Published Documents/Books
+  -- Share some learning materials in JP/Eng
+
+【Summary(2m)】
+Summary of Flask 2.0 and Fast API in ML API developments(2m):
+- Pro and Cons of both framework based on the four metrics
+- Future Work",Tetsuya Jesse Hirata,"Tetsuya is a software engineer based in Tokyo. He has been involved with several AI/ML projects in EdTech domain and has mainly been implementing ML APIs and ML Ops environment. Prior to this, he used to research the relationships between online learning behaviors and learning outcomes at the UCL Institute of Education (IOE) in the UK. His interest is in how to bridge the gap between data science and engineering.
+
+https://www.linkedin.com/in/tetsuya-hirata-a31b52134/
+https://twitter.com/JesseTetsuya
+https://medium.com/@JesseTetsuya"
+272672,Vertex Pipelines ではじめるサーバーレス機械学習パイプライン,#pyconjp_1 (15th: onsite),10/16,14:50,7,"このトークでは機械学習パイプラインを構築する方法について、具体的なノウハウを共有します。
+Vertex Pipelines で用いられる Kubeflow Pipeline は現在、V1 から V2 へと大きな変更の途中であり、ドキュメントも未整備で、イチから使い始めることはなかなか困難です。
+このトークを聞くことで、Vertex Pipelines を用いて機械学習パイプラインをサーバーレスに構築する方法の見当がつくようになります。","次の3点を前提とします
+
+- 機械学習についての基礎知識 (学習用/評価用データ、モデルの訓練、評価指標)
+- Python で何らかの CLI アプリケーションを作成した経験 (`argparse` を使ったことがある、程度)
+- コンテナの基礎的な知識 (`docker build`, `docker run` がわかる程度)
+
+時間の都合上コンテナの扱いについてはあまり詳細には触れません、Kubernetes の知識も不要です
+","- 機械学習パイプラインについての基礎的な知識
+- Vertex Pipelines で機械学習パイプラインを動かすために必要な Kubeflow Pipelines SDK V2 の最低限の仕様
+- Kubeflow Pipelines SDK を用いた機械学習パイプラインの構築方法とハマりどころ
+",Intermediate,Machine learning,Japanese,Japanese only,"機械学習を本番環境で利用するための取り組みである MLOps が広く知られるようになってきました。
+中でも、機械学習における CI/CD に相当する CT (Continuous Training) を実現する機械学習パイプラインを、Kubeflow Pipelines を用いて紹介します。
+
+はじめに、機械学習パイプラインに要求される要件について概要を述べます。
+ここでは機械学習パイプラインが満たすべきそれぞれの要件について確認します。
+機械学習パイプラインではその特性上、コードだけではなく、データとコードを合わせたバージョン管理が必要になります。
+また、学習時には GPU を用いる必要があるケースもあり、柔軟な計算資源の確保も必要です。
+
+次に、Kubeflow Pipelines を用いたパイプラインの構築について概要を述べます。
+Kubeflow Pipelines では Python を用いてパイプラインを構築できます。
+ここでは、""Hello, world"" のようなかんたんなパイプラインを用いて、実装方法を述べます。
+また、GCP の Vertex Pipelines を用いることで、機械学習パイプラインをサーバーレスに構築できることを確認します。
+
+最後に、私が作成しているサンプルのパイプライン https://github.com/reproio/lab_sample_pipelines/tree/main/kfp を例に、実用的なパイプラインの構築例について述べます。
+
+構成とタイムラインは次のとおりです。
+
+- 導入 (2 min)
+  - タイトル
+  - 自己紹介
+- 機械学習パイプライン (5 min)
+  - 機械学習パイプラインとは
+  - 機械学習パイプラインに求められる要件
+    - データとコードのバージョン管理
+    - 柔軟な計算資源の確保
+  - Kubeflow Pipelines / Vertex Pipelines
+- Kubeflow Pipeline を用いたパイプライン構築 (10 min)
+  - Hello, world
+  - コンポーネントの実行順序の定義
+  - GPU の利用
+- Lab Sample Pipeline の紹介 (10 min)
+  - 仕様の説明
+  - ディレクトリ構造の説明
+  - コンポーネントの実装と単体テスト
+  - ComponentSpec の記述例
+  - パイプラインの実装
+  - ML Metadata によるコードとデータのバージョン管理
+- まとめ (2 min)
+",Sugiyama Asei,"Kubeflow Pipelines, TFX のコントリビューター。業務では Repro で Software Engineer としてデータサイエンスや機械学習を用いた新規サービスの研究開発業務に従事中。「見て試してわかる機械学習アルゴリズムの仕組み 機械学習図鑑」の共著者のひとり。"
+273578,High Performance FastAPI,#pyconjp_2,10/16,14:50,7,"スマートニュースでは、一部のサービスのバックエンドに FastAPI を採用しています。
+
+ピーク時は秒間数万リクエストにも達するトラフィックを捌く Web アプリケーションを FastAPI で構築するためのノウハウとして、
+プロファイリングの手法から、我々が直面した課題やその対応策についてお話させていただきます。","- 基礎的なWebバックエンドプログラミングに関する知識
+- 基礎的なPythonに関する知識","FastAPI および Python Web アプリケーションパフォーマンスチューニングの具体的な手法
+
+- プロファイリング手法とボトルネックの特定
+- 我々の環境で発生した具体的な課題とその対策",Intermediate,Web programming,Japanese,Both,"スマートニュースは、「世界中の良質な情報を必要な人に送り届ける」ことをミッションに、
+クーポンや新型ウイルス、ワクチンアラームといった新しい機能を日々提供しています。
+
+高速にサービスを立ち上げ、かつ継続的にユーザーに価値を提供するためには、高速なイテレーションが欠かせません。
+これらの目的を達成するため、一部のサービスではバックエンドサーバーで Python と FastAPI を採用しています。
+
+FastAPI を採用したあるサービスで、一部のユーザーへのテストローンチでは結果は上々。
+いよいよフルローンチ、という際にパフォーマンスの問題が立ちはだかりました。
+
+ピーク時には秒間数万リクエストにも達するスマートニュースの膨大なトラフィックに、我々はどのように立ち向かったのか。
+FastAPI / Python Web アプリケーションにおけるプロファイリングの手法から、具体的に直面した課題やその対応策についてお話させていただきます。
+
+アウトラインは以下となります。
+
+1. Introduction / SmartNews における Python(5min)
+　- 自己紹介
+　- SmartNewsとPython
+　- FastAPI
+　- システム構成
+2. 負荷テストとプロファイリング(5min)
+　- 負荷テストツール
+　　- locust
+　- プロファイリングツールとボトルネックの特定
+　　- fastapi_profiler
+　　- py-spy
+　　- Datadog APM
+3. 直面した課題と対応(10min)
+　- FastAPI Web Application の構成とパフォーマンス特性
+　　- gunicorn -- uvicorn -- Starlette -- FastAPI
+　- I/O bound な処理
+　　- async/await
+　- CPU bound な処理
+　　- LRU Cache
+　　- Cython
+　　- numpyによるベクトル化
+　- logging performance ... multi-thread と GIL
+　　- async/await
+　- 処理系の変更による全体的な高速化
+　　- PyPy
+4. まとめ(1min)",Ikuo Suyama,"Backend Engineer, based on the Internet advertising industry."
+273836,ラズパイとDashで環境ダッシュボードを作ろう,#pyconjp_3,10/16,14:50,7,このトークでは、著者が作成しているセンサー情報のダッシュボードWebアプリの制作過程から、Pythonを使ったIoTとデータ可視化のWebアプリの作成方法について共有します。,"Pythonの基本的文法,
+Webアプリの構造,
+電子部品のセンサー素子の種類（センサーの仕組みがわかると応用しやすいです）
+","Raspberry PIとPythonを使った開発方法,
+環境センサーの情報取得方法,
+データ可視化の手順,
+Dashの基本的な扱い方",Intermediate,Python core and around,Japanese,Japanese only,"このトークでは、著者が作成しているセンサー情報のダッシュボードWebアプリの制作過程から、Pythonを使ったIoTとデータ可視化のWebアプリの作成方法について共有します。
+
+PythonはIoT界隈でもよく利用されている言語です。対応するサービス、デバイス、エコシステムが多数あります。Pythonを触ったことがある方でIoTや可視化を行う上で利用することができるデバイスやライブラリの組み合わせを、実際に作成したWebアプリを元に紹介します。
+
+PythonとIoTではラズパイ（Raspberry Pi）との組み合わせが普及しています。多数のセンサー（温度、湿度といった環境センサー）や一緒に利用するライブラリがありますが、今回はCircuitPython（マイコンボードで動作する組み込み向けのmicropythonのフォーク, adafruit社が開発元）のライブラリをRaspberry Pi上で利用する方法を紹介し、比較的初学者でも扱いやすいセンサーデータの取得方法を解説します。
+
+さらに可視化を行うに、Dashというデータ分析、可視化で利用されているWebアプリを用いてセンサー情報をWebアプリで表示する方法も紹介します。
+
+---
+
+構成について（時間は現時点で想定となります）
+
+* 導入（7min
+    * 自己紹介
+    * 著者作成のWebアプリの紹介
+    * Webアプリの全体構成
+* PythonとIoT（10min
+    * micropython/CircuitPythonの紹介
+    * Raspberry PiでPythonを扱う方法:VSCodeのリモート開発が便利です
+    * CircuitPythonのライブラリをRaspberry Piで扱う
+    * センサー情報取得の実例: BME280という温度湿度センサーから情報を取得する
+* Dashでセンサー情報を可視化する（10min
+    * Dashの紹介
+    * Dashの基本的な構成の紹介:
+        * HTMLを書く必要がない
+        * ホットリロードによる開発
+        * フォームなどの操作から動的な変更:コールバック機能
+    * センサー情報を可視化する
+    * Dashの便利なライブラリ: Dash bootstrap componets（dbc）によるデザインの整え方
+* まとめ（3min",hrsano645,"佐野設計事務所所属 
+静岡県富士市在住。普段は自動車機械設計業のITインフラ担当。
+静岡のPythonコミュニティに参加、PyCon mini Shizuokaのスタッフ"
+272767,Pythonでつくる宣言的UIラッパーフレームワーク 〜 既存GUIフレームワークの調査を添えて,#pyconjp_4,10/16,14:50,7,"このトークでは、PythonでGUIを書くことに注目して、既存フレームワークの特徴と使用時の注意事項を概説します。
+また、後半では自作した宣言的UIラッパーフレームワークの紹介を通じて、モダンな宣言的UIフレームワークの仕組みとともにPythonの柔軟な文法がもたらす実装のアイディアを示します。
+このトークを聞くことで、Pythonでアプリをつくる際の選択肢が増え、GUIフレームワークの変遷を知り、同時にPythonの懐の深さに触れられるでしょう。","前半の「Pythonで使えるGUIフレームワークの概説」部分ではPythonの詳細な知識は不要です。ReactやVue.jsその他のGUIフレームワークを使ったことがあれば理解しやすいですが、必須ではありません。
+Python 3の基本的な文法、クラス、`with`ステートメントに関する知識を持っていると、後半の「自作した宣言的UIラッパーフレームワークの紹介」部分の理解がしやすいかと思います。","- GUIフレームワークの変遷（Pythonに限らない一般的話題）
+- PythonでGUIを書くための既存フレームワークの特徴と注意事項
+- `with`ステートメントと`__new__()`メソッドを用いた実装のアイディア",Beginner,Visual / Game / Music,Japanese,Japanese only,"導入では、私がPythonでGUIを書きたいと思ったきっかけについて述べ、その際にライセンスの問題でフレームワーク選定に苦労した経験を話す予定です。
+前半の「Pythonで使えるGUIフレームワークの概説」部分では、一般的なGUIフレームワークの変遷に沿って既存フレームワークを順次紹介し、メリットやデメリットを述べる予定です。
+後半の「自作した宣言的UIラッパーフレームワークの紹介」部分では、自作した宣言的UIラッパーフレームワークの紹介を通じて、モダンな宣言的UIフレームワークの仕組みとともに`with`ステートメントと`__new__()`メソッドを用いた実装のアイディアを示します。
+
+- 導入（5min）
+    - 自己紹介
+    - PythonでGUIを書きたい！
+- Pythonで使えるGUIフレームワークの概説（15min）
+    - 命令的UIフレームワーク（e.g. Tkinter, PyQt, PySide）
+    - テンプレートを用いた宣言的UIフレームワーク（e.g. Kivy, PyQt + QML, Enaml)
+    - コードによる宣言的UIフレームワーク (e.g. Flexx, Edifice)
+- 自作した宣言的UIラッパーフレームワークの紹介（9min）
+    - Why ""wrapper""?
+    - Flexxとの類似点と差分
+    - `__new__()`メソッドによる魔法
+- まとめ（1min）",Yuta Urushiyama,"都内勤務のエンジニア1年生。macOSアプリを作ったり自作キーボードを作ったり、ものづくりが大好き。
+Pythonでは[口パク動画を音声データとテキストから生成するアプリ](https://github.com/urushiyama/PronounceMovieMaker)を作ったり、その過程でPyPIに[Perlで書かれたライブラリを移植したり](https://pypi.org/project/PySegmentKit/)しています。
+
+本トークは完全に個人の趣味であり、所属組織とは全く関係ありません。
+
+**経歴**
+
+- 1997年02月 新潟県にインスタンスが生成される
+- 2021年03月 筑波大学大学院システム情報工学研究科コンピュータサイエンス専攻 博士前期課程（修士）を修了
+- 2021年04月 税務会計と農業のIT企業にエンジニアとして入社"
+270384,Neural Prophet – A powerful AI framework for Time Series Models,#pyconjp_5,10/16,14:50,7,"In this talk we are going to cover the following points:
+
+Quick intro about Time Series
+What is Neural Prophet?
+Difference between Neural Prophet vs Prophet
+Why we need Neural Prophet?
+Hands on Case study (From analysis to generating forecast Models)
+Future opportunities with NP
+
+","# Prerequisites 
+* Curiosity to learn something new
+* Familiarity with Time Series
+* Basic understanding of Neural Networks
+","By the end of the talk, I will make sure, one should be able to understand this powerful  time series framework, its usage, and benefits.
+",Intermediate,Machine learning,English,English only,"# Abstract - Neural Prophet, a new framework that extends on the original prophet framework, addresses pain points such as scale, customization and extensibility.it incorporates traditional statistical and neural network models for time series modeling, used in forecasting and anomaly detection.
+
+# Description
+The best thing is you can get started easily using Neural Prophet. Neural Prophet is a relatively new library that uses Facebooks Prophet time series forecasting package and a Pytorch AR-Net model to produce highly accurate time series forecasts quickly. This is heavily inspired by Prophet, which is the popular forecasting tool developed by Facebook.
+This framework is a decomposable time series model with the components, trend, seasonality, auto-regression, special events, future regressors and lagged regressors.
+",Kalyan,"A self-taught data scientist/analytics manager, speaker & community first-person, Kalyan has contributed to various tech communities. He enjoys being involved with these communities and helping them grow. Currently I am associated with the following groups below:
+Hyderabad Python Users Group – Core Member/ Meetups Organizer
+PyConf Hyderabad – Organizing Committee Member
+PyCon India – Review Panel Work Group Lead
+Humans for AI – Program Manager for AI learning Community  
+ "
+269708,Locust実践編: Pythonで書く負荷試験一問一答,#pyconjp_1 (15th: onsite),10/16,16:20,8,"JX通信社は速報に特化したサービスを提供しています。大きなニュースが飛び込んできた時のトラフィックのスパイクを支えるための負荷試験が必須となります。
+
+本セッションでは、そんな速報サービスを運用していくなかで蓄えたLocustによる負荷試験の具体的なノウハウを、「こんなときはどうする？」の一問一答形式でデモとサンプルコードを中心にお話しします。","- 基本的なPythonの構文についての知識
+- Webアプリケーションの基本的な知識","- Locustを使った実践的な負荷試験のノウハウ
+    - 色々な成功/失敗判定の方法
+    - コマンドラインを使った実行方法
+    - workerプロセスをクラスタで実行する方法",Intermediate,Web programming,Japanese,Both,"昨年度、 https://pycon.jp/2020/en/timetable/?id=203941 でLocustの紹介をするセッションはありましたが、今回のセッションでは「Locustとは何か」の説明よりも、より多くの具体例を交えた内容でお話しします。
+
+- 自己紹介/導入
+    - 自己紹介 (1 mins)
+    - Locust自体の簡単な説明 (2 mins)
+- 「こんなときどうする？」
+    - テストデータの初期化の方法(5 mins)
+    - 細かなレスポンスのバリデーションの書き方 (5 mins)
+    - 自動実行にも便利なコマンドラインからの起動方法 (3 mins)
+    - クラスタ構成の組み方 (5mins)
+- 「こんな時どうする？」デモ (5 mins)
+- まとめ(3mins)
+",TatchNicolas,"株式会社JX通信社でバックエンドとインフラまわりをやってます。
+
+普段はDjango/FastAPIによるバックエンドAPI開発、運用上の自動化などでPythonを使っています。"
+272959,実装で知るasyncio -イベントループの正体とは-,#pyconjp_2,10/16,16:20,8,"asyncioは、効率的に並行処理を行うための標準ライブラリです。
+asyncioを使った処理では、コルーチンやタスク、イベントループ、非同期I/Oなど多くの概念が登場します。
+本セッションでは、これらの主要な概念がasyncioパッケージ内でどのように実装されているかを見ていくことで、asyncioに関する理解を深めます。","Pythonの実装経験
+非同期処理や並列処理の経験","asyncioの主要な構成要素とその概要
+標準ライブラリのコードを見る体験",Advanced,Python core and around,Japanese,Japanese only,"asyncioは、効率的に並行処理を行うための標準ライブラリです。
+asyncioを使った処理では、コルーチンやタスク、イベントループ、非同期I/Oなど多くの概念が登場します。
+本セッションでは、これらの主要な概念がasyncioパッケージ内でどのように実装されているかを見ていくことで、asyncioに関する理解を深めます。
+
+asyncioは、Django 3やSQLAlchemy 14をはじめとするフレームワークやライブラリのサポートが充実してきており、利用できるシーンが急速に広まっています。
+しかし、そのような状況とは裏腹にasyncioの学習コストは高く、デバッグも難しいものです。
+asyncioパッケージはファイル数が30近いパッケージであり全てを紹介することはできませんが、主要なクラスやメソッドを知ることでバグの混入を防いだり、素早い調査やデバッグにつながります。
+",REI SUYAMA,尾道が好きになり東京から尾道の向島に引っ越してきたフルリモートのプログラマ。学生時代からずっとPython好き。シンプルなコード、シンプルな設計を目指してます。
+273434,Python をフル活用した工場への AI 導入 & データ活用基盤構築事例,#pyconjp_3,10/16,16:20,8,とある工業製品の製造工場での AI 導入の課題に対して、エッジ IoT からクラウドまで広範にわたる機械学習・データ分析基盤システムの構築を行い、その全ての過程で Python を利用しました。全く性質の異なるそれぞれの領域でどのように Python を活用し、ひとつの大きなシステムを構築してきたかという応用事例をご紹介します。,"- Python に限らない何らかのプログラミング経験
+- ネットワーク, AWS, Docker のチュートリアルレベルの知識","- エッジ環境で機械学習 (推論) とデータ収集システムを構築するノウハウ
+- TCP ベースの独自プロトコルを実装するノウハウ
+- AWS + Docker でセンサデータを扱うための ETL 基盤を構築するノウハウ
+- AWS + Docker で機械学習基盤を構築するノウハウ",Intermediate,Machine learning,Japanese,Japanese only,"- 自己紹介 (1min)
+- 概要 (5min)
+    - プロジェクト概要
+    - システム全体像
+- エッジ IoT (10min)
+    - Docker Compose によるオーケストレーション
+    - Python による TCP ベース独自プロトコルの実装
+    - 機械学習 (推論) API の実装
+    - センサデータ収集と AWS への送信
+- クラウド / AWS (10min)
+    - システム全体のデプロイフローの構築
+    - AWS 上でのバッチ処理方式と採用しなかった方式の比較
+    - AWS 上での機械学習基盤構築
+- まとめ (1min)",hoto17296,"ちゅらデータ株式会社 データアナリスト & VPoE
+JavaScript / Python / Docker / AWS あたりが得意
+ネットワークいじりが趣味です"
+270532,Pythonに型アノテーションを自動で付与する,#pyconjp_4,10/16,16:20,8,"Pythonの生みの親であるグイド氏がdropbox社に在籍していた際に開発した、pyannotateを使用して、型がないコードに対して自動で型を付与し、静的型チェックが行えるまでにします。
+
+昨年はてなブックマークトレンドになった私自身の記事である「Pythonに型アノテーションを自動で付与する」が元となっており、このスピーチは更に「実際の活用事例・中身の実態・デメリットや課題」などを追加した内容になっています。
+
+実際に私がpdmというOSSで活用した例を用いて、ライブでコードを動かして型を適用し、mypyを走らせる所まで行います。","特になし。
+Pythonの型アノテーションについてある程度知識があれば、実際に使用した事がなくても問題ありません。","- Pyannotateの使用方法
+- Pyannotateを使用する際の注意方法",Intermediate,Python core and around,Japanese,Both,"題記の通りです。Pythonの生みの親であるグイド氏がdropbox社に在籍していた際に開発した、pyannotateを使用して、型がないコードに対して自動で型を付与し、静的型チェックが行えるまでにします。
+
+私自身が書き、はてなブックマークトレンドにもなった下記記事が元になっております。下記記事では使い方のみしか記載しておりませんでしたが、今回はOSSでの活用、中身の実態、デメリットや将来像についても話したいと思います。
+https://twitter.com/suk1yak1/status/1382334315577499651?s=20
+
+【構成とタイムライン(20 ~ 30m)】
+- 導入 (3m)
+  - 自己紹介 (0.5m)
+  - タイムライン紹介 (0.5m)
+  - Pythonに型を付与したい動機 (1m)
+  - Pyannotateの簡単な紹介 (1m)
+- ユースケース: OSS活動での活用 pdmを紹介 (16m)
+  - 実際に自分が改善を行ったPRを参考に、どう動くかを0からライブで行います
+  - pytestを実行し、走査した関数全ての型情報をはじき出す (5m)
+  - 巨大な情報に対して、どの情報が必要かを抜き出す (2m)
+  - 複数以上の型を許容していた関数に対して、実際に行って確認してみる (3m)
+  - 走査した情報を元に、実際に自動で全てのコードに対して型を適用する (5m)
+  - mypyを用いて実際に検証してみる (1m)
+- (※時間があれば) 中身の実態 (5m)
+  - pyannotate_runtimeの中身の概要 (1m)
+  - init_types_collection　→　sys.setprofileで回収できる情報 (2m)
+  - sys.setprofileへ渡すhookの実態 (2m)
+- pyannotateの課題 (3m)
+  - あまりにも巨大な場合、f_back等の情報が不足している (2m)
+  - これは現在pyannotateに対してproposalを出しており、agreedされたらPRを出す予定 (1m)
+- まとめ (3m)
+  - Pythonはもともとは型を使わない言語
+  - その前提意識から、今更型をいれたいとなったときになかなか工数を出しづらい
+  - 今回のようにある程度機械的に自動化する仕組みを活用すれば、どのタイミングでも型を導入できるので便利",ulwlu,ulwluという名前でOSS活動・記事執筆を行っています。これまでにいくつもの記事がQiitaやはてなブックマークやRedditの総合トレンド１位になりました。オンラインゲーム会社のバックエンドエンジニア、フリーランスのフルスタックエンジニア、2021年6月からは株式会社ユーザーベースのエンジニアとして働いています。
+269676,Event-Driven applications: Apache Kafka and Python,#pyconjp_5,10/16,16:20,8,"We live in a fast world where both humans and applications need to immediately react on events. If you want to build such applications let me introduce you to Apache Kafka, the best streaming platform, and show you how you can use it with Python and take full advantage of its capabilities.","This is a starter session on Apache Kafka and Python interaction, no prior knowledge required","1) What Apache Kafka is
+2) How it works
+3) What problem it solves
+4) How to use Python and Kafka to create Event-driven Applications",Beginner,Anything else basically which doesn’t fall into the types of topics above,English,English only,"Code and data go together like tomato and basil; not many applications work without moving data in some way. As our applications modernise and evolve to become more event-driven, the requirements for data are changing. In this session we will explore Apache Kafka, a data streaming platform, to enable reliable real-time data integration for your applications.
+
+We will look at the types of problems that Kafka is best at solving, and show how to use it in your own applications. Whether you have a new application or are looking to upgrade an existing one, this session includes advice on adding Kafka using the Python libraries and includes code examples (with bonus discussion of pizza toppings) to use.
+
+With Kafka in place, many things are possible so this session also introduces Kafka Connect, a selection of pre-built connectors that you can use to route events between systems and integrate with other tools. This session is recommended for engineers and architects whose applications are ready for next-level data abilities.",Francesco Tisiot,"Francesco comes from Verona, Italy and works as a Developer Advocate at Aiven. With his many years of experience as a data engineer, he has stories to tell and advice for data-wranglers everywhere. Francesco loves sharing knowledge with others as a speaker and writer, and is on a mission to defend the world from bad Italian food!"
+7707d8e6-9028-44a9-9c3f-e6f2c3024e00,Lightning talks,#pyconjp,10/16,17:20,9,,,,,,,,,,
+0d706ce3-236d-4c56-8b24-c07387004046,Closing (Day 2),#pyconjp,10/16,17:50,10,,,,,,,,,,
+8c78050c-905f-4f09-8de0-46ba8e44be5c,Online party,#pyconjp,10/16,18:50,11,,,,,,,,,,
