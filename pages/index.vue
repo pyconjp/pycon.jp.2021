@@ -10,7 +10,8 @@
     </div>
     <News :news="news" />
     <Overview />
-    <Sponsors class="mt-24 lg:mt-48" />
+    <keynote />
+    <Sponsors class="mt-12 lg:mt-24" />
   </div>
 </template>
 
@@ -21,9 +22,10 @@ import Sponsors from '../components/Domains/TopPage/Sponsors'
 import CustomHeader from '../components/Domains/Header.vue'
 import Overview from '~/components/Domains/TopPage/Overview'
 import News from '~/components/Domains/TopPage/News'
+import Keynote from '~/components/Domains/TopPage/Keynote.vue'
 
 export default {
-  components: { News, Overview, MainVisual, Sponsors, CustomHeader },
+  components: { News, Overview, MainVisual, Sponsors, CustomHeader, Keynote },
   async asyncData({ $axios }) {
     const news = await $axios
       .$get(
