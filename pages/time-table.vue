@@ -38,33 +38,37 @@
       </div>
 
       <div v-cloak class='mt-8'>
-        <div class='flex time-table-grid flex-col-reverse lg:flex-row'>
+        <div class='flex time-table-grid time-table-gap flex-col-reverse lg:flex-row'>
           <div class='flex-1 lg:flex-none lg:w-14 relative text-center end-time py-2 lg:py-0'>
                 <span class='lg:absolute lg:-bottom-3 lg:left-0'>
                   {{ END_TIMES[selectedDay]['0'] }}
                 </span>
           </div>
-          <div v-for='room in ROOMS' :key='`header_${room}`'
-               class='hidden lg:flex time-table-cell justify-center items-center header flex-1'>
-            {{ room }}
+          <div class='flex flex-1 flex-col lg:flex-row time-table-gap'>
+            <div v-for='room in ROOMS' :key='`header_${room}`'
+                 class='hidden lg:flex time-table-cell justify-center items-center header flex-1'>
+              {{ room }}
+            </div>
           </div>
         </div>
 
         <hr class='separator lg:hidden' />
 
         <div v-for='no in SESSION_NO[selectedDay]' :key='`session_${selectedDay}_${no}`'>
-          <div class='flex time-table-grid relative flex-col-reverse lg:flex-row'
+          <div class='flex time-table-grid time-table-gap relative flex-col-reverse lg:flex-row'
                :class='{"lg:h-16": no === "1", "lg:h-24": no !== "1" && talks[selectedDay][no]["#pyconjp"] !== undefined}'>
             <div class='flex-1 lg:flex-none lg:w-14 relative text-center end-time py-2 lg:py-0'>
                 <span class='lg:absolute lg:-bottom-3 lg:left-0'>
                   {{ END_TIMES[selectedDay][no] }}
                 </span>
             </div>
-            <div v-for='room in ROOMS' :key='`${selectedDay}_${no}_${room}`'
-                 class='time-table-cell flex justify-center items-center flex-1'
-                 :class='{"hidden lg:flex": talks[selectedDay][no]["#pyconjp"] !== undefined}'>
-              <talk-session v-if='talks[selectedDay][no]["#pyconjp"] === undefined'
-                            :session-data='talks[selectedDay][no][room]'></talk-session>
+            <div class='flex flex-1 flex-col lg:flex-row time-table-gap'>
+              <div v-for='room in ROOMS' :key='`${selectedDay}_${no}_${room}`'
+                   class='time-table-cell flex justify-center items-center flex-1'
+                   :class='{"hidden lg:flex": talks[selectedDay][no]["#pyconjp"] !== undefined}'>
+                <talk-session v-if='talks[selectedDay][no]["#pyconjp"] === undefined'
+                              :session-data='talks[selectedDay][no][room]'></talk-session>
+              </div>
             </div>
             <div v-if='talks[selectedDay][no]["#pyconjp"] !== undefined'
                  class='lg:absolute lg:z-10 all-room lg:h-full'
@@ -225,9 +229,11 @@ export default {
   }
 }
 
-.time-table-grid {
+.time-table-gap {
   column-gap: 5px;
+}
 
+.time-table-grid {
   & > .all-room {
     background-color: #F4F4F4;
 
