@@ -138,7 +138,7 @@
         </div>
         <div>
           <p class="my-10 heading">Silver</p>
-          <div class="text-items-list text-blue-green">
+          <div class="font-medium text-items-list text-blue-green">
             <a
               v-for="sponsor in silverSponsorsList"
               :key="sponsor.nameJp"
@@ -147,13 +147,13 @@
               rel="noopener noreferrer"
               :class="{ 'pointer-events-none': sponsor.link === '#' }"
             >
-              <p class="m-2 text-xl break-all lg:text-2xl">
+              <p class="m-2 text-xl break-all lg:text-2xl font-noto">
                 {{ $i18n.locale === 'ja' ? sponsor.nameJp : sponsor.nameEn }}
               </p>
             </a>
           </div>
         </div>
-        <div class="container mb-20">
+        <div class="container mb-8">
           <p class="mt-10 heading">Special</p>
           <div class="img-items-list">
             <div
@@ -184,6 +184,28 @@
                   </div></div
               ></a>
             </div>
+          </div>
+        </div>
+        <div>
+          <p class="my-10 heading">Patron</p>
+          <div class="font-medium text-black patron-items-list">
+            <a
+              v-for="patron in patronList"
+              :key="patron.name"
+              :href="patron.pageLink"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center justify-center"
+            >
+              <img
+                :src="require(`@/assets/images/patron/${patron.imegeName}`)"
+                alt="patron image"
+                class="w-8 h-8 rounded-full lg:w-10 lg:h-10"
+              />
+              <p class="m-2 text-sm break-all lg:text-base font-noto">
+                {{ patron.name }}
+              </p>
+            </a>
           </div>
         </div>
       </div>
@@ -218,6 +240,9 @@ export default {
 }
 .text-items-list {
   @apply grid grid-cols-1 gap-4 text-center px-5 lg:px-9 lg:grid-cols-3  place-items-center;
+}
+.patron-items-list {
+  @apply grid grid-cols-2 gap-4 text-center px-5 lg:px-9 lg:grid-cols-5  place-items-start items-center;
 }
 
 .v-sheet {

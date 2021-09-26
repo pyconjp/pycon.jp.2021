@@ -98,14 +98,14 @@
             rel="noopener noreferrer"
             :class="{ 'pointer-events-none': sponsor.link === '#' }"
           >
-            <p class="m-2 text-2xl break-all">
+            <p class="m-2 text-2xl font-medium break-all font-noto">
               {{ $i18n.locale === 'ja' ? sponsor.nameJp : sponsor.nameEn }}
             </p>
           </a>
         </div>
       </div>
-      <div class="container mb-20">
-        <p class="my-10 text-center">Special</p>
+      <div class="container mb-6">
+        <p class="mt-12 mb-6 text-center">Special</p>
         <div class="img-items-list">
           <div
             v-for="sponsor in specialSponsorsList"
@@ -137,6 +137,28 @@
           </div>
         </div>
       </div>
+      <div>
+        <p class="my-10 text-center">Patron</p>
+        <div class="text-black patron-items-list">
+          <a
+            v-for="patron in patronList"
+            :key="patron.name"
+            :href="patron.pageLink"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center justify-center"
+          >
+            <img
+              :src="require(`@/assets/images/patron/${patron.imegeName}`)"
+              alt="patron image"
+              class="w-8 h-8 rounded-full lg:w-10 lg:h-10"
+            />
+            <p class="m-2 text-sm font-medium break-all lg:text-base font-noto">
+              {{ patron.name }}
+            </p>
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -160,6 +182,9 @@ export default {
 }
 .text-items-list {
   @apply grid grid-cols-1 gap-4 text-center px-5 lg:px-9 lg:grid-cols-3  place-items-center;
+}
+.patron-items-list {
+  @apply grid grid-cols-2 gap-4 text-center px-5 lg:px-9 lg:grid-cols-5  place-items-start items-center;
 }
 
 .v-sheet {
