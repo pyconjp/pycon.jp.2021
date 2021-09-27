@@ -65,7 +65,8 @@
             <div class='flex flex-1 flex-col lg:flex-row time-table-gap'>
               <div v-for='room in ROOMS' :key='`${selectedDay}_${no}_${room}`'
                    class='time-table-cell flex justify-center items-center flex-1'
-                   :class='{"hidden lg:flex": talks[selectedDay][no]["#pyconjp"] !== undefined}'>
+                   :class='{"hidden lg:flex": talks[selectedDay][no]["#pyconjp"] !== undefined, "cursor-pointer": talks[selectedDay][no]["#pyconjp"] === undefined}'
+                   @click="openSessionModal(talks[selectedDay][no][room])">
                 <talk-session v-if='talks[selectedDay][no]["#pyconjp"] === undefined'
                               :session-data='talks[selectedDay][no][room]'></talk-session>
               </div>
@@ -88,6 +89,11 @@
         </div>
       </div>
     </div>
+    <SessionDetailModal
+      v-if="isModal"
+      :session-data="modalDisplaySessionData"
+      @close="closeSessionModal"
+    ></SessionDetailModal>
   </div>
 </template>
 
@@ -96,6 +102,7 @@ import CustomHeader from '../components/Domains/Header.vue'
 <script>
 import CustomHeader from '~/components/Domains/Header'
 import TalkSession from '~/components/Elements/TalkSession'
+import SessionDetailModal from '~/components/Elements/sessionDetailModal'
 
 const ROOMS = [
   '#pyconjp_1',
@@ -140,7 +147,7 @@ const END_TIMES = {
 
 export default {
   name: 'Timetable',
-  components: { TalkSession, CustomHeader },
+  components: { TalkSession, CustomHeader, SessionDetailModal },
   async asyncData({ $content }) {
     const originTalks = await $content('talk/session').only(['body']).fetch()
     const body = originTalks.body
@@ -161,18 +168,64 @@ export default {
     }
 
     return {
-      talks
+      talks,
+      sessionDataList: originTalks
     }
   },
   data() {
-    return { ROOMS, SESSION_NO, END_TIMES, talks: {}, selectedDay: '10/15' }
+    return { ROOMS, SESSION_NO, END_TIMES, talks: {}, selectedDay: '10/15', isModal: false,
+      modalDisplaySessionData: {}, sessionDataList: {} }
+  },
+  mounted() {
+    if (this.$route.query.id !== undefined) {
+      const targetSession = this.getTargetSessionDataById(this.$route.query.id)
+      this.openSessionModal(targetSession)
+    }
+    document.onkeydown = (evt) => {
+      evt = evt || window.event
+      if (evt.key === 'Escape') {
+        this.closeSessionModal()
+      }
+    }
   },
   methods: {
     selectDay(day) {
       if (this.selectedDay !== day) {
         this.selectedDay = day
       }
-    }
+    },
+ 
+    getTargetSessionDataById(id) {
+      const targetSessionData = this.sessionDataList.body.filter(
+        (sessionData) => sessionData.id === id
+      )
+      const dummyData = {
+        title: '',
+        talk_format: '',
+        name: '',
+        lang_of_talk: '',
+        description: '',
+        audience_python_level: '',
+      }
+      if (targetSessionData.length <= 0) {
+        return dummyData
+      } else {
+        return targetSessionData[0]
+      }
+    },
+    
+    openSessionModal(sessionData) {
+      this.isModal = true
+      this.$router.push({ query: { id: sessionData.id } })
+      this.modalDisplaySessionData = sessionData
+    },
+
+    closeSessionModal() {
+      if (this.$route.query.id) {
+        this.$router.replace({ query: null })
+      }
+      this.isModal = false
+    },
   }
 }
 </script>
