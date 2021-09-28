@@ -89,4 +89,5 @@ sw.*
 # Vim swap files
 *.swp
 
+!/content/talk/.gitkeep
 /content/talk/*
