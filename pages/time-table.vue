@@ -194,7 +194,7 @@ export default {
         this.selectedDay = day
       }
     },
- 
+
     getTargetSessionDataById(id) {
       const targetSessionData = this.sessionDataList.body.filter(
         (sessionData) => sessionData.id === id
@@ -213,11 +213,13 @@ export default {
         return targetSessionData[0]
       }
     },
-    
+
     openSessionModal(sessionData) {
-      this.isModal = true
-      this.$router.push({ query: { id: sessionData.id } })
-      this.modalDisplaySessionData = sessionData
+      if (sessionData !== undefined) {
+        this.isModal = true
+        this.$router.push({ query: { id: sessionData.id } })
+        this.modalDisplaySessionData = sessionData
+      }
     },
 
     closeSessionModal() {
