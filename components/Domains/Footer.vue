@@ -25,10 +25,15 @@
             <!--            <p class='mb-8 text-sm opacity-50 lg:mb-0'>{{ $t('common.aboutPyConJP') }}</p>-->
           </div>
           <div class="flex-1">
-            <p class="mb-5 text-base opacity-50">
+            <p class="mb-5 text-base">
               {{ $t('common.events') }}
             </p>
-            <!--            <p class='mb-4 text-sm opacity-50'>{{ $t('common.timeTable') }}</p>-->
+            <p class="mb-4 text-sm">
+              <nuxt-link :to="localePath('/time-table')">{{
+                $t('common.timeTable')
+              }}</nuxt-link>
+            </p>
+
             <!--            <p class='mb-4 text-sm opacity-50'>{{ $t('common.specialBooth') }}</p>-->
             <!--            <p class='mb-4 text-sm'>{{ $t('common.tutorial') }}</p>-->
             <!--            <p class='mb-4 text-sm'>{{ $t('common.sprint') }}</p>-->

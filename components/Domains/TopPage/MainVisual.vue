@@ -119,16 +119,12 @@
       class="flex flex-col items-center justify-around w-5/6 mt-16 mb-16  lg:w-3/4 lg:flex-row"
     >
       <div class="flex justify-center w-5/6 text-center lg:mr-4 lg:w-1/4">
-        <a
-          href="https://sessionize.com/view/eu4z8c9d/GridSmart?format=Embed_Styled_Html&isDark=False"
-          target="_blank"
-          title="Search Talks"
-          rel="noopener noreferrer"
-          class="inline-block w-full mb-4 custom-button-enable lg:mb-0"
+        <nuxt-link
+          class="w-full custom-button-enable ticket-button"
+          :to="localePath('/time-table')"
         >
-          Timetable <br />
-          (beta)
-        </a>
+          Timetable</nuxt-link
+        >
       </div>
       <div class="flex justify-center w-5/6 text-center lg:ml-4 lg:w-1/4">
         <outer-link
