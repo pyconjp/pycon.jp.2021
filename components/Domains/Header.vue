@@ -48,9 +48,19 @@
             </div>
           </li>
           <li class="relative">
-            <p class="relative headear-options-disable disable-message">
+            <p
+              class="relative cursor-pointer headear-options"
+              @click="selectMenu(1)"
+            >
               {{ $t('common.events') }}
             </p>
+            <div v-if="showEventListMenu" class="list-menu">
+              <nuxt-link
+                :to="localePath('/time-table')"
+                class="hover:text-blue-green focus:text-blue-green"
+                >{{ $t('common.timeTable') }}</nuxt-link
+              >
+            </div>
           </li>
           <li class="">
             <a
