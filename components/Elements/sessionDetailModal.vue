@@ -242,11 +242,8 @@ export default {
     this.langOfSlide = this.sessionData.lang_of_slide
     this.description = this.sessionData.description
     this.description = this.sessionData.description.replace(/\n/g, '\n\n')
-    // TODO: 開催後YouTubeのリンクを修正すること
-    // this.youtubeLink = getSessionYoutubeUrl(this.sessionData.id)
-    // this.documentLink = getSessionDocumentUrl(this.sessionData.id)
-    this.youtubeLink = ''
-    this.documentLink = ''
+    this.youtubeLink = this.sessionData.recording_url
+    this.documentLink = this.sessionData.slide_url
   },
 }
 </script>
