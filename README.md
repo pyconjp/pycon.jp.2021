@@ -23,9 +23,9 @@ $ yarn start
 
 ```
 $ pip install git+https://github.com/pyconjp/talks.domain.2021@0.0.1
-$ ENDPOINT_ID=<endpoint id> python -m pyconjp_domains timetable output.csv
+$ ENDPOINT_ID=<endpoint id> python -m pyconjp_domains timetable ./content/talk/session.csv
 ```
 
-output.csv ファイルが作成されるので、/content 以下に移動させてください
+/content/talk/session.csvが作成されます。
 
 For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
