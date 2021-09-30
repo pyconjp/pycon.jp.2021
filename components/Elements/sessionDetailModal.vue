@@ -127,13 +127,13 @@
                   </p>
                 </div>
 
-                <p class="my-1 font-bold">Talk Language</p>
+                <p class="my-1 font-bold">Language of Talk</p>
                 <div class="col-span-2">
                   <p class="my-1">
                     {{ langOfTalk }}
                   </p>
                 </div>
-                <p class="my-1 font-bold">Slide Language</p>
+                <p class="my-1 font-bold">Language of Slide</p>
                 <div class="col-span-2">
                   <p class="my-1">
                     {{ langOfSlide }}
