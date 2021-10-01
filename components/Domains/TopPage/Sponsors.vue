@@ -2,7 +2,7 @@
   <div class="text-black font-mont">
     <div>
       <p
-        class="-mb-8 font-bold text-center  text-shadow text-7xl lg:text-9xl lg:-mb-14"
+        class="-mb-8 font-bold text-center text-shadow text-7xl lg:text-9xl lg:-mb-14"
       >
         Sponsors
       </p>
@@ -12,7 +12,7 @@
     </div>
 
     <div
-      class="flex flex-col items-center justify-center pb-20 text-2xl font-bold  sponsors-background"
+      class="flex flex-col items-center justify-center pb-20 text-2xl font-bold sponsors-background"
     >
       <div class="container pt-14">
         <p class="text-center">Platinum</p>
@@ -96,11 +96,10 @@
             :href="sponsor.link"
             target="_blank"
             rel="noopener noreferrer"
+            class="my-2 text-xl font-medium lg:m-2 lg:text-2xl font-noto"
             :class="{ 'pointer-events-none': sponsor.link === '#' }"
           >
-            <p class="m-2 text-2xl font-medium break-all font-noto">
               {{ $i18n.locale === 'ja' ? sponsor.nameJp : sponsor.nameEn }}
-            </p>
           </a>
         </div>
       </div>
