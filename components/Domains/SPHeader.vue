@@ -27,15 +27,18 @@
         <Accordion
           :menu-name='"events"'
           :toggle-menu='toggleMenu'
-          :opened='opened'
-          :disable="true">
+          :opened='opened'>
           <div slot="title">
-            <p class="relative inline headear-options-disable">
+            <p class="relative inline headear-options">
               {{ $t('common.events') }}
             </p>
           </div>
           <div slot="body" class="js-accordion--body">
-            <p>{{ $t('common.timeTable') }}</p>
+            <nuxt-link
+              :to="localePath('/time-table')"
+              class="hover:text-blue-green focus:text-blue-green"
+              >{{ $t('common.timeTable') }}</nuxt-link
+            >
           </div>
         </Accordion>
       </div>
