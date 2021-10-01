@@ -4,7 +4,7 @@
       <CustomHeader class='w-11/12 lg:w-5/6' />
     </div>
 
-    <div class='relative flex flex-col mt-8 overflow-hidden title-area mt-12'>
+    <div class='relative flex flex-col overflow-hidden title-area mt-12'>
       <div class='sp-width'>
         <p
           class='absolute left-0 -mb-8 font-bold lg:relative text-shadow text-7xl lg:text-9xl lg:-mb-14 font-mont whitespace-nowrap'>
@@ -18,12 +18,43 @@
       </div>
     </div>
 
-    <div
-      class='sponsor-area flex justify-center lg:justify-between items-center gap-y-5 lg:gap-y-0 flex-col lg:flex-row'>
-      <div class='sponsor-image bg-gray-300' />
-      <div class='sponsor-image bg-gray-300' />
-      <div class='sponsor-image bg-gray-300' />
-    </div>
+    <div class="img-items-list">
+          <div
+            v-for="sponsor in platinumSponsorsList"
+            :key="sponsor.nameJp"
+            class="w-full p-6 my-1 lg:w-1/3"
+            :class="{ 'touch-action-none': sponsor.link === '#' }"
+          >
+            <a
+              :href="sponsor.link"
+              target="_blank"
+              rel="noopener noreferrer"
+              :class="{ 'pointer-events-none': sponsor.link === '#' }"
+            >
+              <p
+                v-if="sponsor.imgURL === ''"
+                class="m-2 text-3xl text-center break-all lg:text-4xl"
+              >
+                {{ sponsor.nameJp }}
+              </p>
+              <div v-else class="p-3 lg:p-6 v-card v-sheet theme-light">
+                <div class="z-0 v-responsive">
+                  <div style="padding-bottom: 66.6667%"></div>
+                  <div
+                    class="bg-contain v-image-image"
+                    :style="{
+                      backgroundImage:
+                        'url(' +
+                        require(`@/assets/images/${sponsor.imgURL}`) +
+                        ')',
+                      backgroundPosition: 'center center',
+                    }"
+                  ></div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
 
     <div class='main-area'>
       <div class='flex select-button'>
@@ -100,6 +131,7 @@
 import CustomHeader from '../components/Domains/Header.vue'
 
 <script>
+import { getSponsrList } from '../lib/sponsor_list'
 import CustomHeader from '~/components/Domains/Header'
 import TalkSession from '~/components/Elements/TalkSession'
 import SessionDetailModal from '~/components/Elements/sessionDetailModal'
@@ -174,7 +206,7 @@ export default {
   },
   data() {
     return { ROOMS, SESSION_NO, END_TIMES, talks: {}, selectedDay: '10/15', isModal: false,
-      modalDisplaySessionData: {}, sessionDataList: {} }
+      modalDisplaySessionData: {}, sessionDataList: {}, ...getSponsrList() }
   },
   mounted() {
     if (this.$route.query.id !== undefined) {
@@ -237,6 +269,50 @@ export default {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
+}
+
+.img-items-list {
+  @apply flex flex-wrap justify-center items-center  p-1 lg:px-24 lg:py-12 mb-3;
+}
+
+.v-sheet {
+  display: block;
+  border-radius: 2px;
+  position: relative;
+  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+}
+.v-responsive {
+  position: relative;
+  overflow: hidden;
+  flex: 1 0 auto;
+  display: flex;
+}
+
+.v-image-image {
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+}
+
+.v-card {
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+.theme-light.v-sheet {
+  background-color: #fff;
+  border-color: #fff;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+/* disable mobile click event */
+.touch-action-none {
+  pointer-events: none;
+  touch-action: none;
 }
 
 .title-area {
