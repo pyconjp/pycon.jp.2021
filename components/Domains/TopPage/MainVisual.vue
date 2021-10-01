@@ -126,7 +126,7 @@
           Timetable</nuxt-link
         >
       </div>
-      <div class="flex justify-center w-5/6 text-center lg:ml-4 lg:w-1/4">
+      <div class="flex justify-center w-5/6 mt-4 text-center lg:ml-4 lg:w-1/4 lg:mt-0">
         <outer-link
           label="Ticket"
           to="https://pyconjp.connpass.com/event/221241/"
