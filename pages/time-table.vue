@@ -233,6 +233,12 @@ export default {
 </script>
 
 <style scoped>
+.sticky-header {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
 .title-area {
   margin: 1.5rem 1.5rem auto;
   @media (min-width: 1024px) {
