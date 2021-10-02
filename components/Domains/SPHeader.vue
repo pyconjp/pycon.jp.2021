@@ -17,9 +17,14 @@
           <div slot="body" class="js-accordion--body">
             <nuxt-link
               :to="localePath('/code-of-conduct')"
-              class="hover:text-blue-green focus:text-blue-green"
+              class="hover:text-blue-green focus:text-blue-green block"
               >{{ $t('common.codeOfConduct') }}</nuxt-link
             >
+            <outer-link
+              to="https://drive.google.com/file/d/1abgh7glVaUsYnlRf_v2RLYw2V3ZAGnjt/view?usp=sharing"
+              :label="$t('common.infectionControlGuidelines')"
+              class="hover:text-blue-green focus:text-blue-green block mt-2">
+            </outer-link>
           </div>
         </Accordion>
       </div>
@@ -68,18 +73,18 @@
               {{ $t('common.sponsorList') }}</nuxt-link
             >
             <a
-              href="https://drive.google.com/file/d/11HUcTjrLDiB7DMh5Sg0ol_NCiTN7Pttx/view"
+              href="https://pyconjp.blogspot.com/2021/09/closed-sponsor-application.html"
               target="_blank"
               rel="noopener noreferrer"
-              class="block mt-2 hover:text-blue-green focus:text-blue-green"
+              class="block mt-2 text-custom-gray line-through"
             >
               {{ $t('common.prospectus') }}</a
             >
             <a
-              href="https://pyconjp.blogspot.com/2021/06/pycon-jp-2021-2notice-of-start-of.html"
+              href="https://pyconjp.blogspot.com/2021/09/closed-sponsor-application.html"
               target="_blank"
               rel="noopener noreferrer"
-              class="block mt-2 hover:text-blue-green focus:text-blue-green"
+              class="block mt-2 text-custom-gray line-through"
             >
               {{ $t('common.applicationForm') }}</a
             >
@@ -117,9 +122,10 @@
 
 <script>
 import Accordion from '../Elements/Accordion.vue'
+import OuterLink from '~/components/OuterLink'
 
 export default {
-  components: { Accordion },
+  components: { OuterLink, Accordion },
   data() {
     return {
       opened: null
@@ -199,5 +205,8 @@ export default {
   color: white;
   background: #1097aa;
   border-radius: 100px;
+}
+.disable-message {
+  color: #cecece;
 }
 </style>
