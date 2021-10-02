@@ -249,7 +249,7 @@ export default {
     openSessionModal(sessionData) {
       if (sessionData !== undefined) {
         this.isModal = true
-        this.$router.push({ query: { id: sessionData.id } })
+        this.$router.push({ path: `/time-table/?id=${sessionData.id}` })
         this.modalDisplaySessionData = sessionData
       }
     },
