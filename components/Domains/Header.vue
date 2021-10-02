@@ -42,15 +42,30 @@
             <div v-if="showAbstractMenu" class="list-menu">
               <nuxt-link
                 :to="localePath('/code-of-conduct')"
-                class="hover:text-blue-green focus:text-blue-green"
+                class="hover:text-blue-green focus:text-blue-green block"
                 >{{ $t('common.codeOfConduct') }}</nuxt-link
               >
+              <outer-link
+                to="https://drive.google.com/file/d/1abgh7glVaUsYnlRf_v2RLYw2V3ZAGnjt/view?usp=sharing"
+                :label="$t('common.infectionControlGuidelines')"
+                class="hover:text-blue-green focus:text-blue-green block mt-2"
+              ></outer-link>
             </div>
           </li>
           <li class="relative">
-            <p class="relative headear-options-disable disable-message">
+            <p
+              class="relative cursor-pointer headear-options"
+              @click="selectMenu(1)"
+            >
               {{ $t('common.events') }}
             </p>
+            <div v-if="showEventListMenu" class="list-menu">
+              <nuxt-link
+                :to="localePath('/time-table')"
+                class="hover:text-blue-green focus:text-blue-green"
+                >{{ $t('common.timeTable') }}</nuxt-link
+              >
+            </div>
           </li>
           <li class="">
             <a
@@ -77,18 +92,18 @@
                 {{ $t('common.sponsorList') }}</nuxt-link
               >
               <a
-                href="https://drive.google.com/file/d/11HUcTjrLDiB7DMh5Sg0ol_NCiTN7Pttx/view"
+                href="https://pyconjp.blogspot.com/2021/09/closed-sponsor-application.html"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="block mt-2 hover:text-blue-green focus:text-blue-green"
+                class="block mt-2 text-custom-gray line-through"
               >
                 {{ $t('common.prospectus') }}</a
               >
               <a
-                href="https://pyconjp.blogspot.com/2021/06/pycon-jp-2021-2notice-of-start-of.html"
+                href="https://pyconjp.blogspot.com/2021/09/closed-sponsor-application.html"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="block mt-2 hover:text-blue-green focus:text-blue-green"
+                class="block mt-2 text-custom-gray line-through"
               >
                 {{ $t('common.applicationForm') }}</a
               >
@@ -134,8 +149,9 @@
 
 <script>
 import SPHeader from './SPHeader.vue'
+import OuterLink from '~/components/OuterLink'
 export default {
-  components: { SPHeader },
+  components: { OuterLink, SPHeader },
   data() {
     return {
       showMenuBackground: false,
@@ -144,43 +160,6 @@ export default {
       showSponsorMenu: false,
       isMobile: false,
       showMobileMenu: false,
-      linkList: [
-        {
-          text: 'NEWS',
-          link: 'https://pyconjp.blogspot.com/search/label/pyconjp2021',
-          disable: false,
-        },
-        {
-          text: 'STAFF',
-          link: 'https://pyconjp.blogspot.com/2021/01/2021-staff-application-start.html',
-          disable: false,
-        },
-        {
-          text: 'PROPOSAL',
-          link: 'https://pyconjp.blogspot.com/2021/05/start-proposal.html',
-          disable: false,
-        },
-        {
-          text: 'SPONSOR',
-          link: 'https://pyconjp.blogspot.com/2021/05/pycon-jp-2021_01988973482.html',
-          disable: false,
-        },
-        {
-          text: 'TICKET',
-          link: '#',
-          disable: true,
-        },
-        {
-          text: 'REVIEWER',
-          link: '#',
-          disable: true,
-        },
-        {
-          text: 'CODE OF CONDUCT',
-          link: 'https://drive.google.com/file/d/1iNF7VvDCd_gWDsSn2i5U8FB1IQWkWOM9/view',
-          disable: false,
-        },
-      ],
     }
   },
   mounted() {
@@ -256,7 +235,7 @@ export default {
 <style>
 .navbar {
   height: 72px;
-  box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.1), 0px 2px 24px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1), 0 2px 24px rgba(0, 0, 0, 0.08);
   border-radius: 8px;
   background: #ffffff;
 }
@@ -266,7 +245,7 @@ export default {
   width: 14rem;
   padding: 0.8rem 1rem;
   background-color: white;
-  box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.1), 0px 2px 24px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1), 0 2px 24px rgba(0, 0, 0, 0.08);
 }
 .language-switch {
   padding: 0.2rem 1.5rem 0.2rem 1.5rem;

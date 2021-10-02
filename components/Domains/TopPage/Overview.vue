@@ -28,11 +28,11 @@
           <div class="mb-6 text-2xl font-bold font-mont">What is PyCon JP?</div>
           <div>{{ $t('pages.index.overviewDescription') }}</div>
           <div class="flex justify-center lg:justify-start">
-            <outer-link
-              :label="$t('common.codeOfConduct')"
-              to="https://drive.google.com/file/d/1iNF7VvDCd_gWDsSn2i5U8FB1IQWkWOM9/view?usp=sh"
-              class="mt-6 custom-button-enable lg:mt-10"
-            />
+            <nuxt-link
+              :to="localePath('/code-of-conduct')"
+              class="mt-6 custom-button-enable lg:mt-10">
+              {{ $t('common.codeOfConduct') }}
+            </nuxt-link>
           </div>
         </div>
       </div>
@@ -41,10 +41,8 @@
 </template>
 
 <script>
-import OuterLink from '~/components/OuterLink'
 
 export default {
-  components: { OuterLink },
 }
 </script>
 

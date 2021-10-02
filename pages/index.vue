@@ -11,7 +11,7 @@
     <News :news="news" />
     <Overview />
     <keynote />
-    <Sponsors class="mt-24 lg:mt-48" />
+    <Sponsors class="mt-12 lg:mt-24" />
   </div>
 </template>
 
@@ -33,7 +33,6 @@ export default {
       )
       .then((res) => {
         let items = []
-
         parseString(res, (err, result) => {
           if (!err) {
             items = result.rss.channel[0].item.map((item) => {
@@ -49,6 +48,19 @@ export default {
           }
         })
         return items
+      })
+      .catch(() => {
+        const d = new Date()
+
+        return [
+          {
+            pubDate: `${d.getFullYear()}.${('0' + (d.getMonth() + 1)).slice(
+              -2
+            )}.${('0' + d.getDate()).slice(-2)}`,
+            title: 'PyCon JPのブログはこちらです。 | Our blog is here.',
+            link: 'https://pyconjp.blogspot.com/search/label/pyconjp2021',
+          },
+        ]
       })
     return { news }
   },

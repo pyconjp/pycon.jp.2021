@@ -1,8 +1,9 @@
 {
   "common": {
     "about": "About",
+    "infectionControlGuidelines": "COVID-19 Guidelines",
     "codeOfConduct": "Code of Conduct",
-    "aboutPyConJP": "About PyConJP",
+    "aboutPyConJP": "About PyCon JP",
     "events": "Events",
     "timeTable": "Time table",
     "specialBooth": "Special Booth",

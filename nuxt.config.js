@@ -62,6 +62,7 @@ export default {
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
     'nuxt-i18n',
+    '@nuxtjs/markdownit'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -109,5 +110,8 @@ export default {
     vueI18n: {
       silentTranslationWarn: true,
     },
+  },
+  markdownit: {
+    injected: true
   },
 }
