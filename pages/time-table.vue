@@ -117,14 +117,13 @@
           <hr class='separator lg:block hidden' />
         </div>
 
-        <div class='hidden lg:flex flex time-table-grid time-table-gap flex-col-reverse lg:flex-row'>
+        <div class='flex time-table-grid time-table-gap relative flex-col lg:flex-row'>
           <div class='flex-1 lg:flex-none lg:w-14 relative text-center start-time py-2 lg:py-0'>
-            <span class='lg:absolute lg:-top-3 lg:left-0'>
-              {{ CONFERENCE_END_TIME[selectedDay] }}
-            </span>
+                <span class='lg:absolute lg:-top-3 lg:left-0'>
+                  {{ CONFERENCE_END_TIME[selectedDay] }}
+                </span>
           </div>
-          <div class='flex flex-1 flex-col lg:flex-row time-table-gap'>
-          </div>
+          <div class='flex flex-1 flex-col lg:flex-row time-table-gap'></div>
         </div>
       </div>
     </div>
