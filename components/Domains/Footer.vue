@@ -22,13 +22,23 @@
                 $t('common.codeOfConduct')
               }}</nuxt-link>
             </p>
-            <!--            <p class='mb-8 text-sm opacity-50 lg:mb-0'>{{ $t('common.aboutPyConJP') }}</p>-->
+            <p class="mb-4 text-sm">
+              <outer-link
+                to="https://drive.google.com/file/d/1abgh7glVaUsYnlRf_v2RLYw2V3ZAGnjt/view?usp=sharing"
+                :label="$t('common.infectionControlGuidelines')">
+              </outer-link>
+            </p>
           </div>
           <div class="flex-1">
-            <p class="mb-5 text-base opacity-50">
+            <p class="mb-5 text-base">
               {{ $t('common.events') }}
             </p>
-            <!--            <p class='mb-4 text-sm opacity-50'>{{ $t('common.timeTable') }}</p>-->
+            <p class="mb-4 text-sm">
+              <nuxt-link :to="localePath('/time-table')">{{
+                $t('common.timeTable')
+              }}</nuxt-link>
+            </p>
+
             <!--            <p class='mb-4 text-sm opacity-50'>{{ $t('common.specialBooth') }}</p>-->
             <!--            <p class='mb-4 text-sm'>{{ $t('common.tutorial') }}</p>-->
             <!--            <p class='mb-4 text-sm'>{{ $t('common.sprint') }}</p>-->
@@ -51,16 +61,16 @@
                 {{ $t('common.sponsorList') }}</nuxt-link
               >
             </p>
-            <p class="mb-4 text-sm">
+            <p class="mb-4 text-sm opacity-50 line-through">
               <outer-link
                 :label="$t('common.prospectus')"
-                to="https://drive.google.com/file/d/11HUcTjrLDiB7DMh5Sg0ol_NCiTN7Pttx/view?usp=sharing"
+                to="https://pyconjp.blogspot.com/2021/09/closed-sponsor-application.html"
               />
             </p>
-            <p class="mb-4 text-sm">
+            <p class="mb-4 text-sm opacity-50 line-through">
               <outer-link
                 :label="$t('common.applicationForm')"
-                to="https://pyconjp.blogspot.com/2021/06/pycon-jp-2021-2notice-of-start-of.html"
+                to="https://pyconjp.blogspot.com/2021/09/closed-sponsor-application.html"
               />
             </p>
             <!--            <p class='mb-8 text-sm opacity-50 lg:mb-0'>{{ $t('common.sponsorPlanning') }}</p>-->

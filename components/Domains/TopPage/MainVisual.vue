@@ -38,7 +38,7 @@
             class="w-6 h-10"
           />
           <div class="ml-4 text-lg lg:text-2xl">
-            <p>match PyConJP(2021):</p>
+            <p>match PyCon JP(2021):</p>
             <p class="ml-4">case "ONLINE": Zoom</p>
             <a
               href="https://www.bellesalle.co.jp/shisetsu/tokyo/bs_kanda/access/"
@@ -119,18 +119,14 @@
       class="flex flex-col items-center justify-around w-5/6 mt-16 mb-16  lg:w-3/4 lg:flex-row"
     >
       <div class="flex justify-center w-5/6 text-center lg:mr-4 lg:w-1/4">
-        <a
-          href="https://sessionize.com/view/eu4z8c9d/GridSmart?format=Embed_Styled_Html&isDark=False"
-          target="_blank"
-          title="Search Talks"
-          rel="noopener noreferrer"
-          class="inline-block w-full mb-4 custom-button-enable lg:mb-0"
+        <nuxt-link
+          class="w-full custom-button-enable ticket-button"
+          :to="localePath('/time-table')"
         >
-          Timetable <br />
-          (beta)
-        </a>
+          Timetable</nuxt-link
+        >
       </div>
-      <div class="flex justify-center w-5/6 text-center lg:ml-4 lg:w-1/4">
+      <div class="flex justify-center w-5/6 mt-4 text-center lg:ml-4 lg:w-1/4 lg:mt-0">
         <outer-link
           label="Ticket"
           to="https://pyconjp.connpass.com/event/221241/"

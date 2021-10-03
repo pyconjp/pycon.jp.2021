@@ -13,6 +13,7 @@ module.exports = {
     extend: {
       colors: {
         'base-message': '#1097AA',
+        'sub-message': '#666666',
         'blue-green': '#1097AA',
         'custom-gray': '#cecece',
         'custom-black': '#292929',
