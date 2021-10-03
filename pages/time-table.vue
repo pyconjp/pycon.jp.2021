@@ -69,30 +69,28 @@
       </div>
 
       <div v-cloak class='mt-8'>
-        <div class='flex time-table-grid time-table-gap flex-col-reverse lg:flex-row'>
-          <div class='flex-1 lg:flex-none lg:w-14 relative text-center end-time py-2 lg:py-0'>
-                <span class='lg:absolute lg:-bottom-3 lg:left-0'>
-                  {{ END_TIMES[selectedDay]['0'] }}
-                </span>
+        <div class='hidden lg:flex flex time-table-grid time-table-gap flex-col-reverse lg:flex-row'>
+          <div class='flex-1 lg:flex-none lg:w-14 relative text-center start-time py-2 lg:py-0'>
           </div>
           <div class='flex flex-1 flex-col lg:flex-row time-table-gap'>
             <div v-for='room in ROOMS' :key='`header_${room}`'
-                 class='hidden lg:flex time-table-cell justify-center items-center header flex-1'>
+                 class='time-table-cell justify-center items-center header flex-1'>
               {{ room }}
             </div>
           </div>
         </div>
 
-        <hr class='separator lg:hidden' />
-
         <div v-for='no in SESSION_NO[selectedDay]' :key='`session_${selectedDay}_${no}`'>
-          <div class='flex time-table-grid time-table-gap relative flex-col-reverse lg:flex-row'
-               :class='{"lg:h-16": no === "1", "lg:h-24": no !== "1" && talks[selectedDay][no]["#pyconjp"] !== undefined}'>
-            <div class='flex-1 lg:flex-none lg:w-14 relative text-center end-time py-2 lg:py-0'>
-                <span class='lg:absolute lg:-bottom-3 lg:left-0'>
-                  {{ END_TIMES[selectedDay][no] }}
+          <div class='flex time-table-grid time-table-gap relative flex-col lg:flex-row'
+               :class='{"lg:h-16": no === "0", "lg:h-24": no !== "0" && talks[selectedDay][no]["#pyconjp"] !== undefined}'>
+            <div class='flex-1 lg:flex-none lg:w-14 relative text-center start-time py-2 lg:py-0'>
+                <span class='lg:absolute lg:-top-3 lg:left-0'>
+                  {{ START_TIMES[selectedDay][no] }}
                 </span>
             </div>
+
+            <hr class='separator lg:hidden' />
+
             <div class='flex flex-1 flex-col lg:flex-row time-table-gap'>
               <div v-for='room in ROOMS' :key='`${selectedDay}_${no}_${room}`'
                    class='time-table-cell flex justify-center items-center flex-1'
@@ -104,8 +102,8 @@
             </div>
             <div v-if='talks[selectedDay][no]["#pyconjp"] !== undefined'
                  class='lg:absolute lg:z-10 all-room lg:h-full'
-                 :class='{"h-14": no === "1", "h-20": no !== "1" && talks[selectedDay][no]["#pyconjp"] !== undefined}'>
-              <div v-if='no === "1"'
+                 :class='{"h-14": no === "0", "h-20": no !== "0" && talks[selectedDay][no]["#pyconjp"] !== undefined}'>
+              <div v-if='no === "0"'
                    class='all-room-content bg-blue-green bg-opacity-20 flex justify-center items-center'>
                 {{ talks[selectedDay][no]['#pyconjp'].title }}
               </div>
@@ -116,7 +114,7 @@
             </div>
           </div>
 
-          <hr class='separator' />
+          <hr class='separator lg:block hidden' />
         </div>
       </div>
     </div>
@@ -144,22 +142,25 @@ const ROOMS = [
   '#pyconjp_5'
 ]
 
+// TODO 要修正
 const SESSION_NO = {
-  '10/15': ['1', '2', '3', '4', '5', '6', '7', '8'],
-  '10/16': ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11']
+  '10/15': ['0', '1', '2', '3', '4', '5', '6', '7', '8'],
+  '10/16': ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'],
 }
 
-const END_TIMES = {
+// TODO 開始時刻はCSVのものを使用する
+const START_TIMES = {
   '10/15': {
     '0': '12:30',
     '1': '13:00',
     '2': '13:30',
-    '3': '15:00',
-    '4': '16:00',
-    '5': '17:00',
-    '6': '18:15',
-    '7': '18:45',
-    '8': '19:00'
+    '3': '14:30',
+    '4': '15:00',
+    '5': '16:00',
+    '6': '17:00',
+    '7': '18:15',
+    '8': '18:45',
+    '9': '19:00'
   },
   '10/16': {
     '0': '09:30',
@@ -167,13 +168,14 @@ const END_TIMES = {
     '2': '10:30',
     '3': '11:40',
     '4': '12:40',
-    '5': '13:50',
-    '6': '14:50',
-    '7': '16:20',
-    '8': '17:20',
-    '9': '17:50',
-    '10': '18:50',
-    '11': '19:00'
+    '5': '13:30',
+    '6': '13:50',
+    '7': '14:50',
+    '8': '16:20',
+    '9': '17:20',
+    '10': '17:50',
+    '11': '18:50',
+    '12': '19:00',
   }
 }
 
@@ -192,6 +194,7 @@ export default {
     for (const index in body) {
       const talk = body[index]
       talk.room = talk.room === '#pyconjp_1 (15th: onsite)' ? '#pyconjp_1' : talk.room
+      talk.no = talk.no === '' ? '0' : talk.no
 
       initObject(talks, talk.day)
       initObject(talks[talk.day], talk.no)
@@ -205,7 +208,7 @@ export default {
     }
   },
   data() {
-    return { ROOMS, SESSION_NO, END_TIMES, talks: {}, selectedDay: '10/15', isModal: false,
+    return { ROOMS, SESSION_NO, START_TIMES, talks: {}, selectedDay: '10/15', isModal: false,
       modalDisplaySessionData: {}, sessionDataList: {}, ...getSponsrList() }
   },
   mounted() {
@@ -420,7 +423,7 @@ export default {
   }
 }
 
-.end-time {
+.start-time {
   background-color: #F4F4F4;
   @media (min-width: 1024px) {
     background-color: inherit;
