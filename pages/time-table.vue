@@ -108,8 +108,7 @@
                 {{ talks[selectedDay][no]['#pyconjp'].title }}
               </div>
               <div v-else
-                   class='all-room-content all-room-session bg-white text-blue-green flex justify-center items-center'
-                   :class='{"cursor-pointer": talks[selectedDay][no]["#pyconjp"]["description"] !== null}'
+                   class='all-room-content all-room-session bg-white text-blue-green flex justify-center items-center cursor-pointer'
                    @click='openSessionModal(talks[selectedDay][no]["#pyconjp"])'>
                 {{ talks[selectedDay][no]['#pyconjp'].title }}
               </div>
@@ -155,7 +154,7 @@ const ROOMS = [
 
 const CONFERENCE_END_TIME = {
   '10/15': '19:00',
-  '10/16': '',
+  '10/16': ''
 }
 
 export default {
@@ -243,7 +242,7 @@ export default {
     },
 
     openSessionModal(sessionData) {
-      if (sessionData !== undefined && sessionData.description !== '') {
+      if (sessionData !== undefined) {
         this.isModal = true
         this.$router.push({ path: `/time-table/?id=${sessionData.id}` })
         this.modalDisplaySessionData = sessionData
