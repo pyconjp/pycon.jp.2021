@@ -222,8 +222,10 @@ export default {
     sessionLanguage() {
       if (this.langOfTalk === 'Japanese') {
         return 'JA'
-      } else {
+      } else if (this.langOfTalk === 'English') {
         return 'EN'
+      } else {
+        return '';
       }
     },
   },
@@ -236,8 +238,6 @@ export default {
     this.audienceTakeaway = this.sessionData.audience_takeaway
     this.track = this.sessionData.track
     this.audiencePythonLevel = this.sessionData.audience_python_level
-      ? this.sessionData.audience_python_level
-      : 'All'
     this.langOfTalk = this.sessionData.lang_of_talk
     this.langOfSlide = this.sessionData.lang_of_slide
     this.description = this.sessionData.description
