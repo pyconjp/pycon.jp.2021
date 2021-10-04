@@ -18,43 +18,43 @@
       </div>
     </div>
 
-    <div class="img-items-list">
-          <div
-            v-for="sponsor in platinumSponsorsList"
-            :key="sponsor.nameJp"
-            class="w-full p-6 my-1 lg:w-1/3"
-            :class="{ 'touch-action-none': sponsor.link === '#' }"
+    <div class='img-items-list'>
+      <div
+        v-for='sponsor in platinumSponsorsList'
+        :key='sponsor.nameJp'
+        class='w-full p-6 my-1 lg:w-1/3'
+        :class="{ 'touch-action-none': sponsor.link === '#' }"
+      >
+        <a
+          :href='sponsor.link'
+          target='_blank'
+          rel='noopener noreferrer'
+          :class="{ 'pointer-events-none': sponsor.link === '#' }"
+        >
+          <p
+            v-if="sponsor.imgURL === ''"
+            class='m-2 text-3xl text-center break-all lg:text-4xl'
           >
-            <a
-              :href="sponsor.link"
-              target="_blank"
-              rel="noopener noreferrer"
-              :class="{ 'pointer-events-none': sponsor.link === '#' }"
-            >
-              <p
-                v-if="sponsor.imgURL === ''"
-                class="m-2 text-3xl text-center break-all lg:text-4xl"
-              >
-                {{ sponsor.nameJp }}
-              </p>
-              <div v-else class="p-3 lg:p-6 v-card v-sheet theme-light">
-                <div class="z-0 v-responsive">
-                  <div style="padding-bottom: 66.6667%"></div>
-                  <div
-                    class="bg-contain v-image-image"
-                    :style="{
+            {{ sponsor.nameJp }}
+          </p>
+          <div v-else class='p-3 lg:p-6 v-card v-sheet theme-light'>
+            <div class='z-0 v-responsive'>
+              <div style='padding-bottom: 66.6667%'></div>
+              <div
+                class='bg-contain v-image-image'
+                :style="{
                       backgroundImage:
                         'url(' +
                         require(`@/assets/images/${sponsor.imgURL}`) +
                         ')',
                       backgroundPosition: 'center center',
                     }"
-                  ></div>
-                </div>
-              </div>
-            </a>
+              ></div>
+            </div>
           </div>
-        </div>
+        </a>
+      </div>
+    </div>
 
     <div class='main-area'>
       <div class='flex select-button'>
@@ -74,18 +74,18 @@
           </div>
           <div class='flex flex-1 flex-col lg:flex-row time-table-gap'>
             <div v-for='room in ROOMS' :key='`header_${room}`'
-                 class='time-table-cell justify-center items-center header flex-1'>
+                 class='flex time-table-cell justify-center items-center header flex-1'>
               {{ room }}
             </div>
           </div>
         </div>
 
-        <div v-for='no in SESSION_NO[selectedDay]' :key='`session_${selectedDay}_${no}`'>
+        <div v-for='no in sessionNo[selectedDay]' :key='`session_${selectedDay}_${no}`'>
           <div class='flex time-table-grid time-table-gap relative flex-col lg:flex-row'
-               :class='{"lg:h-16": no === "0", "lg:h-24": no !== "0" && talks[selectedDay][no]["#pyconjp"] !== undefined}'>
+               :class='{"lg:h-16": no === 0, "lg:h-24": no !== 0 && talks[selectedDay][no]["#pyconjp"] !== undefined}'>
             <div class='flex-1 lg:flex-none lg:w-14 relative text-center start-time py-2 lg:py-0'>
                 <span class='lg:absolute lg:-top-3 lg:left-0'>
-                  {{ START_TIMES[selectedDay][no] }}
+                  {{ startTimes[selectedDay][no] }}
                 </span>
             </div>
 
@@ -95,15 +95,15 @@
               <div v-for='room in ROOMS' :key='`${selectedDay}_${no}_${room}`'
                    class='time-table-cell flex justify-center items-center flex-1'
                    :class='{"hidden lg:flex": talks[selectedDay][no]["#pyconjp"] !== undefined, "cursor-pointer": talks[selectedDay][no]["#pyconjp"] === undefined}'
-                   @click="openSessionModal(talks[selectedDay][no][room])">
+                   @click='openSessionModal(talks[selectedDay][no][room])'>
                 <talk-session v-if='talks[selectedDay][no]["#pyconjp"] === undefined'
                               :session-data='talks[selectedDay][no][room]'></talk-session>
               </div>
             </div>
             <div v-if='talks[selectedDay][no]["#pyconjp"] !== undefined'
                  class='lg:absolute lg:z-10 all-room lg:h-full'
-                 :class='{"h-14": no === "0", "h-20": no !== "0" && talks[selectedDay][no]["#pyconjp"] !== undefined}'>
-              <div v-if='no === "0"'
+                 :class='{"h-14": no === 0, "h-20": no !== 0 && talks[selectedDay][no]["#pyconjp"] !== undefined}'>
+              <div v-if='no === 0'
                    class='all-room-content bg-blue-green bg-opacity-20 flex justify-center items-center'>
                 {{ talks[selectedDay][no]['#pyconjp'].title }}
               </div>
@@ -116,12 +116,21 @@
 
           <hr class='separator lg:block hidden' />
         </div>
+
+        <div class='flex time-table-grid time-table-gap relative flex-col lg:flex-row'>
+          <div class='flex-1 lg:flex-none lg:w-14 relative text-center start-time py-2 lg:py-0'>
+                <span class='lg:absolute lg:-top-3 lg:left-0'>
+                  {{ CONFERENCE_END_TIME[selectedDay] }}
+                </span>
+          </div>
+          <div class='flex flex-1 flex-col lg:flex-row time-table-gap'></div>
+        </div>
       </div>
     </div>
     <SessionDetailModal
-      v-if="isModal"
-      :session-data="modalDisplaySessionData"
-      @close="closeSessionModal"
+      v-if='isModal'
+      :session-data='modalDisplaySessionData'
+      @close='closeSessionModal'
     ></SessionDetailModal>
   </div>
 </template>
@@ -142,41 +151,9 @@ const ROOMS = [
   '#pyconjp_5'
 ]
 
-// TODO 要修正
-const SESSION_NO = {
-  '10/15': ['0', '1', '2', '3', '4', '5', '6', '7', '8'],
-  '10/16': ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'],
-}
-
-// TODO 開始時刻はCSVのものを使用する
-const START_TIMES = {
-  '10/15': {
-    '0': '12:30',
-    '1': '13:00',
-    '2': '13:30',
-    '3': '14:30',
-    '4': '15:00',
-    '5': '16:00',
-    '6': '17:00',
-    '7': '18:15',
-    '8': '18:45',
-    '9': '19:00'
-  },
-  '10/16': {
-    '0': '09:30',
-    '1': '10:00',
-    '2': '10:30',
-    '3': '11:40',
-    '4': '12:40',
-    '5': '13:30',
-    '6': '13:50',
-    '7': '14:50',
-    '8': '16:20',
-    '9': '17:20',
-    '10': '17:50',
-    '11': '18:50',
-    '12': '19:00',
-  }
+const CONFERENCE_END_TIME = {
+  '10/15': '19:00',
+  '10/16': '',
 }
 
 export default {
@@ -186,6 +163,8 @@ export default {
     const originTalks = await $content('talk/session').only(['body']).fetch()
     const body = originTalks.body
     const talks = {}
+    const startTimes = {}
+    const sessionNo = {}
 
     const initObject = (obj, key) => {
       obj[key] = obj[key] ?? {}
@@ -200,16 +179,28 @@ export default {
       initObject(talks[talk.day], talk.no)
       initObject(talks[talk.day][talk.no], talk.room)
       talks[talk.day][talk.no][talk.room] = talk
+
+      initObject(startTimes, talk.day)
+      initObject(startTimes[talk.day], talk.no)
+      startTimes[talk.day][talk.no] = talk.start_time
     }
+
+    Object.keys(talks).forEach(day => {
+      sessionNo[day] = Object.keys(talks[day]).map(no => parseInt(no)).sort((a, b) => a - b)
+    })
 
     return {
       talks,
+      startTimes,
+      sessionNo,
       sessionDataList: originTalks
     }
   },
   data() {
-    return { ROOMS, SESSION_NO, START_TIMES, talks: {}, selectedDay: '10/15', isModal: false,
-      modalDisplaySessionData: {}, sessionDataList: {}, ...getSponsrList() }
+    return {
+      ROOMS, CONFERENCE_END_TIME, sessionNo: {}, startTimes: {}, talks: {}, selectedDay: '10/15', isModal: false,
+      modalDisplaySessionData: {}, sessionDataList: {}, ...getSponsrList()
+    }
   },
   mounted() {
     if (this.$route.query.id !== undefined) {
@@ -240,7 +231,7 @@ export default {
         name: '',
         lang_of_talk: '',
         description: '',
-        audience_python_level: '',
+        audience_python_level: ''
       }
       if (targetSessionData.length <= 0) {
         return dummyData
@@ -262,7 +253,7 @@ export default {
         this.$router.replace({ query: null })
       }
       this.isModal = false
-    },
+    }
   }
 }
 </script>
@@ -284,6 +275,7 @@ export default {
   position: relative;
   transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
 }
+
 .v-responsive {
   position: relative;
   overflow: hidden;
@@ -303,7 +295,7 @@ export default {
 
 .v-card {
   box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-    0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  0 1px 5px 0 rgba(0, 0, 0, 0.12);
 }
 
 .theme-light.v-sheet {
@@ -336,15 +328,6 @@ export default {
   margin: 3.625rem 1.5rem 4.5rem;
   @media (min-width: 1024px) {
     margin: 7rem 7.5rem 10rem;
-  }
-}
-
-.sponsor-image {
-  width: 328px;
-  height: 184px;
-  @media (min-width: 1024px) {
-    width: 373px;
-    height: 210px;
   }
 }
 
