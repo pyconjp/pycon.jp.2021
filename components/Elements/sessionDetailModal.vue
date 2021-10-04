@@ -15,11 +15,13 @@
                 <div class="flex w-2/3 my-2 lg:w-4/12">
                   <div
                     class="p-2 text-xs font-semibold text-center text-gray-700 bg-gray-200 rounded-sm "
+                    :class='{"hidden": sessionLanguage === ""}'
                   >
                     {{ sessionLanguage }}
                   </div>
                   <div
                     class="p-2 ml-1 text-xs font-semibold text-center text-white rounded-sm bg-blue-green"
+                    :class='{"hidden": audiencePythonLevel === ""}'
                   >
                     {{ audiencePythonLevel }}
                   </div>
