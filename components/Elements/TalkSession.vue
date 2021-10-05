@@ -11,7 +11,7 @@
           class="ml-1 session-level"
           :style="getLevelColor(sessionData.audience_python_level)"
         >
-          <p>{{ sessionData.audience_python_level !== '' ? sessionData.audience_python_level : 'Other' }}</p>
+          <p>{{ sessionData.audience_python_level }}</p>
         </div>
       </div>
       <div>
@@ -25,7 +25,7 @@
     </div>
     <div>
       <div class="border"></div>
-      <div class="text-xs text-sub-message">{{ sessionData.track !== '' ? sessionData.track : 'Other'}}</div>
+      <div class="text-xs text-sub-message">{{ sessionData.track }}</div>
     </div>
   </div>
 </template>
@@ -53,7 +53,13 @@ export default {
   },
   computed: {
     lang() {
-      return this.sessionData.lang_of_talk === 'English' ? 'EN' : 'JA'
+      if (this.sessionData.lang_of_talk === 'English') {
+        return 'EN';
+      } else if (this.sessionData.lang_of_talk === 'Japanese') {
+        return 'JA';
+      } else {
+        return '';
+      }
     },
   },
   mounted() {

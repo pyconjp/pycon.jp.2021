@@ -9,7 +9,7 @@ frontend:
         - npm install -g yarn
         - yarn install
         - mkdir -p content/talk
-        - pip3 install git+https://github.com/pyconjp/talks.domain.2021@0.1.0
+        - pip3 install git+https://github.com/pyconjp/talks.domain.2021@0.1.1
         - ENDPOINT_ID=${ENDPOINT_ID} python3 -m pyconjp_domains timetable ./content/talk/session.csv
     build:
       commands:
