@@ -107,10 +107,11 @@
                    class='all-room-content bg-blue-green bg-opacity-20 flex justify-center items-center'>
                 {{ talks[selectedDay][no]['#pyconjp'].title }}
               </div>
-              <button v-else
-                      class='all-room-content all-room-session bg-white text-blue-green flex justify-center items-center'>
+              <div v-else
+                   class='all-room-content all-room-session bg-white text-blue-green flex justify-center items-center cursor-pointer'
+                   @click='openSessionModal(talks[selectedDay][no]["#pyconjp"])'>
                 {{ talks[selectedDay][no]['#pyconjp'].title }}
-              </button>
+              </div>
             </div>
           </div>
 
@@ -153,7 +154,7 @@ const ROOMS = [
 
 const CONFERENCE_END_TIME = {
   '10/15': '19:00',
-  '10/16': '',
+  '10/16': ''
 }
 
 export default {
