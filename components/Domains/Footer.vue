@@ -76,8 +76,10 @@
             <!--            <p class='mb-8 text-sm opacity-50 lg:mb-0'>{{ $t('common.sponsorPlanning') }}</p>-->
           </div>
           <div class="flex-1">
-            <p class="mb-8 text-base opacity-50 lg:mb-0">
-              {{ $t('common.staff') }}
+            <p class="mb-8 text-base lg:mb-0">
+              <nuxt-link :to="localePath('/staff')">
+                {{ $t('common.staff') }}</nuxt-link
+              >
             </p>
           </div>
           <!--          <div class='flex-1'>-->

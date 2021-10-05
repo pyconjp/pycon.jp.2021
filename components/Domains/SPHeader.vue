@@ -91,8 +91,12 @@
           </div>
         </Accordion>
       </div>
-      <div class="mb-4 text-custom-gray">
-        <p>{{ $t('common.staff') }}</p>
+      <div class="mb-4">
+        <nuxt-link
+              :to="localePath('/staff')"
+              class="hover:text-blue-green focus:text-blue-green"
+              >{{ $t('common.staff') }}</nuxt-link
+            >
       </div>
       <!-- <div class="mb-4">
         <p>会場アクセス {{ $t('common.staff') }}</p>
