@@ -46,6 +46,19 @@
             class="flex justify-around gap-3 mt-2 mb-4  w-28 lg:w-56 lg:gap-6 lg:place-content-center"
           >
             <a
+              :href="`https://twitter.com/${staff.twitter}`"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex hover:opacity-70"
+              :class="{ 'pointer-events-none': staff.twitter === '' }"
+              ><img
+                class="w-6 h-6"
+                src="~/assets/images/icons/twitter.svg"
+                alt="twitter-icon"
+                :class="{ 'filter-gray': staff.twitter === '' }"
+              />
+            </a>
+            <a
               :href="`https://facebook.com/${staff.facebook}`"
               target="_blank"
               rel="noopener noreferrer"
@@ -59,20 +72,6 @@
                   'filter-gray': staff.facebook === '',
                   'filter-facebook-blue': staff.facebook !== '',
                 }"
-              />
-            </a>
-
-            <a
-              :href="`https://twitter.com/${staff.twitter}`"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="flex hover:opacity-70"
-              :class="{ 'pointer-events-none': staff.twitter === '' }"
-              ><img
-                class="w-6 h-6"
-                src="~/assets/images/icons/twitter.svg"
-                alt="twitter-icon"
-                :class="{ 'filter-gray': staff.twitter === '' }"
               />
             </a>
             <a
@@ -496,7 +495,7 @@ export default {
 }
 
 .filter-facebook-blue {
-  filter: invert(40%) sepia(58%) saturate(1109%) hue-rotate(197deg)
-    brightness(103%) contrast(102%);
+  filter: invert(30%) sepia(74%) saturate(2937%) hue-rotate(206deg) 
+    brightness(99%) contrast(90%);
 }
 </style>
