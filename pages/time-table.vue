@@ -59,11 +59,11 @@
 
     <div class='main-area'>
       <div class='flex select-button'>
-        <button class='flex-1 h-20 w-full text-center' :class='{active: selectedDay === "10/15"}'
+        <button class='flex-1 h-20 w-full text-center hover:opacity-80' :class='{active: selectedDay === "10/15"}'
                 @click='selectDay("10/15")'>
           DAY1 - 10.15(Fri.)
         </button>
-        <button class='flex-1 h-20 w-full text-center' :class='{active: selectedDay === "10/16"}'
+        <button class='flex-1 h-20 w-full text-center hover:opacity-80' :class='{active: selectedDay === "10/16"}'
                 @click='selectDay("10/16")'>
           DAY2 - 10.16(Sat.)
         </button>
@@ -341,15 +341,14 @@ export default {
   column-gap: 10px;
 
   & > button {
-    color: white;
-    background-color: #1097AA;
-
-    &.active {
       background-color: white;
       color: #1097AA;
       border-top: 1px solid #DDDDDD;
       border-left: 1px solid #DDDDDD;
-      border-right: 1px solid #DDDDDD;
+      border-right: 1px solid #DDDDDD;    
+    &.active {
+      color: white;
+      background-color: #1097AA;
     }
   }
 }
