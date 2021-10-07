@@ -1,17 +1,19 @@
 <template>
-  <div v-cloak class="session-talk h-full w-full flex flex-col justify-between">
+  <div v-cloak class="flex flex-col justify-between w-full h-full session-talk">
     <div>
       <div class="flex items-center w-full">
         <div v-show="isMobile" class="session-room">{{ sessionData.room }}</div>
         <div class="session-lang">
           <p>{{ lang }}</p>
         </div>
-
         <div
           class="ml-1 session-level"
           :style="getLevelColor(sessionData.audience_python_level)"
         >
           <p>{{ sessionData.audience_python_level }}</p>
+        </div>
+        <div class="session-duration">
+          <p>{{ sessionData.duration_min }} min</p>
         </div>
       </div>
       <div>
@@ -20,7 +22,9 @@
         </p>
       </div>
       <div class="mt-1">
-        <p class="text-xs text-custom-black font-noto">{{ sessionData.name }}</p>
+        <p class="text-xs text-custom-black font-noto">
+          {{ sessionData.name }}
+        </p>
       </div>
     </div>
     <div>
@@ -44,6 +48,7 @@ export default {
           room: '',
           title: '',
           track: '',
+          duration_min: 30,
         }
       },
     },
@@ -54,11 +59,11 @@ export default {
   computed: {
     lang() {
       if (this.sessionData.lang_of_talk === 'English') {
-        return 'EN';
+        return 'EN'
       } else if (this.sessionData.lang_of_talk === 'Japanese') {
-        return 'JA';
+        return 'JA'
       } else {
-        return '';
+        return ''
       }
     },
   },
@@ -110,6 +115,18 @@ export default {
   height: 14px;
   display: flex;
   justify-content: center;
+}
+.session-duration {
+  font-family: 'Noto Sans JP';
+  background: #f4f4f4;
+  border-radius: 2px;
+  font-size: 10px;
+  color: #666666;
+  width: 38px;
+  height: 14px;
+  display: flex;
+  justify-content: center;
+  margin-left: 8px;
 }
 .session-level {
   font-family: 'Noto Sans JP';
