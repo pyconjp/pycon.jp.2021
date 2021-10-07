@@ -49,7 +49,7 @@
               :href="`https://facebook.com/${staff.facebook}`"
               target="_blank"
               rel="noopener noreferrer"
-              class="flex"
+              class="flex hover:opacity-70"
               :class="{ 'pointer-events-none': staff.facebook === '' }"
               ><img
                 class="w-6 h-6"
@@ -66,7 +66,7 @@
               :href="`https://twitter.com/${staff.twitter}`"
               target="_blank"
               rel="noopener noreferrer"
-              class="flex"
+              class="flex hover:opacity-70"
               :class="{ 'pointer-events-none': staff.twitter === '' }"
               ><img
                 class="w-6 h-6"
@@ -79,7 +79,7 @@
               :href="`https://github.com/${staff.github}`"
               target="_blank"
               rel="noopener noreferrer"
-              class="flex"
+              class="flex hover:opacity-70"
               :class="{ 'pointer-events-none': staff.github === '' }"
               ><img
                 class="w-6 h-6"
