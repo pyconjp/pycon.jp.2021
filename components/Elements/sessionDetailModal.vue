@@ -148,7 +148,10 @@
                 <p class="my-1 font-bold">Level</p>
                 <div class="col-span-2 text-blue-green">
                   <p class="my-1">
-                    {{ audiencePythonLevel }}
+                    <outer-link
+                      :label="audiencePythonLevel"
+                      to="https://pyconjp.blogspot.com/2021/05/2021-proposal-audience.html"
+                    />
                   </p>
                 </div>
 
