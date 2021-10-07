@@ -43,6 +43,7 @@
             <a
               href="https://www.bellesalle.co.jp/shisetsu/tokyo/bs_kanda/access/"
               target="_blank"
+              class="hover:opacity-70"
               rel="noopener noreferrer"
             >
               <p class="relative inline ml-4">
@@ -54,15 +55,15 @@
                 />
               </p>
             </a>
-            <p class="text-base lg:text-xl">
-              ※オンサイト参加の方は事前に
+            <p class="text-base lg:text-xl mt-2 mx-4">
+              ※ オンサイト参加の方は事前に
               <a
                 href="https://drive.google.com/file/d/1abgh7glVaUsYnlRf_v2RLYw2V3ZAGnjt/view"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="underline"
-                >こちら</a
-              >の資料をご確認ください
+                class="underline hover:opacity-70 font-bold"
+                > こちら </a
+              >の資料をご確認ください！
             </p>
           </div>
         </div>
@@ -71,7 +72,7 @@
             href="https://twitter.com/hashtag/pyconjp"
             target="_blank"
             rel="noopener noreferrer"
-            class=""
+            class="hover:opacity-70"
           >
             <img src="~/assets/images/icon-twitter.svg" alt="icon twitter" />
           </a>
@@ -79,7 +80,7 @@
             href="https://twitter.com/hashtag/pyconjp"
             target="_blank"
             rel="noopener noreferrer"
-            class=""
+            class="hover:opacity-70"
           >
             <p class="ml-4 text-lg lg:text-2xl">#pyconjp</p>
           </a>
@@ -132,7 +133,7 @@
         class="flex items-center justify-center w-5/6 text-center  lg:mr-4 lg:w-1/4"
       >
         <nuxt-link
-          class="w-full custom-button-enable ticket-button"
+          class="w-full custom-button-enable ticket-button hover:opacity-70"
           :to="localePath('/time-table')"
         >
           Timetable</nuxt-link

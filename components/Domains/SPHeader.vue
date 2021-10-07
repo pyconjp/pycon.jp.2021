@@ -48,14 +48,11 @@
         </Accordion>
       </div>
       <div class="mb-4">
-        <a
-          class=""
-          href="https://pyconjp.blogspot.com/2021/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          News
-        </a>
+        <outer-link
+          label="news"
+          class="hover:text-blue-green focus:text-blue-green"
+          to="https://pyconjp.blogspot.com/2021/"
+        />
       </div>
       <div class="w-full mb-4">
         <Accordion
@@ -72,22 +69,16 @@
             >
               {{ $t('common.sponsorList') }}</nuxt-link
             >
-            <a
-              href="https://pyconjp.blogspot.com/2021/09/closed-sponsor-application.html"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="block mt-2 text-custom-gray line-through"
-            >
-              {{ $t('common.prospectus') }}</a
-            >
-            <a
-              href="https://pyconjp.blogspot.com/2021/09/closed-sponsor-application.html"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="block mt-2 text-custom-gray line-through"
-            >
-              {{ $t('common.applicationForm') }}</a
-            >
+            <outer-link
+                :label="$t('common.prospectus')"
+                to="https://pyconjp.blogspot.com/2021/09/closed-sponsor-application.html"
+                class="block mt-2 line-through text-custom-gray hover:opacity-70"
+              />
+            <outer-link
+                :label="$t('common.applicationForm')"
+                to="https://pyconjp.blogspot.com/2021/09/closed-sponsor-application.html"
+                class="block mt-2 line-through text-custom-gray hover:opacity-70"
+              />
           </div>
         </Accordion>
       </div>
@@ -109,13 +100,13 @@
         <p class="inline">Language</p>
         <nuxt-link
           v-if="$i18n.locale === 'en'"
-          class="language-switch"
+          class="language-switch hover:opacity-70"
           :to="switchLocalePath('ja')"
           >JA</nuxt-link
         >
         <nuxt-link
           v-if="$i18n.locale === 'ja'"
-          class="language-switch"
+          class="language-switch hover:opacity-70"
           :to="switchLocalePath('en')"
           >EN</nuxt-link
         >

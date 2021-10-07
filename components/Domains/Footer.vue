@@ -18,7 +18,7 @@
           <div class="flex-1">
             <p class="mb-5 text-base">{{ $t('common.about') }}</p>
             <p class="mb-4 text-sm">
-              <nuxt-link :to="localePath('/code-of-conduct')">{{
+              <nuxt-link class="hover:opacity-70" :to="localePath('/code-of-conduct')">{{
                 $t('common.codeOfConduct')
               }}</nuxt-link>
             </p>
@@ -34,9 +34,10 @@
               {{ $t('common.events') }}
             </p>
             <p class="mb-4 text-sm">
-              <nuxt-link :to="localePath('/time-table')">{{
+              <nuxt-link class="hover:opacity-70" :to="localePath('/time-table')">{{
                 $t('common.timeTable')
               }}</nuxt-link>
+
             </p>
 
             <!--            <p class='mb-4 text-sm opacity-50'>{{ $t('common.specialBooth') }}</p>-->
@@ -57,17 +58,17 @@
           <div class="flex-1">
             <p class="mb-5 text-base">{{ $t('common.sponsors') }}</p>
             <p class="mb-4 text-sm">
-              <nuxt-link :to="localePath('/sponsors')">
+              <nuxt-link class="hover:opacity-70" :to="localePath('/sponsors')">
                 {{ $t('common.sponsorList') }}</nuxt-link
               >
             </p>
-            <p class="mb-4 text-sm opacity-50 line-through">
+            <p class="mb-4 text-sm line-through opacity-50">
               <outer-link
                 :label="$t('common.prospectus')"
                 to="https://pyconjp.blogspot.com/2021/09/closed-sponsor-application.html"
               />
             </p>
-            <p class="mb-4 text-sm opacity-50 line-through">
+            <p class="mb-4 text-sm line-through opacity-50">
               <outer-link
                 :label="$t('common.applicationForm')"
                 to="https://pyconjp.blogspot.com/2021/09/closed-sponsor-application.html"
@@ -77,7 +78,7 @@
           </div>
           <div class="flex-1">
             <p class="mb-8 text-base lg:mb-0">
-              <nuxt-link :to="localePath('/staff')">
+              <nuxt-link class="hover:opacity-70" :to="localePath('/staff')">
                 {{ $t('common.staff') }}</nuxt-link
               >
             </p>
@@ -92,7 +93,7 @@
         <div class="font-source mb-7">
           <span class="mr-2">Follow US on twitter</span>
           <span>
-            <a
+            <a class="hover:opacity-70"
               href="https://twitter.com/pyconjapan"
               target="_blank"
               rel="noopener noreferrer"
@@ -108,7 +109,7 @@
         <div class="flex flex-col lg:items-end lg:flex-row">
           <div class="flex-1 mb-8 text-sm lg:mb-0">
             <p>
-              {{ $t('common.contact') }}：<a href="mailto:pyconjp@pycon.jp"
+              {{ $t('common.contact') }}：<a class="hover:opacity-70" href="mailto:pyconjp@pycon.jp"
                 >pyconjp@pycon.jp</a
               >
             </p>
@@ -119,7 +120,7 @@
           <div class="flex-1 previous-pages lg:text-right">
             <outer-link
               :label="$t('pages.index.pastPyConJPSites')"
-              to="https://www.pycon.jp/organizer/index.html "
+              to="https://www.pycon.jp/organizer/index.html"
             />
           </div>
         </div>

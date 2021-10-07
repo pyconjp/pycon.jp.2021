@@ -30,7 +30,7 @@
           <div class="flex justify-center lg:justify-start">
             <nuxt-link
               :to="localePath('/code-of-conduct')"
-              class="mt-6 custom-button-enable lg:mt-10">
+              class="mt-6 custom-button-enable lg:mt-10 hover:opacity-70">
               {{ $t('common.codeOfConduct') }}
             </nuxt-link>
           </div>

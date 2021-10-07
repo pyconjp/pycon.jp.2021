@@ -29,6 +29,7 @@
           :href='sponsor.link'
           target='_blank'
           rel='noopener noreferrer'
+          class="hover:opacity-70"
           :class="{ 'pointer-events-none': sponsor.link === '#' }"
         >
           <p

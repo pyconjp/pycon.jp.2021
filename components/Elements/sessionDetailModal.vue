@@ -35,7 +35,7 @@
                     :href="youtubeLink"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="flex mr-8"
+                    class="flex mr-8 hover:opacity-70"
                     :class="{ 'pointer-events-none': youtubeLink === '' }"
                   >
                     <img
@@ -63,7 +63,7 @@
                     :href="documentLink"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="flex"
+                    class="flex hover:opacity-70"
                     :class="{ 'pointer-events-none': youtubeLink === '' }"
                     ><img
                       class="lg:h-full h-4/5 filter-gray"

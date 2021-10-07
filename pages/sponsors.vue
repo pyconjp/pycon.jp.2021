@@ -34,6 +34,7 @@
                 :href="sponsor.link"
                 target="_blank"
                 rel="noopener noreferrer"
+                class="hover:opacity-70"
                 :class="{ 'pointer-events-none': sponsor.link === '#' }"
               >
                 <p
@@ -63,7 +64,7 @@
                   :href="sponsor.link"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="w-full text-center"
+                  class="w-full text-center hover:opacity-70"
                   :class="{ 'pointer-events-none': sponsor.link === '#' }"
                 >
                   <div class="sp-name">
@@ -94,6 +95,7 @@
                 :href="sponsor.link"
                 target="_blank"
                 rel="noopener noreferrer"
+                class="hover:opacity-70"
                 :class="{ 'pointer-events-none': sponsor.link === '#' }"
               >
                 <div class="p-3 lg:p-6 v-card v-sheet theme-light">
@@ -116,7 +118,7 @@
                   :href="sponsor.link"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="w-full text-center"
+                  class="w-full text-center hover:opacity-70"
                   :class="{ 'pointer-events-none': sponsor.link === '#' }"
                 >
                   <div class="sp-name">
@@ -145,6 +147,7 @@
               :href="sponsor.link"
               target="_blank"
               rel="noopener noreferrer"
+              class="hover:opacity-70"
               :class="{ 'pointer-events-none': sponsor.link === '#' }"
             >
               <p class="m-2 text-xl break-all lg:text-2xl font-noto">
@@ -166,6 +169,7 @@
                 :href="sponsor.link"
                 target="_blank"
                 rel="noopener noreferrer"
+                class="hover:opacity-70"
                 :class="{ 'pointer-events-none': sponsor.link === '#' }"
               >
                 <div class="p-3 lg:p-6 v-card v-sheet theme-light">
@@ -195,7 +199,7 @@
               :href="patron.pageLink"
               target="_blank"
               rel="noopener noreferrer"
-              class="flex items-center justify-center"
+              class="flex items-center justify-center hover:opacity-70"
             >
               <img
                 :src="require(`@/assets/images/patron/${patron.imegeName}`)"
