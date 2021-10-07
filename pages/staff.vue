@@ -1,6 +1,5 @@
 <template>
   <div class="flex flex-col items-center">
-
     <div
       class="z-20 flex items-center justify-center w-full mt-6 sticky-header"
     >
@@ -10,7 +9,7 @@
     <div class="w-11/12 mb-40 text-black">
       <div class="mx-4 my-14 lg:m-20">
         <p
-          class="-mb-8 font-bold font-mont text-shadow text-7xl lg:text-9xl lg:-mb-14"
+          class="-mb-8 font-bold  font-mont text-shadow text-7xl lg:text-9xl lg:-mb-14"
         >
           Staff
         </p>
@@ -19,11 +18,11 @@
         </p>
       </div>
       <div
-        class="grid grid-cols-2 mt-4 text-center lg:grid-cols-4 place-items-center"
+        class="grid grid-cols-2 mt-4 text-center  lg:grid-cols-4 place-items-center"
       >
         <div v-for="staff in staffs" :key="staff.id" class="object-center my-8">
           <img
-            class="block object-cover object-center w-20 h-20 m-auto rounded-full lg:w-40 lg:h-40"
+            class="block object-cover object-center w-20 h-20 m-auto rounded-full  lg:w-40 lg:h-40"
             :src="
               staff.imgURL
                 ? require(`@/assets/images/staff/${staff.imgURL}`)
@@ -40,7 +39,7 @@
           </p>
 
           <div
-            class="flex justify-around gap-3 my-4 w-28 lg:w-56 lg:gap-6 lg:place-content-center"
+            class="flex justify-around gap-3 my-4  w-28 lg:w-56 lg:gap-6 lg:place-content-center"
           >
             <a
               :href="`https://facebook.com/${staff.facebook}`"
@@ -169,7 +168,7 @@ export default {
         {
           nameJp: '宮脇 一晃',
           nameEn: 'miyawaki kazuaki',
-          titleJp: 'スポンサー・グッズ担当',
+          titleJp: '',
           titleEn: '',
           imgURL: '',
           facebook: '',
