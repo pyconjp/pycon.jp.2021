@@ -42,11 +42,20 @@
                       class="lg:h-full h-4/5"
                       src="~/assets/images/icons/video.svg"
                       alt="video-icon"
-                      :class="{ 'filter-blue-green': youtubeLink !== '', 'filter-gray': youtubeLink === '' }"
+                      :class="{
+                        'filter-blue-green': youtubeLink !== '',
+                        'filter-gray': youtubeLink === '',
+                      }"
                     />
-                    <p class="ml-2 text-sm "
-                      :class="{ 'text-blue-green': youtubeLink !== '', 'text-gray-500': youtubeLink === '' }"
-                    >Video</p>
+                    <p
+                      class="ml-2 text-sm"
+                      :class="{
+                        'text-blue-green': youtubeLink !== '',
+                        'text-gray-500': youtubeLink === '',
+                      }"
+                    >
+                      Video
+                    </p>
                   </a>
 
                   <!-- Document Link -->
@@ -60,11 +69,20 @@
                       class="lg:h-full h-4/5 filter-gray"
                       src="~/assets/images/icons/documents.svg"
                       alt="documents-icon"
-                      :class="{ 'filter-blue-green': documentLink !== '', 'filter-gray': documentLink === '' }"
+                      :class="{
+                        'filter-blue-green': documentLink !== '',
+                        'filter-gray': documentLink === '',
+                      }"
                     />
-                    <p class="ml-2 text-sm"
-                      :class="{ 'text-blue-green': documentLink !== '', 'text-gray-500': documentLink === '' }"
-                    >Document</p>
+                    <p
+                      class="ml-2 text-sm"
+                      :class="{
+                        'text-blue-green': documentLink !== '',
+                        'text-gray-500': documentLink === '',
+                      }"
+                    >
+                      Document
+                    </p>
                   </a>
                 </div>
               </div>
@@ -85,7 +103,9 @@
           <div class="flex justify-center pb-8 bg-white">
             <div class="w-10/12 pt-4 border-t lg:mb-4">
               <p class="text-xl font-bold">Speaker</p>
-              <p class="font-medium leading-7 lg:leading-8 ">{{ speakerName }}</p>
+              <p class="font-medium leading-7 lg:leading-8">
+                {{ speakerName }}
+              </p>
               <div
                 class="leading-7 lg:leading-8 list_style"
                 v-html="$md.render(speakerProfile)"
@@ -119,7 +139,10 @@
                 <p class="my-1 font-bold">Track</p>
                 <div class="col-span-2 text-blue-green">
                   <p class="my-1">
-                    {{ track }}
+                    <outer-link
+                      :label="track"
+                      to="https://pyconjp.blogspot.com/2021/05/2021-proposal-track.html"
+                    />
                   </p>
                 </div>
                 <p class="my-1 font-bold">Level</p>
@@ -173,7 +196,10 @@
 </template>
 
 <script>
+import OuterLink from '~/components/OuterLink'
+
 export default {
+  components: { OuterLink },
   name: 'SessionDetailModal',
   props: {
     sessionData: {
@@ -227,7 +253,7 @@ export default {
       } else if (this.langOfTalk === 'English') {
         return 'EN'
       } else {
-        return '';
+        return ''
       }
     },
   },
@@ -315,12 +341,13 @@ export default {
 }
 
 .filter-gray {
-        // filter: invert(99%) sepia(0%) saturate(2424%) hue-rotate(196deg) brightness(113%) contrast(91%);
-  filter: invert(49%) sepia(15%) saturate(16%) hue-rotate(314deg) brightness(100%) contrast(89%);
+  filter: invert(49%) sepia(15%) saturate(16%) hue-rotate(314deg)
+    brightness(100%) contrast(89%);
 }
 
 .filter-blue-green {
-  filter: invert(53%) sepia(35%) saturate(7231%) hue-rotate(157deg) brightness(90%) contrast(87%);
+  filter: invert(53%) sepia(35%) saturate(7231%) hue-rotate(157deg)
+    brightness(90%) contrast(87%);
 }
 
 ul {
