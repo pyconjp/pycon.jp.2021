@@ -20,7 +20,11 @@
       <div
         class="grid grid-cols-2 mt-4 text-center  lg:grid-cols-4 place-items-center"
       >
-        <div v-for="staff in staffs" :key="staff.id" class="object-center my-8">
+        <div
+          v-for="staff in staffs"
+          :key="staff.id"
+          class="flex flex-col items-center object-center my-8"
+        >
           <img
             class="block object-cover object-center w-20 h-20 m-auto rounded-full  lg:w-40 lg:h-40"
             :src="
@@ -39,7 +43,7 @@
           </p>
 
           <div
-            class="flex justify-around gap-3 my-4  w-28 lg:w-56 lg:gap-6 lg:place-content-center"
+            class="flex justify-around gap-3 mt-2 mb-4  w-28 lg:w-56 lg:gap-6 lg:place-content-center"
           >
             <a
               :href="`https://facebook.com/${staff.facebook}`"
