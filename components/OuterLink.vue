@@ -1,5 +1,5 @@
 <template>
-  <a :href='to' target='_blank' rel='noopener noreferrer'>{{ label }}</a>
+  <a :href='to' target='_blank' class="hover:opacity-70" rel='noopener noreferrer'>{{ label }}</a>
 </template>
 
 <script>
