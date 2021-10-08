@@ -1,11 +1,11 @@
 <template>
   <div class="relative">
     <nav
-      class="relative z-40 flex items-center justify-between pl-4 pr-4  lg:pl-0 lg:justify-center navbar"
+      class="relative z-40 flex items-center justify-between pl-4 pr-4 lg:pl-0 lg:justify-center navbar"
     >
       <!-- ヘッダーのロゴ(PC、モバイル共通) -->
       <div class="flex items-center justify-center w-1/2 lg:w-1/4">
-        <nuxt-link :to="localePath('/')"
+        <nuxt-link class="hover:opacity-50" :to="localePath('/')"
           ><img src="~/assets/images/header-pyconjp.svg" alt=""
         /></nuxt-link>
       </div>
@@ -42,14 +42,14 @@
             <div v-if="showAbstractMenu" class="list-menu">
               <nuxt-link
                 :to="localePath('/code-of-conduct')"
-                class="hover:text-blue-green focus:text-blue-green block"
+                class="block hover:text-blue-green focus:text-blue-green"
                 >{{ $t('common.codeOfConduct') }}</nuxt-link
               >
               <outer-link
                 to="https://drive.google.com/file/d/1abgh7glVaUsYnlRf_v2RLYw2V3ZAGnjt/view?usp=sharing"
                 :label="$t('common.infectionControlGuidelines')"
-                class="hover:text-blue-green focus:text-blue-green block mt-2"
-              ></outer-link>
+                class="block mt-2 hover:text-blue-green focus:text-blue-green"
+              />
             </div>
           </li>
           <li class="relative">
@@ -68,14 +68,11 @@
             </div>
           </li>
           <li class="">
-            <a
-              class=""
-              href="https://pyconjp.blogspot.com/search/label/pyconjp2021"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              News
-            </a>
+            <outer-link
+              label="news"
+              class="hover:text-blue-green focus:text-blue-green"
+              to="https://pyconjp.blogspot.com/search/label/pyconjp2021"
+            />
           </li>
           <li class="relative">
             <p
@@ -91,28 +88,24 @@
               >
                 {{ $t('common.sponsorList') }}</nuxt-link
               >
-              <a
-                href="https://pyconjp.blogspot.com/2021/09/closed-sponsor-application.html"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="block mt-2 text-custom-gray line-through"
-              >
-                {{ $t('common.prospectus') }}</a
-              >
-              <a
-                href="https://pyconjp.blogspot.com/2021/09/closed-sponsor-application.html"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="block mt-2 text-custom-gray line-through"
-              >
-                {{ $t('common.applicationForm') }}</a
-              >
+              <outer-link
+                :label="$t('common.prospectus')"
+                to="https://pyconjp.blogspot.com/2021/09/closed-sponsor-application.html"
+                class="block mt-2 line-through text-custom-gray hover:opacity-70"
+              />
+              <outer-link
+                :label="$t('common.applicationForm')"
+                to="https://pyconjp.blogspot.com/2021/09/closed-sponsor-application.html"
+                class="block mt-2 line-through text-custom-gray hover:opacity-70"
+              />
             </div>
           </li>
           <li class="">
-            <a class="pointer-events-none disable-message" href="">
-              {{ $t('common.staff') }}
-            </a>
+            <nuxt-link
+                :to="localePath('/staff')"
+                class="hover:text-blue-green focus:text-blue-green"
+                >{{ $t('common.staff') }}</nuxt-link
+              >
           </li>
           <!-- <li class="">
             <a class="pointer-events-none disable-message" href="">
@@ -125,13 +118,13 @@
           <li class="">
             <nuxt-link
               v-if="$i18n.locale === 'en'"
-              class="language-switch"
+              class="language-switch hover:opacity-70"
               :to="switchLocalePath('ja')"
               >JA</nuxt-link
             >
             <nuxt-link
               v-if="$i18n.locale === 'ja'"
-              class="language-switch"
+              class="language-switch hover:opacity-70"
               :to="switchLocalePath('en')"
               >EN</nuxt-link
             >

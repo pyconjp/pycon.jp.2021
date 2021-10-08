@@ -43,9 +43,10 @@
             <a
               href="https://www.bellesalle.co.jp/shisetsu/tokyo/bs_kanda/access/"
               target="_blank"
+              class="hover:opacity-70"
               rel="noopener noreferrer"
             >
-              <p class="relative ml-4">
+              <p class="relative inline ml-4">
                 case "ONSITE": ベルサール神田
                 <img
                   src="~/assets/images/icon_external-link.svg"
@@ -54,6 +55,16 @@
                 />
               </p>
             </a>
+            <p class="text-base lg:text-xl mt-2 mx-4">
+              ※ オンサイト参加の方は事前に
+              <a
+                href="https://drive.google.com/file/d/1abgh7glVaUsYnlRf_v2RLYw2V3ZAGnjt/view"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="underline hover:opacity-70 font-bold"
+                > こちら </a
+              >の資料をご確認ください！
+            </p>
           </div>
         </div>
         <div class="flex">
@@ -61,7 +72,7 @@
             href="https://twitter.com/hashtag/pyconjp"
             target="_blank"
             rel="noopener noreferrer"
-            class=""
+            class="hover:opacity-70"
           >
             <img src="~/assets/images/icon-twitter.svg" alt="icon twitter" />
           </a>
@@ -69,7 +80,7 @@
             href="https://twitter.com/hashtag/pyconjp"
             target="_blank"
             rel="noopener noreferrer"
-            class=""
+            class="hover:opacity-70"
           >
             <p class="ml-4 text-lg lg:text-2xl">#pyconjp</p>
           </a>
@@ -116,20 +127,33 @@
     </div>
 
     <div
-      class="flex flex-col items-center justify-around w-5/6 mt-16 mb-16  lg:w-3/4 lg:flex-row"
+      class="flex flex-col items-center justify-around w-5/6 mt-8 mb-16  lg:mt-16 lg:w-3/4 lg:flex-row"
     >
-      <div class="flex justify-center w-5/6 text-center lg:mr-4 lg:w-1/4">
+      <div
+        class="flex items-center justify-center w-5/6 text-center  lg:mr-4 lg:w-1/4"
+      >
         <nuxt-link
-          class="w-full custom-button-enable ticket-button"
+          class="w-full custom-button-enable ticket-button hover:opacity-70"
           :to="localePath('/time-table')"
         >
           Timetable</nuxt-link
         >
       </div>
-      <div class="flex justify-center w-5/6 mt-4 text-center lg:ml-4 lg:w-1/4 lg:mt-0">
+      <div
+        class="flex justify-center w-5/6 mt-4 text-center  lg:ml-4 lg:w-1/4 lg:mt-0"
+      >
         <outer-link
-          label="Ticket"
+          label="Ticket(Online)"
           to="https://pyconjp.connpass.com/event/221241/"
+          class="w-full custom-button-enable ticket-button"
+        />
+      </div>
+      <div
+        class="flex justify-center w-5/6 mt-4 text-center  lg:ml-4 lg:w-1/4 lg:mt-0"
+      >
+        <outer-link
+          label="Ticket(OnSite)"
+          to="https://pyconjp.connpass.com/event/225699/"
           class="w-full custom-button-enable ticket-button"
         />
       </div>
@@ -225,7 +249,7 @@ export default {
   background: linear-gradient(237.35deg, #a1e42b 1.58%, #2f9acf 83.64%);
   box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.1), 0px 2px 24px rgba(0, 0, 0, 0.08);
   border-radius: 100px;
-  padding: 0.4rem 4rem 0.4rem 4rem;
+  padding: 0.6rem 0.4rem 0.6rem 0.4rem;
 }
 .custom-button-disable {
   font-family: Montserrat;

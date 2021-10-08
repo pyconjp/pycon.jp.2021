@@ -96,7 +96,7 @@
             :href="sponsor.link"
             target="_blank"
             rel="noopener noreferrer"
-            class="my-2 text-xl font-medium lg:m-2 lg:text-2xl font-noto"
+            class="my-2 text-xl font-medium lg:m-2 lg:text-2xl font-noto hover:opacity-70"
             :class="{ 'pointer-events-none': sponsor.link === '#' }"
           >
               {{ $i18n.locale === 'ja' ? sponsor.nameJp : sponsor.nameEn }}
@@ -145,7 +145,7 @@
             :href="patron.pageLink"
             target="_blank"
             rel="noopener noreferrer"
-            class="flex items-center justify-center"
+            class="flex items-center justify-center hover:opacity-70"
           >
             <img
               :src="require(`@/assets/images/patron/${patron.imegeName}`)"

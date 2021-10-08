@@ -22,10 +22,10 @@ $ yarn start
 ※ENDPOINT_ID は Slack で聞いてください
 
 ```
-$ pip install git+https://github.com/pyconjp/talks.domain.2021@0.0.1
+$ pip install git+https://github.com/pyconjp/talks.domain.2021@0.1.1
 $ ENDPOINT_ID=<endpoint id> python -m pyconjp_domains timetable ./content/talk/session.csv
 ```
 
-/content/talk/session.csvが作成されます。
+/content/talk/session.csv が作成されます。
 
 For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
