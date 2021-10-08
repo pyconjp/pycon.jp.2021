@@ -206,7 +206,7 @@ export default {
           nameEn: 'ミヤシタ　リョウタ',
           titleJp: '',
           titleEn: '',
-          imgURL: 'U018KRQRB7X.jpg',
+          imgURL: '',
           facebook: '',
           twitter: '',
           github: '',
