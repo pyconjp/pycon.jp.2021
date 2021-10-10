@@ -1,13 +1,13 @@
 <template>
   <div v-cloak class="flex flex-col justify-between w-full h-full session-talk">
     <div>
-      <div class="flex items-center w-full">
-        <div v-show="isMobile" class="session-room">{{ sessionData.room }}</div>
+      <div class="flex items-center w-full flex-wrap gap-1">
+        <div class="session-room lg:hidden">{{ sessionData.room }}</div>
         <div class="session-lang">
           <p>{{ lang }}</p>
         </div>
         <div
-          class="ml-1 session-level"
+          class="session-level"
           :style="getLevelColor(sessionData.audience_python_level)"
         >
           <p>{{ sessionData.audience_python_level }}</p>
@@ -53,9 +53,6 @@ export default {
       },
     },
   },
-  data() {
-    return { isMobile: false }
-  },
   computed: {
     lang() {
       if (this.sessionData.lang_of_talk === 'English') {
@@ -66,12 +63,6 @@ export default {
         return ''
       }
     },
-  },
-  mounted() {
-    const mediaQuery = window.matchMedia('(max-width: 1023px)')
-    if (mediaQuery.matches) {
-      this.isMobile = true
-    }
   },
   methods: {
     getLevelColor(level) {
@@ -103,7 +94,6 @@ export default {
   font-weight: 500;
   font-size: 10px;
   color: #666666;
-  margin-right: 8px;
 }
 .session-lang {
   font-family: 'Noto Sans JP';
@@ -126,7 +116,6 @@ export default {
   height: 14px;
   display: flex;
   justify-content: center;
-  margin-left: 8px;
 }
 .session-level {
   font-family: 'Noto Sans JP';
