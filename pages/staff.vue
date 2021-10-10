@@ -272,7 +272,7 @@ export default {
           nameEn: 'Kadowaki Yuuki',
           titleJp: '',
           titleEn: '',
-          imgURL: '',
+          imgURL: 'KadowakiYuuki.jpg',
           facebook: '',
           twitter: '',
           github: '',
@@ -314,7 +314,7 @@ export default {
         {
           nameJp: '渡部 岳郎',
           nameEn: 'WATANABE Takeo',
-          titleJp: 'NOC/オフサイト諸々担当',
+          titleJp: 'NOC',
           titleEn: '',
           imgURL: 'WATANABETakeo.jpg',
           facebook: '',
