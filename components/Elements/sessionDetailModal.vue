@@ -137,7 +137,7 @@
               <!-- セッション情報 -->
               <div class="grid grid-cols-1 mt-4 lg:grid-cols-3">
                 <p class="my-1 font-bold">Track</p>
-                <div class="col-span-2 text-blue-green">
+                <div class="col-span-2 underline text-blue-green">
                   <p class="my-1">
                     <outer-link
                       :label="track"
@@ -146,7 +146,7 @@
                   </p>
                 </div>
                 <p class="my-1 font-bold">Level</p>
-                <div class="col-span-2 text-blue-green">
+                <div class="col-span-2 underline text-blue-green">
                   <p class="my-1">
                     <outer-link
                       :label="audiencePythonLevel"
@@ -358,30 +358,32 @@ ul {
 }
 
 .list_style {
-  ::v-deep ul {
-    list-style-type: disc;
-    padding-left: 1rem;
-  }
+  ::v-deep {
+    ul {
+      list-style-type: disc;
+      padding-left: 1rem;
+    }
 
-  ::v-deep h1 {
-    font-size: 1.4rem;
-  }
-  ::v-deep h2 {
-    font-size: 1.3rem;
-  }
-  ::v-deeph3 {
-    font-size: 1.2rem;
-  }
+    h1 {
+      font-size: 1.4rem;
+    }
+    h2 {
+      font-size: 1.3rem;
+    }
+    h3 {
+      font-size: 1.2rem;
+    }
 
-  ::v-deep ol {
-    list-style-type: decimal;
-    padding-left: 1rem;
-  }
+    ol {
+      list-style-type: decimal;
+      padding-left: 1rem;
+    }
 
-  ::v-deep p {
-    a {
-      text-decoration: underline;
-      color: #1e90ff;
+    p {
+      a {
+        text-decoration: underline;
+        color: #1097aa;
+      }
     }
   }
 }
