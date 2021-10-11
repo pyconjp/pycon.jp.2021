@@ -58,12 +58,22 @@
     </div>
 
     <div class='main-area'>
-      <div class='flex select-button'>
-        <button class='flex-1 h-20 w-full text-center hover:opacity-80' :class='{active: selectedDay === "10/15"}'
+      <div v-if='selectedDay === "10/15"' class='flex text-sm select-button select-button-left lg:text-base' >
+        <button class='flex-1 w-full text-center hover:opacity-80 active'
                 @click='selectDay("10/15")'>
           DAY1 - 10.15(Fri.)
         </button>
-        <button class='flex-1 h-20 w-full text-center hover:opacity-80' :class='{active: selectedDay === "10/16"}'
+        <button class='flex-1 w-full text-center hover:opacity-80 '
+                @click='selectDay("10/16")'>
+          DAY2 - 10.16(Sat.)
+        </button>
+      </div>
+      <div v-if='selectedDay === "10/16"' class='flex text-sm select-button select-button-right lg:text-base' >
+        <button class='flex-1 w-full text-center hover:opacity-80 mr-2.5'
+                @click='selectDay("10/15")'>
+          DAY1 - 10.15(Fri.)
+        </button>
+        <button class='flex-1 w-full text-center hover:opacity-80 active'
                 @click='selectDay("10/16")'>
           DAY2 - 10.16(Sat.)
         </button>
@@ -260,7 +270,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .sticky-header {
   position: -webkit-sticky;
   position: sticky;
@@ -337,20 +347,52 @@ export default {
   font-family: Montserrat;
   font-style: normal;
   font-weight: bold;
+  position: relative;
 
-  column-gap: 10px;
-
-  & > button {
-      background-color: white;
-      color: #1097AA;
-      border-top: 1px solid #DDDDDD;
-      border-left: 1px solid #DDDDDD;
-      border-right: 1px solid #DDDDDD;    
+   & > button {
+      background-color: #f4f4f4;
+      border: 1px solid #DDDDDD;
+      color: gray;
+      height: 70px;
+      margin-left: 10px;
+      margin-right: 0px;
     &.active {
-      color: white;
-      background-color: #1097AA;
+      height: 80px;
+      color: #1097AA;
+      border-top:  7px solid #1097AA;
+      border-left:  1px solid #1097AA;
+      border-right:  1px solid #1097AA;
+      border-bottom: none;
+      background-color: white;
     }
   }
+}
+
+.select-button-left::after {
+  content: '';
+  width: calc(50% + 2px);
+  height: 4px;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  border-bottom: 1px solid #1097AA;
+}
+
+.select-button-right {
+   & > button {
+      margin-right: 10px;
+      margin-left: 0px;
+  }
+}
+
+.select-button-right::after {
+  content: '';
+  width: calc(50% + 2px);
+  height: 4px;
+  position: absolute;
+  right: 50%;
+  bottom: 0;
+  border-bottom: 1px solid #1097AA;
 }
 
 .time-table-gap {
