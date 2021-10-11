@@ -15,13 +15,13 @@
                 <div class="flex w-2/3 my-2 lg:w-4/12">
                   <div
                     class="p-2 text-xs font-semibold text-center text-gray-700 bg-gray-200 rounded-sm "
-                    :class='{"hidden": sessionLanguage === ""}'
+                    :class="{ hidden: sessionLanguage === '' }"
                   >
                     {{ sessionLanguage }}
                   </div>
                   <div
-                    class="p-2 ml-1 text-xs font-semibold text-center text-white rounded-sm bg-blue-green"
-                    :class='{"hidden": audiencePythonLevel === ""}'
+                    class="p-2 ml-1 text-xs font-semibold text-center text-white rounded-sm  bg-blue-green"
+                    :class="{ hidden: audiencePythonLevel === '' }"
                   >
                     {{ audiencePythonLevel }}
                   </div>
@@ -89,7 +89,7 @@
             </div>
             <div class="relative w-1/12" @click.stop="$emit('close')">
               <div
-                class="cursor-pointer close hover:bg-gray-100 lg:top-6 -top-12 -left-5 lg:left-2"
+                class="cursor-pointer  close hover:bg-gray-100 lg:top-6 -top-12 -left-5 lg:left-2"
               >
                 <img
                   class="h-3/5"
@@ -202,8 +202,8 @@
 import OuterLink from '~/components/OuterLink'
 
 export default {
-  components: { OuterLink },
   name: 'SessionDetailModal',
+  components: { OuterLink },
   props: {
     sessionData: {
       type: Object,
@@ -358,29 +358,31 @@ ul {
 }
 
 .list_style {
-  ul {
+  ::v-deep ul {
     list-style-type: disc;
     padding-left: 1rem;
   }
 
-  h1 {
+  ::v-deep h1 {
     font-size: 1.4rem;
   }
-  h2 {
+  ::v-deep h2 {
     font-size: 1.3rem;
   }
-  h3 {
+  ::v-deeph3 {
     font-size: 1.2rem;
   }
 
-  ol {
+  ::v-deep ol {
     list-style-type: decimal;
     padding-left: 1rem;
   }
 
-  a {
-    text-decoration: underline;
-    color: #1e90ff;
+  ::v-deep p {
+    a {
+      text-decoration: underline;
+      color: #1e90ff;
+    }
   }
 }
 </style>
