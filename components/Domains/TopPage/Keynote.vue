@@ -76,7 +76,7 @@ export default {
           title: '',
           image: 'keynote2.jpg',
           date: '2021.10.16 10:30 -',
-          desc: `Brandt 氏は Python のコア開発者であり、スマートベータとアセットアロケーションについてグローバルなトップ企業である Research Affiliates 社の投資システムチームでシニアソフトウェアエンジニアとして働いています。<br/>
+          desc: `Brandt氏はPythonのコア開発者であり、現在はMicrosoftでCPythonインタープリタの速度向上を目的としたチームに所属しています。<br/>
           彼は 2 年以上前から CPython の開発に公式に関わっており、様々な方法で CPython の性能、安定性、表現力を向上させてきました。<br/>
           特に、昨年の多くの時間を、Python 3.10 の重要な新機能である構造的パターンマッチングの実装を設計し、リードするのに費やしました。<br>
           <a href="https://github.com/brandtbucher/brandtbucher" target="_blank" class="text-blue-green hover:opacity-70" rel="noopener">@brandtbucher</a> として GitHub に新しいコミットをプッシュしていないときは、コーヒーショップで深煎りのエスプレッソをすすりながらノンフィクションを読むなどして余暇を過ごすことが多いです。`,
@@ -98,7 +98,7 @@ export default {
           title: '',
           image: 'keynote2.jpg',
           date: '2021.10.16 10:30 -',
-          desc: `Brandt is a Python core developer and senior software engineer on the Investment Systems team at Research Affiliates, a global leader in smart beta and asset allocation.<br>
+          desc: `Brandt is a Python core developer currently working at Microsoft on a team tasked with improving the speed of the CPython interpreter.<br>
           He has been officially involved in CPython development for over two years now, and has improved its performance, stability, and expressiveness in a variety of ways.<br>
           Most notably, he spent most of the past year helping design and lead the implementation of structural pattern matching, a major new feature arriving in Python 3.10.<br>
           When he’s not pushing new commits on GitHub as <a href="https://github.com/brandtbucher/brandtbucher" target="_blank" class="text-blue-green hover:opacity-70" rel="noopener">@brandtbucher</a>, he spends most of his free time at coffee shops sipping dark roast espresso and reading nonfiction.`,
