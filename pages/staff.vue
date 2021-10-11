@@ -315,7 +315,7 @@ export default {
           nameJp: '渡部 岳郎',
           nameEn: 'WATANABE Takeo',
           titleJp: 'NOC',
-          titleEn: '',
+          titleEn: 'NOC',
           imgURL: 'WATANABETakeo.jpg',
           facebook: '',
           twitter: '',
@@ -495,7 +495,7 @@ export default {
 }
 
 .filter-facebook-blue {
-  filter: invert(30%) sepia(74%) saturate(2937%) hue-rotate(206deg) 
+  filter: invert(30%) sepia(74%) saturate(2937%) hue-rotate(206deg)
     brightness(99%) contrast(90%);
 }
 </style>
