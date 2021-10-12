@@ -76,7 +76,7 @@ export default {
           title: '',
           image: 'keynote2.jpg',
           date: '2021.10.16 10:30 -',
-          desc: `Brandt氏はPythonのコア開発者であり、現在はMicrosoftでCPythonインタープリタの速度向上を目的としたチームに所属しています。<br/>
+          desc: `Brandt 氏は Python のコア開発者であり、現在は Microsoft で CPython インタープリタの速度向上を目的としたチームに所属しています。<br/>
           彼は 2 年以上前から CPython の開発に公式に関わっており、様々な方法で CPython の性能、安定性、表現力を向上させてきました。<br/>
           特に、昨年の多くの時間を、Python 3.10 の重要な新機能である構造的パターンマッチングの実装を設計し、リードするのに費やしました。<br>
           <a href="https://github.com/brandtbucher/brandtbucher" target="_blank" class="text-blue-green hover:opacity-70" rel="noopener">@brandtbucher</a> として GitHub に新しいコミットをプッシュしていないときは、コーヒーショップで深煎りのエスプレッソをすすりながらノンフィクションを読むなどして余暇を過ごすことが多いです。`,
