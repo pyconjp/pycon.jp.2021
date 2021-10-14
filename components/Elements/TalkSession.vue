@@ -1,5 +1,7 @@
 <template>
-  <div v-cloak class="flex flex-col justify-between w-full h-full session-talk">
+  <div v-cloak 
+      class="flex flex-col justify-between w-full h-full session-talk"
+      :class="{'on-site-bg':  onSiteTalkIds.includes(sessionData.id)}">
     <div>
       <div class="flex items-center w-full flex-wrap gap-1">
         <div class="session-room lg:hidden">{{ sessionData.room }}</div>
@@ -53,6 +55,9 @@ export default {
       },
     },
   },
+  data(){
+    return {onSiteTalkIds: ['290208', '273758', '273820', '289624']}
+  },
   computed: {
     lang() {
       if (this.sessionData.lang_of_talk === 'English') {
@@ -81,6 +86,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.on-site-bg {
+  background-color: #eafdf9 !important;
+}
 .session-talk {
   background: #ffffff;
   border: 1px solid #dddddd;
