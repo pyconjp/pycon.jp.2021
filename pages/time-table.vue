@@ -1,55 +1,58 @@
 <template>
-  <div class='relative time-table-area'>
-    <div class='z-20 flex items-center justify-center w-full mt-6 sticky-header'>
-      <CustomHeader class='w-11/12 lg:w-5/6' />
+  <div class="relative time-table-area">
+    <div
+      class="z-20 flex items-center justify-center w-full mt-6 sticky-header"
+    >
+      <CustomHeader class="w-11/12 lg:w-5/6" />
     </div>
 
-    <div class='relative flex flex-col overflow-hidden title-area mt-12'>
-      <div class='sp-width'>
+    <div class="relative flex flex-col mt-12 overflow-hidden title-area">
+      <div class="sp-width">
         <p
-          class='absolute left-0 -mb-8 font-bold lg:relative text-shadow text-7xl lg:text-9xl lg:-mb-14 font-mont whitespace-nowrap'>
+          class="absolute left-0 -mb-8 font-bold  lg:relative text-shadow text-7xl lg:text-9xl lg:-mb-14 font-mont whitespace-nowrap"
+        >
           Time Table
         </p>
-        <div class='mt-12 lg:mt-2'>
-          <p class='text-4xl font-bold text-left  lg:text-6xl text-blue-green font-mont'>
+        <div class="mt-12 lg:mt-2">
+          <p
+            class="text-4xl font-bold text-left  lg:text-6xl text-blue-green font-mont"
+          >
             Time Table
           </p>
         </div>
       </div>
     </div>
 
-    <div class='img-items-list'>
+    <div class="img-items-list">
       <div
-        v-for='sponsor in platinumSponsorsList'
-        :key='sponsor.nameJp'
-        class='w-full p-6 my-1 lg:w-1/3'
+        v-for="sponsor in platinumSponsorsList"
+        :key="sponsor.nameJp"
+        class="w-full p-6 my-1 lg:w-1/3"
         :class="{ 'touch-action-none': sponsor.link === '#' }"
       >
         <a
-          :href='sponsor.link'
-          target='_blank'
-          rel='noopener noreferrer'
+          :href="sponsor.link"
+          target="_blank"
+          rel="noopener noreferrer"
           class="hover:opacity-70"
           :class="{ 'pointer-events-none': sponsor.link === '#' }"
         >
           <p
             v-if="sponsor.imgURL === ''"
-            class='m-2 text-3xl text-center break-all lg:text-4xl'
+            class="m-2 text-3xl text-center break-all lg:text-4xl"
           >
             {{ sponsor.nameJp }}
           </p>
-          <div v-else class='p-3 lg:p-6 v-card v-sheet theme-light'>
-            <div class='z-0 v-responsive'>
-              <div style='padding-bottom: 66.6667%'></div>
+          <div v-else class="p-3 lg:p-6 v-card v-sheet theme-light">
+            <div class="z-0 v-responsive">
+              <div style="padding-bottom: 66.6667%"></div>
               <div
-                class='bg-contain v-image-image'
+                class="bg-contain v-image-image"
                 :style="{
-                      backgroundImage:
-                        'url(' +
-                        require(`@/assets/images/${sponsor.imgURL}`) +
-                        ')',
-                      backgroundPosition: 'center center',
-                    }"
+                  backgroundImage:
+                    'url(' + require(`@/assets/images/${sponsor.imgURL}`) + ')',
+                  backgroundPosition: 'center center',
+                }"
               ></div>
             </div>
           </div>
@@ -57,93 +60,151 @@
       </div>
     </div>
 
-    <div class='main-area'>
-      <div v-if='selectedDay === "10/15"' class='flex text-sm select-button select-button-left lg:text-base' >
-        <button class='flex-1 w-full text-center hover:opacity-80 active'
-                @click='selectDay("10/15")'>
+    <div class="main-area">
+      <div class="flex items-center justify-end mb-2">
+        <div class="on-site-box"></div>
+        <p class="ml-2">On Site Presentation</p>
+      </div>
+      <div
+        v-if="selectedDay === '10/15'"
+        class="flex text-sm select-button select-button-left lg:text-base"
+      >
+        <button
+          class="flex-1 w-full text-center hover:opacity-80 active"
+          @click="selectDay('10/15')"
+        >
           DAY1 - 10.15(Fri.)
         </button>
-        <button class='flex-1 w-full text-center hover:opacity-80 '
-                @click='selectDay("10/16")'>
+        <button
+          class="flex-1 w-full text-center hover:opacity-80"
+          @click="selectDay('10/16')"
+        >
           DAY2 - 10.16(Sat.)
         </button>
       </div>
-      <div v-if='selectedDay === "10/16"' class='flex text-sm select-button select-button-right lg:text-base' >
-        <button class='flex-1 w-full text-center hover:opacity-80 mr-2.5'
-                @click='selectDay("10/15")'>
+      <div
+        v-if="selectedDay === '10/16'"
+        class="flex text-sm select-button select-button-right lg:text-base"
+      >
+        <button
+          class="flex-1 w-full text-center hover:opacity-80 mr-2.5"
+          @click="selectDay('10/15')"
+        >
           DAY1 - 10.15(Fri.)
         </button>
-        <button class='flex-1 w-full text-center hover:opacity-80 active'
-                @click='selectDay("10/16")'>
+        <button
+          class="flex-1 w-full text-center hover:opacity-80 active"
+          @click="selectDay('10/16')"
+        >
           DAY2 - 10.16(Sat.)
         </button>
       </div>
 
-      <div v-cloak class='mt-8'>
-        <div class='hidden lg:flex flex time-table-grid time-table-gap flex-col-reverse lg:flex-row'>
-          <div class='flex-1 lg:flex-none lg:w-14 relative text-center start-time py-2 lg:py-0'>
-          </div>
-          <div class='flex flex-1 flex-col lg:flex-row time-table-gap'>
-            <div v-for='room in ROOMS' :key='`header_${room}`'
-                 class='flex time-table-cell justify-center items-center header flex-1'>
+      <div v-cloak class="mt-8">
+        <div
+          class="flex flex-col-reverse hidden  lg:flex time-table-grid time-table-gap lg:flex-row"
+        >
+          <div
+            class="relative flex-1 py-2 text-center  lg:flex-none lg:w-14 start-time lg:py-0"
+          ></div>
+          <div class="flex flex-col flex-1 lg:flex-row time-table-gap">
+            <div
+              v-for="room in ROOMS"
+              :key="`header_${room}`"
+              class="flex items-center justify-center flex-1  time-table-cell header"
+            >
               {{ room }}
             </div>
           </div>
         </div>
 
-        <div v-for='no in sessionNo[selectedDay]' :key='`session_${selectedDay}_${no}`'>
-          <div class='flex time-table-grid time-table-gap relative flex-col lg:flex-row'
-               :class='{"lg:h-16": no === 0, "lg:h-24": no !== 0 && talks[selectedDay][no]["#pyconjp"] !== undefined}'>
-            <div class='flex-1 lg:flex-none lg:w-14 relative text-center start-time py-2 lg:py-0'>
-                <span class='lg:absolute lg:-top-3 lg:left-0'>
-                  {{ startTimes[selectedDay][no] }}
-                </span>
+        <div
+          v-for="no in sessionNo[selectedDay]"
+          :key="`session_${selectedDay}_${no}`"
+        >
+          <div
+            class="relative flex flex-col  time-table-grid time-table-gap lg:flex-row"
+            :class="{
+              'lg:h-16': no === 0,
+              'lg:h-24':
+                no !== 0 && talks[selectedDay][no]['#pyconjp'] !== undefined,
+            }"
+          >
+            <div
+              class="relative flex-1 py-2 text-center  lg:flex-none lg:w-14 start-time lg:py-0"
+            >
+              <span class="lg:absolute lg:-top-3 lg:left-0">
+                {{ startTimes[selectedDay][no] }}
+              </span>
             </div>
 
-            <hr class='separator lg:hidden' />
+            <hr class="separator lg:hidden" />
 
-            <div class='flex flex-1 flex-col lg:flex-row time-table-gap'>
-              <div v-for='room in ROOMS' :key='`${selectedDay}_${no}_${room}`'
-                   class='time-table-cell flex justify-center items-center flex-1'
-                   :class='{"hidden lg:flex": talks[selectedDay][no]["#pyconjp"] !== undefined, "cursor-pointer": talks[selectedDay][no]["#pyconjp"] === undefined}'
-                   @click='openSessionModal(talks[selectedDay][no][room])'>
-                <talk-session v-if='talks[selectedDay][no]["#pyconjp"] === undefined'
-                              :session-data='talks[selectedDay][no][room]'></talk-session>
+            <div class="flex flex-col flex-1 lg:flex-row time-table-gap">
+              <div
+                v-for="room in ROOMS"
+                :key="`${selectedDay}_${no}_${room}`"
+                class="flex items-center justify-center flex-1 time-table-cell"
+                :class="{
+                  'hidden lg:flex':
+                    talks[selectedDay][no]['#pyconjp'] !== undefined,
+                  'cursor-pointer':
+                    talks[selectedDay][no]['#pyconjp'] === undefined,
+                }"
+                @click="openSessionModal(talks[selectedDay][no][room])"
+              >
+                <talk-session
+                  v-if="talks[selectedDay][no]['#pyconjp'] === undefined"
+                  :session-data="talks[selectedDay][no][room]"
+                ></talk-session>
               </div>
             </div>
-            <div v-if='talks[selectedDay][no]["#pyconjp"] !== undefined'
-                 class='lg:absolute lg:z-10 all-room lg:h-full'
-                 :class='{"h-14": no === 0, "h-20": no !== 0 && talks[selectedDay][no]["#pyconjp"] !== undefined}'>
-              <div v-if='no === 0'
-                   class='all-room-content bg-blue-green bg-opacity-20 flex justify-center items-center'>
+            <div
+              v-if="talks[selectedDay][no]['#pyconjp'] !== undefined"
+              class="lg:absolute lg:z-10 all-room lg:h-full"
+              :class="{
+                'h-14': no === 0,
+                'h-20':
+                  no !== 0 && talks[selectedDay][no]['#pyconjp'] !== undefined,
+              }"
+            >
+              <div
+                v-if="no === 0"
+                class="flex items-center justify-center  all-room-content bg-blue-green bg-opacity-20"
+              >
                 {{ talks[selectedDay][no]['#pyconjp'].title }}
               </div>
-              <div v-else
-                   class='all-room-content all-room-session bg-white text-blue-green flex justify-center items-center cursor-pointer'
-                   :class="{'on-site-bg':  onSiteTalkIds.includes(talks[selectedDay][no]['#pyconjp'].id)}"
-                   @click='openSessionModal(talks[selectedDay][no]["#pyconjp"])'>
+              <div
+                v-else
+                class="flex items-center justify-center bg-white cursor-pointer  all-room-content all-room-session text-blue-green"
+                @click="openSessionModal(talks[selectedDay][no]['#pyconjp'])"
+              >
                 {{ talks[selectedDay][no]['#pyconjp'].title }}
               </div>
             </div>
           </div>
 
-          <hr class='separator lg:block hidden' />
+          <hr class="hidden separator lg:block" />
         </div>
 
-        <div class='flex time-table-grid time-table-gap relative flex-col lg:flex-row'>
-          <div class='flex-1 lg:flex-none lg:w-14 relative text-center start-time py-2 lg:py-0'>
-                <span class='lg:absolute lg:-top-3 lg:left-0'>
-                  {{ CONFERENCE_END_TIME[selectedDay] }}
-                </span>
+        <div
+          class="relative flex flex-col  time-table-grid time-table-gap lg:flex-row"
+        >
+          <div
+            class="relative flex-1 py-2 text-center  lg:flex-none lg:w-14 start-time lg:py-0"
+          >
+            <span class="lg:absolute lg:-top-3 lg:left-0">
+              {{ CONFERENCE_END_TIME[selectedDay] }}
+            </span>
           </div>
-          <div class='flex flex-1 flex-col lg:flex-row time-table-gap'></div>
+          <div class="flex flex-col flex-1 lg:flex-row time-table-gap"></div>
         </div>
       </div>
     </div>
     <SessionDetailModal
-      v-if='isModal'
-      :session-data='modalDisplaySessionData'
-      @close='closeSessionModal'
+      v-if="isModal"
+      :session-data="modalDisplaySessionData"
+      @close="closeSessionModal"
     ></SessionDetailModal>
   </div>
 </template>
@@ -161,12 +222,12 @@ const ROOMS = [
   '#pyconjp_2',
   '#pyconjp_3',
   '#pyconjp_4',
-  '#pyconjp_5'
+  '#pyconjp_5',
 ]
 
 const CONFERENCE_END_TIME = {
   '10/15': '19:00',
-  '10/16': ''
+  '10/16': '',
 }
 
 export default {
@@ -185,7 +246,8 @@ export default {
 
     for (const index in body) {
       const talk = body[index]
-      talk.room = talk.room === '#pyconjp_1 (15th: onsite)' ? '#pyconjp_1' : talk.room
+      talk.room =
+        talk.room === '#pyconjp_1 (15th: onsite)' ? '#pyconjp_1' : talk.room
       talk.no = talk.no === '' ? '0' : talk.no
 
       initObject(talks, talk.day)
@@ -198,21 +260,31 @@ export default {
       startTimes[talk.day][talk.no] = talk.start_time
     }
 
-    Object.keys(talks).forEach(day => {
-      sessionNo[day] = Object.keys(talks[day]).map(no => parseInt(no)).sort((a, b) => a - b)
+    Object.keys(talks).forEach((day) => {
+      sessionNo[day] = Object.keys(talks[day])
+        .map((no) => parseInt(no))
+        .sort((a, b) => a - b)
     })
 
     return {
       talks,
       startTimes,
       sessionNo,
-      sessionDataList: originTalks
+      sessionDataList: originTalks,
     }
   },
   data() {
     return {
-      ROOMS, CONFERENCE_END_TIME, sessionNo: {}, startTimes: {}, talks: {}, selectedDay: '10/15', isModal: false,
-      modalDisplaySessionData: {}, sessionDataList: {}, ...getSponsrList(), onSiteTalkIds: ['290208', '273758', '273820', '289624']
+      ROOMS,
+      CONFERENCE_END_TIME,
+      sessionNo: {},
+      startTimes: {},
+      talks: {},
+      selectedDay: '10/15',
+      isModal: false,
+      modalDisplaySessionData: {},
+      sessionDataList: {},
+      ...getSponsrList(),
     }
   },
   mounted() {
@@ -244,7 +316,7 @@ export default {
         name: '',
         lang_of_talk: '',
         description: '',
-        audience_python_level: ''
+        audience_python_level: '',
       }
       if (targetSessionData.length <= 0) {
         return dummyData
@@ -266,14 +338,20 @@ export default {
         this.$router.replace({ query: null })
       }
       this.isModal = false
-    }
-  }
+    },
+  },
 }
 </script>
 
 <style lang="scss" scoped>
 .on-site-bg {
   background-color: #eafdf9 !important;
+}
+
+.on-site-box {
+  background-color: #eafdf9;
+  width: 3rem;
+  height: 1rem;
 }
 
 .sticky-header {
@@ -312,7 +390,7 @@ export default {
 
 .v-card {
   box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-  0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    0 1px 5px 0 rgba(0, 0, 0, 0.12);
 }
 
 .theme-light.v-sheet {
@@ -354,19 +432,19 @@ export default {
   font-weight: bold;
   position: relative;
 
-   & > button {
-      background-color: #f4f4f4;
-      border: 1px solid #DDDDDD;
-      color: gray;
-      height: 70px;
-      margin-left: 10px;
-      margin-right: 0px;
+  & > button {
+    background-color: #f4f4f4;
+    border: 1px solid #dddddd;
+    color: gray;
+    height: 70px;
+    margin-left: 10px;
+    margin-right: 0px;
     &.active {
       height: 80px;
-      color: #1097AA;
-      border-top:  7px solid #1097AA;
-      border-left:  1px solid #1097AA;
-      border-right:  1px solid #1097AA;
+      color: #1097aa;
+      border-top: 7px solid #1097aa;
+      border-left: 1px solid #1097aa;
+      border-right: 1px solid #1097aa;
       border-bottom: none;
       background-color: white;
     }
@@ -380,13 +458,13 @@ export default {
   position: absolute;
   left: 50%;
   bottom: 0;
-  border-bottom: 1px solid #1097AA;
+  border-bottom: 1px solid #1097aa;
 }
 
 .select-button-right {
-   & > button {
-      margin-right: 10px;
-      margin-left: 0px;
+  & > button {
+    margin-right: 10px;
+    margin-left: 0px;
   }
 }
 
@@ -397,7 +475,7 @@ export default {
   position: absolute;
   right: 50%;
   bottom: 0;
-  border-bottom: 1px solid #1097AA;
+  border-bottom: 1px solid #1097aa;
 }
 
 .time-table-gap {
@@ -406,7 +484,7 @@ export default {
 
 .time-table-grid {
   & > .all-room {
-    background-color: #F4F4F4;
+    background-color: #f4f4f4;
 
     @media (min-width: 1024px) {
       background-color: transparent;
@@ -438,7 +516,7 @@ export default {
 }
 
 .time-table-cell {
-  background-color: #F4F4F4;
+  background-color: #f4f4f4;
   padding: 5px;
 
   &.header {
@@ -448,17 +526,16 @@ export default {
 }
 
 .separator {
-  border: 1px solid #DDDDDD;
+  border: 1px solid #dddddd;
   @media (min-width: 1024px) {
     margin-left: calc(3.5rem + 5px);
   }
 }
 
 .start-time {
-  background-color: #F4F4F4;
+  background-color: #f4f4f4;
   @media (min-width: 1024px) {
     background-color: inherit;
   }
 }
-
 </style>
