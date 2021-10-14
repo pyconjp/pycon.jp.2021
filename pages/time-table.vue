@@ -177,6 +177,11 @@
               <div
                 v-else
                 class="flex items-center justify-center bg-white cursor-pointer  all-room-content all-room-session text-blue-green"
+                :class="{
+                  'on-site-bg': onSiteTalkIds.includes(
+                    talks[selectedDay][no]['#pyconjp']['id']
+                  ),
+                }"
                 @click="openSessionModal(talks[selectedDay][no]['#pyconjp'])"
               >
                 {{ talks[selectedDay][no]['#pyconjp'].title }}
@@ -284,6 +289,7 @@ export default {
       isModal: false,
       modalDisplaySessionData: {},
       sessionDataList: {},
+      onSiteTalkIds: ['290208'],
       ...getSponsrList(),
     }
   },
