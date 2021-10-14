@@ -23,7 +23,7 @@
           </p>
         </div>
       </div>
-      <div class="coc-content">
+      <div class="coc-content mt-28">
         <div class="text-custom-black">
           <p
             class="mt-16 mb-16 text-2xl font-bold text-center opacity-100  font-mont"
@@ -80,6 +80,23 @@
           </div>
         </div>
       </div>
+      <div class="coc-content my-16">
+        <div class="text-custom-black">
+          <p class="mt-16 mb-16 text-2xl font-bold text-center opacity-100  font-mont">
+            {{ $t('common.cocContact') }}
+          </p>
+          <div class="font-medium font-noto">
+            <div>
+              <p class='font-bold'>{{ $t('contact.onsite.header') }}</p>
+              <p>{{ $t('contact.onsite.body') }}</p>
+            </div>
+            <div class='mt-8'>
+              <p class='font-bold'>{{ $t('contact.online.header') }}</p>
+              <p>{{ $t('contact.online.body') }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -113,7 +130,6 @@ export default {
 @media screen and (max-width: 1023px) {
   .coc-content {
     margin-top: 60px;
-    margin-bottom: 80px;
     width: 100%;
     padding-left: 2rem;
     padding-right: 2rem;
@@ -126,8 +142,6 @@ export default {
 
 @media screen and (min-width: 1024px) {
   .coc-content {
-    margin-top: 112px;
-    margin-bottom: 160px;
     width: 80%;
     padding-left: 6rem;
     padding-right: 6rem;
@@ -203,6 +217,16 @@ li:before {
         "p16":"In this case, we will not refund the participation fee that has already been paid.",
         "p17":"Attendees should observe this Code of Conduct in the conference room, workshop venue, social events associated with the conference, conference website, and applications used.",
         "p18":"For inquiries about the Code of Conduct, please contact the desk for inquiries about the Code of Conduct, not by posting on a blog or SNS."
+      },
+      "contact": {
+        "onsite": {
+          "header": "Onsite:",
+          "body": "Please contact a member of the staff. Staff will be wearing armbands. You may also contact us via coc@pycon.jp."
+        },
+        "online":{
+          "header": "Online:",
+          "body": "Please contact us via coc@pycon.jp."
+        }
       }
     },
     "ja": {
@@ -249,6 +273,16 @@ li:before {
         "p16":"この場合でも、すでに支払い済みの参加費の返金は行いません。",
         "p17":"参加者は会議場、ワークショップ会場、また会議に関連したソーシャルイベント、カンファレンスのウェブサイトや使用するアプリケーションで、この行動規範を守ってください。",
         "p18":"行動規範についての問い合わせはblog、SNS等への投稿による報告ではなく、行動規範の問い合わせ窓口へのご連絡をお願いします。"
+      },
+      "contact": {
+        "onsite": {
+          "header": "オンサイト参加者:",
+          "body": "腕章を付けたスタッフにお声がけください（※下記のメールアドレスにご連絡頂く形でもかまいません）"
+        },
+        "online":{
+          "header": "オンライン参加者:",
+          "body": "coc@pycon.jp までご連絡ください"
+        }
       }
     }
   }

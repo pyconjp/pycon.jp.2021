@@ -120,6 +120,7 @@
               </div>
               <div v-else
                    class='all-room-content all-room-session bg-white text-blue-green flex justify-center items-center cursor-pointer'
+                   :class="{'on-site-bg':  onSiteTalkIds.includes(talks[selectedDay][no]['#pyconjp'].id)}"
                    @click='openSessionModal(talks[selectedDay][no]["#pyconjp"])'>
                 {{ talks[selectedDay][no]['#pyconjp'].title }}
               </div>
@@ -211,7 +212,7 @@ export default {
   data() {
     return {
       ROOMS, CONFERENCE_END_TIME, sessionNo: {}, startTimes: {}, talks: {}, selectedDay: '10/15', isModal: false,
-      modalDisplaySessionData: {}, sessionDataList: {}, ...getSponsrList()
+      modalDisplaySessionData: {}, sessionDataList: {}, ...getSponsrList(), onSiteTalkIds: ['290208', '273758', '273820', '289624']
     }
   },
   mounted() {
@@ -271,6 +272,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.on-site-bg {
+  background-color: #eafdf9 !important;
+}
+
 .sticky-header {
   position: -webkit-sticky;
   position: sticky;
