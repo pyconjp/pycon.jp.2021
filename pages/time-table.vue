@@ -285,7 +285,7 @@ export default {
       sessionNo: {},
       startTimes: {},
       talks: {},
-      selectedDay: '10/15',
+      selectedDay: '10/16',
       isModal: false,
       modalDisplaySessionData: {},
       sessionDataList: {},
