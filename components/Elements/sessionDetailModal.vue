@@ -64,7 +64,7 @@
                     target="_blank"
                     rel="noopener noreferrer"
                     class="flex hover:opacity-70"
-                    :class="{ 'pointer-events-none': youtubeLink === '' }"
+                    :class="{ 'pointer-events-none': documentLink === '' }"
                     ><img
                       class="lg:h-full h-4/5 filter-gray"
                       src="~/assets/images/icons/documents.svg"
