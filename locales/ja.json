@@ -2,6 +2,7 @@
   "common": {
     "about": "概要",
     "infectionControlGuidelines": "感染症対策ガイドライン",
+    "InfectionControlChecklist": "感染防止策チェックリスト",
     "codeOfConduct": "行動規範",
     "aboutPyConJP": "PyCon JP とは",
     "events": "イベント一覧",

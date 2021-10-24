@@ -1,7 +1,7 @@
 <template>
   <div class="relative">
     <nav
-      class="relative z-40 flex items-center justify-between pl-4 pr-4 lg:pl-0 lg:justify-center navbar"
+      class="relative z-40 flex items-center justify-between pl-4 pr-4  lg:pl-0 lg:justify-center navbar"
     >
       <!-- ヘッダーのロゴ(PC、モバイル共通) -->
       <div class="flex items-center justify-center w-1/2 lg:w-1/4">
@@ -50,6 +50,11 @@
                 :label="$t('common.infectionControlGuidelines')"
                 class="block mt-2 hover:text-blue-green focus:text-blue-green"
               />
+              <outer-link
+                to="https://drive.google.com/file/d/1tCo8JM9F_qVO8Pbol6_AmQusv6pogiz9/view?usp=sharing"
+                :label="$t('common.InfectionControlChecklist')"
+                class="block mt-2 hover:text-blue-green focus:text-blue-green"
+              />
             </div>
           </li>
           <li class="relative">
@@ -91,21 +96,21 @@
               <outer-link
                 :label="$t('common.prospectus')"
                 to="https://pyconjp.blogspot.com/2021/09/closed-sponsor-application.html"
-                class="block mt-2 line-through text-custom-gray hover:opacity-70"
+                class="block mt-2 line-through  text-custom-gray hover:opacity-70"
               />
               <outer-link
                 :label="$t('common.applicationForm')"
                 to="https://pyconjp.blogspot.com/2021/09/closed-sponsor-application.html"
-                class="block mt-2 line-through text-custom-gray hover:opacity-70"
+                class="block mt-2 line-through  text-custom-gray hover:opacity-70"
               />
             </div>
           </li>
           <li class="">
             <nuxt-link
-                :to="localePath('/staff')"
-                class="hover:text-blue-green focus:text-blue-green"
-                >{{ $t('common.staff') }}</nuxt-link
-              >
+              :to="localePath('/staff')"
+              class="hover:text-blue-green focus:text-blue-green"
+              >{{ $t('common.staff') }}</nuxt-link
+            >
           </li>
           <!-- <li class="">
             <a class="pointer-events-none disable-message" href="">

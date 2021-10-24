@@ -6,9 +6,10 @@
       </div>
       <div class="w-full mb-4 mt-28">
         <Accordion
-          :menu-name='"about"'
+          :menu-name="'about'"
           :toggle-menu="toggleMenu"
-          :opened="opened">
+          :opened="opened"
+        >
           <div slot="title">
             <p class="relative inline headear-options">
               {{ $t('common.about') }}
@@ -17,22 +18,29 @@
           <div slot="body" class="js-accordion--body">
             <nuxt-link
               :to="localePath('/code-of-conduct')"
-              class="hover:text-blue-green focus:text-blue-green block"
+              class="block hover:text-blue-green focus:text-blue-green"
               >{{ $t('common.codeOfConduct') }}</nuxt-link
             >
             <outer-link
               to="https://drive.google.com/file/d/1abgh7glVaUsYnlRf_v2RLYw2V3ZAGnjt/view?usp=sharing"
               :label="$t('common.infectionControlGuidelines')"
-              class="hover:text-blue-green focus:text-blue-green block mt-2">
+              class="block mt-2 hover:text-blue-green focus:text-blue-green"
+            >
             </outer-link>
+            <outer-link
+              to="https://drive.google.com/file/d/1tCo8JM9F_qVO8Pbol6_AmQusv6pogiz9/view?usp=sharing"
+              :label="$t('common.InfectionControlChecklist')"
+              class="block mt-2 hover:text-blue-green focus:text-blue-green"
+            />
           </div>
         </Accordion>
       </div>
       <div class="w-full mb-4">
         <Accordion
-          :menu-name='"events"'
-          :toggle-menu='toggleMenu'
-          :opened='opened'>
+          :menu-name="'events'"
+          :toggle-menu="toggleMenu"
+          :opened="opened"
+        >
           <div slot="title">
             <p class="relative inline headear-options">
               {{ $t('common.events') }}
@@ -56,9 +64,10 @@
       </div>
       <div class="w-full mb-4">
         <Accordion
-          :menu-name='"sponsors"'
-          :toggle-menu='toggleMenu'
-          :opened='opened'>
+          :menu-name="'sponsors'"
+          :toggle-menu="toggleMenu"
+          :opened="opened"
+        >
           <div slot="title" class="relative inline headear-options">
             {{ $t('common.sponsors') }}
           </div>
@@ -70,24 +79,24 @@
               {{ $t('common.sponsorList') }}</nuxt-link
             >
             <outer-link
-                :label="$t('common.prospectus')"
-                to="https://pyconjp.blogspot.com/2021/09/closed-sponsor-application.html"
-                class="block mt-2 line-through text-custom-gray hover:opacity-70"
-              />
+              :label="$t('common.prospectus')"
+              to="https://pyconjp.blogspot.com/2021/09/closed-sponsor-application.html"
+              class="block mt-2 line-through text-custom-gray hover:opacity-70"
+            />
             <outer-link
-                :label="$t('common.applicationForm')"
-                to="https://pyconjp.blogspot.com/2021/09/closed-sponsor-application.html"
-                class="block mt-2 line-through text-custom-gray hover:opacity-70"
-              />
+              :label="$t('common.applicationForm')"
+              to="https://pyconjp.blogspot.com/2021/09/closed-sponsor-application.html"
+              class="block mt-2 line-through text-custom-gray hover:opacity-70"
+            />
           </div>
         </Accordion>
       </div>
       <div class="mb-4">
         <nuxt-link
-              :to="localePath('/staff')"
-              class="hover:text-blue-green focus:text-blue-green"
-              >{{ $t('common.staff') }}</nuxt-link
-            >
+          :to="localePath('/staff')"
+          class="hover:text-blue-green focus:text-blue-green"
+          >{{ $t('common.staff') }}</nuxt-link
+        >
       </div>
       <!-- <div class="mb-4">
         <p>会場アクセス {{ $t('common.staff') }}</p>
@@ -123,18 +132,18 @@ export default {
   components: { OuterLink, Accordion },
   data() {
     return {
-      opened: null
+      opened: null,
     }
   },
   methods: {
     toggleMenu(menuName) {
       if (this.opened !== menuName) {
-        this.opened = menuName;
+        this.opened = menuName
       } else {
         this.opened = null
       }
-    }
-  }
+    },
+  },
 }
 </script>
 
