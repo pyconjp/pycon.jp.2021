@@ -80,18 +80,20 @@
           </div>
         </div>
       </div>
-      <div class="coc-content my-16">
+      <div class="my-16 coc-content">
         <div class="text-custom-black">
-          <p class="mt-16 mb-16 text-2xl font-bold text-center opacity-100  font-mont">
+          <p
+            class="mt-16 mb-16 text-2xl font-bold text-center opacity-100  font-mont"
+          >
             {{ $t('common.cocContact') }}
           </p>
           <div class="font-medium font-noto">
             <div>
-              <p class='font-bold'>{{ $t('contact.onsite.header') }}</p>
+              <p class="font-bold">{{ $t('contact.onsite.header') }}</p>
               <p>{{ $t('contact.onsite.body') }}</p>
             </div>
-            <div class='mt-8'>
-              <p class='font-bold'>{{ $t('contact.online.header') }}</p>
+            <div class="mt-8">
+              <p class="font-bold">{{ $t('contact.online.header') }}</p>
               <p>{{ $t('contact.online.body') }}</p>
             </div>
           </div>
@@ -225,7 +227,7 @@ li:before {
         },
         "online":{
           "header": "Online:",
-          "body": "Please contact us via coc@pycon.jp."
+          "body": "* The contact email address for CoC has been closed."
         }
       }
     },
@@ -281,7 +283,7 @@ li:before {
         },
         "online":{
           "header": "オンライン参加者:",
-          "body": "coc@pycon.jp までご連絡ください"
+          "body": "※CoCに関する連絡用メールアドレスはクローズしました"
         }
       }
     }
